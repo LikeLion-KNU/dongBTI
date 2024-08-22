@@ -9,7 +9,7 @@
         "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
         "preview": "vite preview",
         "test": "jest",
-        "test:e2e": "tsc && vite build && serve dist -cypress run"
+        "test:e2e": "tsc && vite build && serve dist -p 5173 && cypress run"
     },
     "dependencies": {
         "@emotion/react": "^11.13.3",
