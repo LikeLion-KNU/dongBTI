@@ -10,7 +10,8 @@
         "preview": "vite preview",
         "start": "serve dist -p 5173",
         "test": "jest",
-        "test:e2e": "start-test start http://localhost:5173 cypress run"
+        "test:e2e": "cypress run",
+        "test:e2e-ci": "start-server-and-test start http://localhost:5173 test:e2e"
     },
     "dependencies": {
         "@emotion/react": "^11.13.3",

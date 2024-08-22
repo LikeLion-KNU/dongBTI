@@ -48,4 +48,4 @@ jobs:
               run: npm run build
 
             - name: Run e2e Tests
-              run: npm run test:e2e
+              run: npm run test:e2e-ci
