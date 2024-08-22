@@ -8,8 +8,7 @@
         "build": "tsc && vite build",
         "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
         "preview": "vite preview",
-        "test": "jest",
-        "test:e2e": "tsc && vite build && serve dist -p 5173 && cypress run"
+        "test:e2e": "start-server-and-test serve http://localhost:5173 cypress run"
     },
     "dependencies": {
         "@emotion/react": "^11.13.3",
@@ -34,6 +33,7 @@
         "jest": "^29.7.0",
         "jest-environment-jsdom": "^29.7.0",
         "serve": "^14.2.3",
+        "start-server-and-test": "^2.0.5",
         "ts-node": "^10.9.2",
         "typescript": "^5.0.2",
         "vite": "^4.4.0"

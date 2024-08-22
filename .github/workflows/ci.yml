@@ -44,5 +44,8 @@ jobs:
             - name: Install Dependencies
               run: npm ci
 
+            - name: Build
+              run: npm run build
+
             - name: Run e2e Tests
               run: npm run test:e2e
