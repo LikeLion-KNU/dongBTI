@@ -1,26 +1,12 @@
-import styled from "@emotion/styled";
+import { forwardRef } from "react";
+
+import { TextElement } from "./Text.style";
 
 export interface TextProps extends React.ComponentProps<"span"> {
     size: "xs" | "s" | "m" | "l" | "xl";
+    children: React.ReactNode;
 }
 
-export const Text = styled.span<TextProps>`
-    font-size: ${(props) => {
-        switch (props.size) {
-            case "xs":
-                return "13px";
-            case "s":
-                return "16px";
-            case "m":
-                return "18px";
-            case "l":
-                return "22px";
-            case "xl":
-                return "24px";
-            case undefined:
-                return "18px";
-            default:
-                return props.size;
-        }
-    }};
-`;
+export const Text = forwardRef<HTMLSpanElement, TextProps>(({ children, ...props }) => {
+    return <TextElement {...props}>{children}</TextElement>;
+});
