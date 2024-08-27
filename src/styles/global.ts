@@ -1,6 +1,23 @@
 import { css } from "@emotion/react";
 
 export const GlobalStyle = css`
+    @font-face {
+        font-family: 'NanumSquare Neo';
+        src: url('@/assets/font/NanumSquareNeo-aLt.woff') format('woff'),
+             url('@/assets/font/NanumSquareNeo-bRg.woff') format('woff');
+             url('@/assets/font/NanumSquareNeo-cBd.woff') format('woff');
+             url('@/assets/font/NanumSquareNeo-dEb.woff') format('woff');
+             url('@/assets/font/NanumSquareNeo-eHv.woff') format('woff');
+
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    body {
+        font-family: 'NanumSquare Neo', sans-serif;
+    }
+
+
     margin: 0;
     padding: 0;
     border: 0;
@@ -13,7 +30,7 @@ export const GlobalStyle = css`
     a {
         text-decoration: none;
     }
-
+        
     :root {
         --font-size-xl: 24px;
         --font-size-l: 22px;
