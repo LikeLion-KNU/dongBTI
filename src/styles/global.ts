@@ -5,6 +5,13 @@ export const GlobalStyle = css`
     padding: 0;
     border: 0;
 
+    body {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-family: "NanumSquareNeo", sans-serif;
+    }
+
     box-sizing: border-box;
 
     img {
