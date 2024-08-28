@@ -9,7 +9,6 @@ export const SideBarWrapper = styled.div`
     overflow-y: auto;
     width:100%;
     top: -80%;
-    background-color: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(5px);
     position: fixed;  
     align-items: flex-end;
