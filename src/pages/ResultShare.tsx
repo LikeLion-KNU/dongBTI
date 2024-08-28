@@ -6,7 +6,7 @@ import { Text } from "@/components/typography/Text";
 import BackIcon from "@/assets/back.svg";
 import ShareIcon from "@/assets/shareLarge.svg";
 
-import styled from "@emotion/styled/macro";
+import styled from "@emotion/styled";
 
 const Header = styled.div`
     margin-top: 20px;
