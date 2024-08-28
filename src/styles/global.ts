@@ -1,11 +1,19 @@
 import { css } from "@emotion/react";
 
 export const GlobalStyle = css`
-    margin: 0;
-    padding: 0;
-    border: 0;
+    * {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        box-sizing: border-box;
+    }
 
-    box-sizing: border-box;
+    body {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-family: "NanumSquareNeo", sans-serif;
+    }
 
     img {
         display: block;
