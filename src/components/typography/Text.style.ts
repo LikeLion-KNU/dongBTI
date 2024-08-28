@@ -23,18 +23,18 @@ export const TextElement = styled.span<TextProps>`
 
     font-weight: ${(props) => {
         switch (props.weight) {
-            case "l":
-                return "var(--font-weight-l)";
-            case "r":
-                return "var(--font-weight-r)";
-            case "b":
-                return "var(--font-weight-b)";
-            case "eb":
-                return "var(--font-weight-eb)";
-            case "h":
-                return "var(--font-weight-h)";
+            case "light":
+                return "var(--font-weight-lighr)";
+            case "regular":
+                return "var(--font-weight-regular)";
+            case "bold":
+                return "var(--font-weight-bold)";
+            case "extrabold":
+                return "var(--font-weight-extrabold)";
+            case "heavy":
+                return "var(--font-weight-heavy)";
             case undefined:
-                return "var(--font-weight-r)";
+                return "var(--font-weight-regular)";
             default:
                 return props.weight;
         }

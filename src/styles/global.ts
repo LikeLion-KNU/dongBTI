@@ -28,11 +28,11 @@ export const GlobalStyle = css`
         --font-size-m: 18px;
         --font-size-s: 16px;
         --font-size-xs: 13px;
-        --font-weight-l: 300;
-        --font-weight-r: 400;
-        --font-weight-b: 700;
-        --font-weight-eb: 800;
-        --font-weight-h: 900;
+        --font-weight-light: 300;
+        --font-weight-regular: 400;
+        --font-weight-bold: 700;
+        --font-weight-extrabold: 800;
+        --font-weight-heavy: 900;
 
         --color-primary: #37cdcd;
         --color-primary-300: #64e4e0;
