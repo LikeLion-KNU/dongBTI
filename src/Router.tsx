@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 
 import { RootLayout } from "./components/layout/RootLayout";
 import HomePage from "./pages/HomePage";
+import ResultShare from "./pages/ResultShare";
 import ResultPage from "./pages/ResultPage";
 
 export const Router = () => {
@@ -10,6 +11,7 @@ export const Router = () => {
             <Route path="/" element={<RootLayout />}>
                 <Route index element={<HomePage />}></Route>
                 <Route path="/result" element={<ResultPage />}></Route>
+                <Route path="/share" element={<ResultShare />}></Route>
             </Route>
         </Routes>
     );
