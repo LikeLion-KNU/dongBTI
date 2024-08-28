@@ -4,6 +4,7 @@ export const HomePageWrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center; 
+    position: relative;
     width: 100%;
     height: 100vh;
 `;
@@ -59,4 +60,8 @@ export const MenuContainer = styled.div`
     display:flex;
     justify-content: center;
     align-items: center;
+    
+    position: absolute;
+    top: 10px; 
+    right: 10px;
 `
