@@ -4,7 +4,9 @@ export const SideBarWrapper = styled.div`
     z-index: 5;  
     padding: 20px;  
     border-radius: 0 0 15px 15px;
-    height: 20%;  
+    height: auto;
+    max-height: 100%;
+    overflow-y: auto;
     width:100%;
     top: -80%;
     background-color: rgba(255, 255, 255, 0.8);
