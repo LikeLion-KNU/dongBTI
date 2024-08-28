@@ -9,7 +9,6 @@ import likelion from '@/assets/images/likelion.png';
 import {Input} from "@/components/form/Input";
 import {Button} from "@/components/form/Button";
 
-import { FaAlignJustify } from "react-icons/fa6";
 
 export default function HomePage() {
     const name = React.useRef<HTMLInputElement>(null);
@@ -23,7 +22,17 @@ export default function HomePage() {
     return (
         <HomePageWrapper>
             <MenuContainer role="button" onClick={handleSideBar}>
-                <FaAlignJustify color='#37cdcd'/>
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="none">
+                <g stroke="#37CDCD" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" clip-path="url(#a)">
+                    <path d="M5 7.5h20M5 15h20M5 22.5h20"/>
+                </g>
+                <defs>
+                    <clipPath id="a">
+                        <path fill="#fff" d="M0 0h30v30H0z"/>
+                    </clipPath>
+                </defs>
+            </svg>
+
             </MenuContainer>
             <SideBar isOpen = {isOpen} setIsOpen = {setIsOpen} />
 
