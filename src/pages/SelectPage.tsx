@@ -39,11 +39,11 @@ export default function SelectPage() {
         setIsModalOpen(false);
     };
 
-    const handleDragStart = (info: PanInfo) => {
+    const handleDragStart = (event: Event, info: PanInfo) => {
         initialX.current = info.point.x;
     };
 
-    const handleDragEnd = (info: PanInfo) => {
+    const handleDragEnd = (event: Event, info: PanInfo) => {
         const deltaX = info.point.x - initialX.current;
         if (deltaX >= 60) {
             setAnimateLeftToRight(true);
