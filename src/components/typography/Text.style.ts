@@ -21,6 +21,25 @@ export const TextElement = styled.span<TextProps>`
         }
     }};
 
+    font-weight: ${(props) => {
+        switch (props.weight) {
+            case "l":
+                return "var(--font-weight-l)";
+            case "r":
+                return "var(--font-weight-r)";
+            case "b":
+                return "var(--font-weight-b)";
+            case "eb":
+                return "var(--font-weight-eb)";
+            case "h":
+                return "var(--font-weight-h)";
+            case undefined:
+                return "var(--font-weight-r)";
+            default:
+                return props.weight;
+        }
+    }};
+
     color: ${(props) => {
         switch (props.color) {
             case "primary":

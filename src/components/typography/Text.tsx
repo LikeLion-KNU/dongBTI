@@ -4,6 +4,7 @@ import { TextElement } from "./Text.style";
 
 export interface TextProps extends React.ComponentProps<"span"> {
     size: "xs" | "s" | "m" | "l" | "xl";
+    weight?: "l" | "r" | "b" | "eb" | "h";
     children: React.ReactNode;
 }
 
