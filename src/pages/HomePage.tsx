@@ -42,8 +42,8 @@ export default function HomePage() {
 
             <Main>
                 <InputContainer>
-                    <Input variants = "primary" width="242px" height = "55px" placeholder='이름을 입력하세용' ref = {name}/>
-                    <Input variants = "primary" width="242px" height = "55px" placeholder='학과를 입력하세용' ref = {major} />
+                    <Input variants = "primary" width="242px" height = "30px" placeholder='이름을 입력하세용' ref = {name}/>
+                    <Input variants = "primary" width="242px" height = "30px" placeholder='학과를 입력하세용' ref = {major} />
                     <Text size = "xs" color = '#6E6E6E'>개인정보는 외부에 공유되지 않으니 안심하세용</Text>
                 </InputContainer>
 
