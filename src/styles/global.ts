@@ -1,26 +1,6 @@
 import { css } from "@emotion/react";
 
 export const GlobalStyle = css`
-    @font-face {
-        font-family: 'NanumSquare Neo Regular';
-        src: url('/src/assets/font/NanumSquareNeoTTF-bRg.woff') format('woff');
-    }
-
-    @font-face {
-        font-family: 'NanumSquare Neo Light';
-        src: url('/src/assets/font/NanumSquareNeoTTF-aLt.woff') format('woff');
-    }
-    
-    @font-face {
-        font-family: 'NanumSquare Neo Bold';
-        src: url('/src/assets/font/NanumSquareNeoTTF-cBd.woff') format('woff');
-             
-    }
-
-    body {
-        font-family: 'NanumSquare Neo Regular', sans-serif;
-    }
-
     margin: 0;
     padding: 0;
     border: 0;
