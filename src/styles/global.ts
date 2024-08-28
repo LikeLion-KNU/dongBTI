@@ -1,11 +1,19 @@
 import { css } from "@emotion/react";
 
 export const GlobalStyle = css`
-    margin: 0;
-    padding: 0;
-    border: 0;
+    * {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        box-sizing: border-box;
+    }
 
-    box-sizing: border-box;
+    body {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-family: "NanumSquareNeo", sans-serif;
+    }
 
     img {
         display: block;
@@ -20,6 +28,12 @@ export const GlobalStyle = css`
         --font-size-m: 18px;
         --font-size-s: 16px;
         --font-size-xs: 13px;
+
+        --font-weight-light: 300;
+        --font-weight-regular: 400;
+        --font-weight-bold: 700;
+        --font-weight-extrabold: 800;
+        --font-weight-heavy: 900;
 
         --color-primary: #37cdcd;
         --color-primary-300: #64e4e0;

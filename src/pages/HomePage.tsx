@@ -12,6 +12,9 @@ import {Input} from "@/components/form/Input";
 import {Button} from "@/components/form/Button";
 
 
+import { useNavigate } from "react-router-dom";
+import { Button } from "@/components/form/Button";
+
 export default function HomePage() {
     const name = React.useRef<HTMLInputElement>(null);
     const major = React.useRef<HTMLInputElement>(null);
