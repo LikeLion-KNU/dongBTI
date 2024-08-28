@@ -5,7 +5,7 @@ export const SideBarWrapper = styled.div`
     padding: 20px;  
     border-radius: 0 0 15px 15px;
     height: 20%;  
-    width: 40%;  
+    width:70%;
     top: -80%;
     background-color: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(5px);
