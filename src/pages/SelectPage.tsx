@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
 
+// import { useNavigate } from "react-router-dom";
 import { PanInfo } from "framer-motion";
 
 import { Text } from "@/components/typography/Text";
@@ -39,11 +39,11 @@ export default function SelectPage() {
         setIsModalOpen(false);
     };
 
-    const handleDragStart = (event: Event, info: PanInfo) => {
+    const handleDragStart = (info: PanInfo) => {
         initialX.current = info.point.x;
     };
 
-    const handleDragEnd = (event: Event, info: PanInfo) => {
+    const handleDragEnd = (info: PanInfo) => {
         const deltaX = info.point.x - initialX.current;
         if (deltaX >= 60) {
             setAnimateLeftToRight(true);
