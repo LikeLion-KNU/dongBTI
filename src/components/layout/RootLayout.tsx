@@ -6,7 +6,7 @@ export const Layout = styled.main`
     width: min(100%, 800px);
 
     margin: 0px auto;
-    padding: 10px;
+    padding: 1.25rem;
 `;
 
 export const RootLayout = () => {
