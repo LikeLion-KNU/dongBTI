@@ -23,6 +23,7 @@ import {
     OptionWrapper,
     OptionLeft,
     OptionRight,
+    OptionContainer,
 } from "./SelectPage.style";
 import ProgressBar from "@ramonak/react-progress-bar";
 
@@ -95,11 +96,11 @@ export default function SelectPage() {
                         )}
                     </CardWrapper>
 
-                    <div style={{ flexDirection: animateRightToLeft ? "row-reverse" : "row" }}>
-                        <OptionWrapper style={{ display: animateRightToLeft ? "none" : "flex" }}>
+                    <OptionWrapper style={{ flexDirection: animateRightToLeft ? "row-reverse" : "row" }}>
+                        <OptionContainer style={{ display: animateRightToLeft ? "none" : "flex" }}>
                             <OptionLeft
                                 initial={{ width: "auto" }}
-                                animate={animateLeftToRight ? { width: "100vw" } : { width: "auto" }}
+                                animate={animateLeftToRight ? { width: "102vw" } : { width: "auto" }}
                                 transition={{
                                     delay: 0.2,
                                     duration: 1, // Decreased animation duration to make it faster
@@ -111,12 +112,12 @@ export default function SelectPage() {
                             </OptionLeft>
 
                             <img src={leftArrow} />
-                        </OptionWrapper>
-                        <OptionWrapper style={{ display: animateLeftToRight ? "none" : "flex" }}>
+                        </OptionContainer>
+                        <OptionContainer style={{ display: animateLeftToRight ? "none" : "flex" }}>
                             <img src={rightArrow} />
                             <OptionRight
                                 initial={{ width: "auto" }}
-                                animate={animateRightToLeft ? { width: "100vw" } : { width: "auto" }}
+                                animate={animateRightToLeft ? { width: "102vw" } : { width: "auto" }}
                                 transition={{
                                     delay: 0.2,
                                     duration: 1, // Decreased animation duration to make it faster
@@ -126,8 +127,8 @@ export default function SelectPage() {
                             >
                                 <Text size="xs">{questions[currentQuestionIndex].option[1]}</Text>
                             </OptionRight>
-                        </OptionWrapper>
-                    </div>
+                        </OptionContainer>
+                    </OptionWrapper>
                 </SelectPageContainer>
             </SelectPageWrapper>
         </>
