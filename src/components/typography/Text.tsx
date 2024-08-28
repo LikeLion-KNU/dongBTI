@@ -7,6 +7,10 @@ export interface TextProps extends React.ComponentProps<"span"> {
     children: React.ReactNode;
 }
 
-export const Text = forwardRef<HTMLSpanElement, TextProps>(({ children, ...props }) => {
-    return <TextElement {...props}>{children}</TextElement>;
+export const Text = forwardRef<HTMLSpanElement, TextProps>(({ children, ...props }, ref) => {
+    return (
+        <TextElement ref={ref} {...props}>
+            {children}
+        </TextElement>
+    );
 });

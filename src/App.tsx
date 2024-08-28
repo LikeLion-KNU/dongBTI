@@ -1,13 +1,15 @@
 import { BrowserRouter } from "react-router-dom";
 
+import { FontsStyle } from "@/styles/fonts";
+import { GlobalStyle } from "@/styles/global";
+
 import { Router } from "./Router";
-import { GlobalStyle } from "./styles/global";
 import { Global } from "@emotion/react";
 
 export default function App() {
     return (
         <BrowserRouter>
-            <Global styles={GlobalStyle} />
+            <Global styles={[FontsStyle, GlobalStyle]} />
             <Router />
         </BrowserRouter>
     );
