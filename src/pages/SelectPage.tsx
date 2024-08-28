@@ -134,7 +134,7 @@ export default function SelectPage() {
     );
 }
 
-const Modal = ({ onClose }) => {
+const Modal = ({ onClose }: { onClose: () => void }) => {
     return (
         <ModalOverlay onClick={onClose}>
             <ModalContent>
