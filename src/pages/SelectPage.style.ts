@@ -9,53 +9,44 @@ export const SelectPageContainer = styled.div`
     align-items: center;
     overflow: hidden;
     height: 100%;
-
-    .optionWrapper {
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .optionLeft,
-    .optionRight {
-        display: flex;
-
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        height: 100%;
-        padding: 10px 20px;
-        overflow: hidden; /* 내용이 넘치면 숨김 */
-        white-space: nowrap; /* 텍스트를 한 줄로 유지 */
-        text-overflow: clip; /* 텍스트가 넘치면 그냥 잘라냄 */
-    }
-
-    .optionLeft {
-        background-color: #d9d9d9;
-        color: #000;
-        border-radius: 0 15px 15px 0;
-    }
-
-    .optionRight {
-        background-color: #37cdcd;
-        color: #fff;
-        border-radius: 15px 0 0 15px;
-    }
-    .container {
-    }
-
-    .item {
-    }
-    .box {
-        width: 200px;
-        height: 200px;
-        background: var(--accent);
-        background-color: #000;
-    }
 `;
 
-export const OptionContainer = styled.div``;
+export const OptionLeft = styled(motion.div)`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 10px 20px;
+    overflow: hidden; /* 내용이 넘치면 숨김 */
+    white-space: nowrap; /* 텍스트를 한 줄로 유지 */
+    text-overflow: clip; /* 텍스트가 넘치면 그냥 잘라냄 */
+    background-color: #d9d9d9;
+    color: #000;
+    border-radius: 0 15px 15px 0;
+`;
+
+export const OptionRight = styled(motion.div)`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 10px 20px;
+    overflow: hidden; /* 내용이 넘치면 숨김 */
+    white-space: nowrap; /* 텍스트를 한 줄로 유지 */
+    text-overflow: clip; /* 텍스트가 넘치면 그냥 잘라냄 */
+    background-color: #37cdcd;
+    color: #fff;
+    border-radius: 15px 0 0 15px;
+`;
+
+export const OptionWrapper = styled.div`
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
 
 export const Item = styled(motion.div)`
     position: relative;

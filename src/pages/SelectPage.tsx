@@ -20,6 +20,9 @@ import {
     CardContainer,
     ItemWrapper,
     Item,
+    OptionWrapper,
+    OptionLeft,
+    OptionRight,
 } from "./SelectPage.style";
 import ProgressBar from "@ramonak/react-progress-bar";
 
@@ -92,13 +95,9 @@ export default function SelectPage() {
                         )}
                     </CardWrapper>
 
-                    <div
-                        className="optionContainer"
-                        style={{ flexDirection: animateRightToLeft ? "row-reverse" : "row" }}
-                    >
-                        <div className="optionWrapper" style={{ display: animateRightToLeft ? "none" : "flex" }}>
-                            <motion.div
-                                className="optionLeft"
+                    <div style={{ flexDirection: animateRightToLeft ? "row-reverse" : "row" }}>
+                        <OptionWrapper style={{ display: animateRightToLeft ? "none" : "flex" }}>
+                            <OptionLeft
                                 initial={{ width: "auto" }}
                                 animate={animateLeftToRight ? { width: "100vw" } : { width: "auto" }}
                                 transition={{
@@ -109,13 +108,13 @@ export default function SelectPage() {
                                 onAnimationComplete={animateLeftToRight ? handleAnimationComplete : undefined}
                             >
                                 <Text size="xs">{questions[currentQuestionIndex].option[0]}</Text>
-                            </motion.div>
-                            <img src={leftArrow} className="leftArrow" />
-                        </div>
-                        <div className="optionWrapper" style={{ display: animateLeftToRight ? "none" : "flex" }}>
-                            <img src={rightArrow} className="rightArrow" />
-                            <motion.div
-                                className="optionRight"
+                            </OptionLeft>
+
+                            <img src={leftArrow} />
+                        </OptionWrapper>
+                        <OptionWrapper style={{ display: animateLeftToRight ? "none" : "flex" }}>
+                            <img src={rightArrow} />
+                            <OptionRight
                                 initial={{ width: "auto" }}
                                 animate={animateRightToLeft ? { width: "100vw" } : { width: "auto" }}
                                 transition={{
@@ -126,8 +125,8 @@ export default function SelectPage() {
                                 onAnimationComplete={animateRightToLeft ? handleAnimationComplete : undefined}
                             >
                                 <Text size="xs">{questions[currentQuestionIndex].option[1]}</Text>
-                            </motion.div>
-                        </div>
+                            </OptionRight>
+                        </OptionWrapper>
                     </div>
                 </SelectPageContainer>
             </SelectPageWrapper>
