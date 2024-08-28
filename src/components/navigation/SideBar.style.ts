@@ -18,6 +18,11 @@ export const SideBarWrapper = styled.div`
         top: 0;    
         transition: 0.5s ease;  
     }
+    img {
+        display: block;
+        margin-left: auto; /* Align the image to the right */
+        cursor: pointer; /* Add a pointer cursor for better UX */
+    }
 `
 
 export const Menu = styled.li`  
