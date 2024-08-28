@@ -3,6 +3,8 @@ import { Text } from "@/components/typography/Text";
 
 import {SideBar} from '@/components/navigation/SideBar';
 import { HomePageWrapper, Header, TextContainer, InputContainer, ButtonContainer, Main, Footer, MiddleSection, MenuContainer} from "./HomePage.style";
+
+import menuIcon from '@/assets/icons/menu.svg';
 import dongari from '@/assets/images/dongari.png';
 import likelion from '@/assets/images/likelion.png';
 
@@ -22,17 +24,7 @@ export default function HomePage() {
     return (
         <HomePageWrapper>
             <MenuContainer role="button" onClick={handleSideBar}>
-            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="none">
-                <g stroke="#37CDCD" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" clip-path="url(#a)">
-                    <path d="M5 7.5h20M5 15h20M5 22.5h20"/>
-                </g>
-                <defs>
-                    <clipPath id="a">
-                        <path fill="#fff" d="M0 0h30v30H0z"/>
-                    </clipPath>
-                </defs>
-            </svg>
-
+                <img src = {menuIcon} />
             </MenuContainer>
             <SideBar isOpen = {isOpen} setIsOpen = {setIsOpen} />
 
