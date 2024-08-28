@@ -7,7 +7,8 @@ export const InputElement = styled.input<InputProps>`
 
     border-radius: 12px;
     border: none;
-    
+    padding:5px;
+
     background-color: ${(props) => {
         switch (props.variants) {
             case "primary":
