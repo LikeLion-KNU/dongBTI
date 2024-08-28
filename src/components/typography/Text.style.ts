@@ -27,6 +27,8 @@ export const TextElement = styled.span<TextProps>`
         switch (props.color) {
             case "primary":
                 return "var(--color-primary)";
+            default :
+                return props.color;
         }
     }};
 `;
