@@ -29,6 +29,12 @@ export const GlobalStyle = css`
         --font-size-s: 16px;
         --font-size-xs: 13px;
 
+        --font-weight-light: 300;
+        --font-weight-regular: 400;
+        --font-weight-bold: 700;
+        --font-weight-extrabold: 800;
+        --font-weight-heavy: 900;
+
         --color-primary: #37cdcd;
         --color-primary-300: #64e4e0;
         --color-primary-200: #9df2ec;
