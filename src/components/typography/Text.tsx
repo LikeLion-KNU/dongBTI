@@ -3,7 +3,8 @@ import { forwardRef } from "react";
 import { TextElement } from "./Text.style";
 
 export interface TextProps extends React.ComponentProps<"span"> {
-    size: "xs" | "s" | "m" | "l" | "xl";
+    size: "xs" | "s" | "m" | "l" | "xl" | string;
+    color?: "primary" | string;
     weight?: "light" | "regular" | "bold" | "extrabold" | "heavy";
     children: React.ReactNode;
 }
