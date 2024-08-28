@@ -18,7 +18,7 @@ const Header = styled.div`
 `;
 
 export default function ResultShare() {
-    const [name, setName] = useState<string>("홍길동");
+    const [name, setName] = useState<string>("");
 
     useEffect(() => {
         // 전역 상태에서 이름을 불러와서 setName으로 디스플레이 이름을 변경합니다.
