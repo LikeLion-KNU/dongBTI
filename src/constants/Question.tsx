@@ -1,8 +1,16 @@
-export const questions = [
+import React from "react";
+
+interface Question {
+    text: string;
+    imageUrl: string;
+    option: React.ReactNode[];
+}
+
+export const questions: Question[] = [
     {},
     {
         text: "공놀이 좋아해?",
-        imageUrl: "https://cdn.pixabay.com/photo/2015/01/26/22/40/child-613199_640.jpg",
+        imageUrl: "https://cdn.pixabay.com/photo/2015/01/-613199_640.jpg",
         option: ["역시 체육은 공놀이지", "응 아니야"],
     },
     {
