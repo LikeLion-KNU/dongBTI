@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Hangul from "hangul-js";
 import { TypingText } from "@/pages/ResultLoading.style";
 
@@ -15,54 +15,60 @@ const TypingAnimation: React.FC<TypingAnimationProps> = ({
   deleteInterval,
   waitInterval,
 }) => {
-  const [displayedText, setDisplayedText] = useState("");
-  const [currentTextIndex, setCurrentTextIndex] = useState(0);
-  const [isCursorBlinking, setIsCursorBlinking] = useState(false);
+  const [displayedText, setDisplayedText] = useState<string>("");
+  const [currentTextIndex, setCurrentTextIndex] = useState<number>(0);
+  const [isCursorBlinking, setIsCursorBlinking] = useState<boolean>(false);
+
+  const index = useRef<number>(0);
+  const isDeleting = useRef<boolean>(false);
+  const typeTimeout = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     const disassembled = Hangul.disassemble(texts[currentTextIndex]);
-    let index = 0;
-    let isDeleting = false;
-    let typeTimeout: NodeJS.Timeout;
 
     const handleTyping = () => {
-      if (!isDeleting) {
-        setIsCursorBlinking(false); // 타이핑 중에는 커서 깜빡임 비활성화
+      if (!isDeleting.current) {
+        setIsCursorBlinking(false);
 
-        if (index <= disassembled.length) {
-          const nextText = Hangul.assemble(disassembled.slice(0, index));
+        if (index.current <= disassembled.length) {
+          const nextText = Hangul.assemble(disassembled.slice(0, index.current));
           setDisplayedText(nextText);
-          index++;
+          index.current++;
         } else {
-          setIsCursorBlinking(true); // 모든 텍스트가 타이핑되면 커서 깜빡임 활성화
+          setIsCursorBlinking(true);
           setTimeout(() => {
-            isDeleting = true;
-            index = texts[currentTextIndex].length;
-            setIsCursorBlinking(false); // 삭제 중에도 커서 깜빡임 비활성화
+            isDeleting.current = true;
+            index.current = texts[currentTextIndex].length;
+            setIsCursorBlinking(false);
             handleTyping();
           }, waitInterval);
           return;
         }
       } else {
-        if (index > 0) {
-          setDisplayedText((prevText) => prevText.slice(0, index - 1));
-          index--;
+        if (index.current > 0) {
+          setDisplayedText((prevText) => prevText.slice(0, index.current - 1));
+          index.current--;
         } else {
           setCurrentTextIndex((prevIndex) => (prevIndex + 1) % texts.length);
-          isDeleting = false;
+          isDeleting.current = false;
           setDisplayedText("");
-          clearTimeout(typeTimeout);
-          setIsCursorBlinking(true); // 다음 텍스트로 이동하기 전 깜빡임 활성화
+          if (typeTimeout.current) clearTimeout(typeTimeout.current);
+          setIsCursorBlinking(true);
           return;
         }
       }
 
-      typeTimeout = setTimeout(handleTyping, isDeleting ? deleteInterval : typingInterval);
+      typeTimeout.current = setTimeout(
+        handleTyping,
+        isDeleting.current ? deleteInterval : typingInterval
+      );
     };
 
-    typeTimeout = setTimeout(handleTyping, typingInterval);
+    typeTimeout.current = setTimeout(handleTyping, typingInterval);
 
-    return () => clearTimeout(typeTimeout);
+    return () => {
+      if (typeTimeout.current) clearTimeout(typeTimeout.current);
+    };
   }, [currentTextIndex]);
 
   return (

@@ -37,7 +37,7 @@ export const TypingText = styled.div<{ isCursorBlinking: boolean }>`
     background-color: black;
     position: absolute;
     right: -8px;
-    bottom: 5px;
+    bottom: 7px;
     animation: ${({ isCursorBlinking }) => (isCursorBlinking ? 'blink 0.7s steps(1) infinite' : 'none')};
   }
   

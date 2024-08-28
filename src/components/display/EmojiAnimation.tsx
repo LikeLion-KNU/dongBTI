@@ -3,16 +3,15 @@ import { ZoomAnimation  } from "@/pages/ResultLoading.style";
 
 
 const EmojiAnimation: React.FC = () => {
-  const emojis = ["🐶", "🏃‍♂️", "🏋️", "🏓", "🎤", "⚽", "🎸"];
-  const [currentEmojiIndex, setCurrentEmojiIndex] = useState(0);
+  const emojis: string[] = ["🐶", "🏃‍♂️", "🏋️", "🏓", "🎤", "⚽", "🎸"];
+  const [currentEmojiIndex, setCurrentEmojiIndex] = useState<number>(0);
 
-  useEffect(() => {
+  useEffect(function changeEmojiByInterval() {
     const emojiInterval = setInterval(() => {
-      setCurrentEmojiIndex((prevIndex) => (prevIndex + 1) % emojis.length);
-    }, 1000); // 1초마다 이모지를 변경
-
+          setCurrentEmojiIndex((prevIndex) => (prevIndex + 1) % emojis.length);
+    }, 1000); 
     return () => clearInterval(emojiInterval);
-  }, []);
+}, []);
 
   return <ZoomAnimation>{emojis[currentEmojiIndex]}</ZoomAnimation>;
 };
