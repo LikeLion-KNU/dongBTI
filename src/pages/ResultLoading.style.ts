@@ -27,7 +27,7 @@ export const TypingText = styled.div<{ isCursorBlinking: boolean }>`
   display: inline-flex;
   align-items: center;
   position: relative;
-  min-height: 1.5em; /* 타이핑 텍스트 영역의 최소 높이 설정 */
+  min-height: 1.5em;
 
   &::after {
     content: "";
@@ -36,9 +36,9 @@ export const TypingText = styled.div<{ isCursorBlinking: boolean }>`
     height: 1em;
     background-color: black;
     position: absolute;
-    right: -8px; /* 오른쪽으로 약간 이동 */
-    bottom: 5px; /* 아래쪽으로 약간 이동 */
-    animation: ${({ isCursorBlinking }) => (isCursorBlinking ? 'blink 0.7s steps(1) infinite' : 'none')}; /* 조건에 따라 깜빡임 */
+    right: -8px;
+    bottom: 5px;
+    animation: ${({ isCursorBlinking }) => (isCursorBlinking ? 'blink 0.7s steps(1) infinite' : 'none')};
   }
   
   @keyframes blink {
