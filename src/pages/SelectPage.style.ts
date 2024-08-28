@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 import styled from "@emotion/styled";
 
 export const SelectPageContainer = styled.div`
@@ -6,21 +8,7 @@ export const SelectPageContainer = styled.div`
     justify-content: center;
     align-items: center;
     overflow: hidden;
-
-    .cardWrapper {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .optionContainer {
-        display: flex;
-
-        justify-content: space-between;
-        width: 100%;
-        height: auto;
-        margin-top: 20px;
-    }
+    height: 100%;
 
     .optionWrapper {
         height: 100%;
@@ -55,24 +43,9 @@ export const SelectPageContainer = styled.div`
         border-radius: 15px 0 0 15px;
     }
     .container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: relative;
-
-        padding: 80px;
     }
 
     .item {
-        position: relative;
-        background-color: #fff;
-        width: 80vw;
-        max-width: 400px;
-        aspect-ratio: 3 / 4; /* 가로 세로 비율을 4:3으로 설정 */
-
-        border-radius: 20px;
-        background-size: cover;
-        background-position: center;
     }
     .box {
         width: 200px;
@@ -82,11 +55,45 @@ export const SelectPageContainer = styled.div`
     }
 `;
 
+export const OptionContainer = styled.div``;
+
+export const Item = styled(motion.div)`
+    position: relative;
+    background-color: #fff;
+    width: 80vw;
+    max-width: 400px;
+    aspect-ratio: 3 / 4; /* 가로 세로 비율을 4:3으로 설정 */
+    border-radius: 20px;
+    background-size: cover;
+    background-position: center;
+`;
+
+export const ItemWrapper = styled(motion.div)`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 80px;
+`;
+export const CardWrapper = styled.div`
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: auto;
+    margin-top: 20px;
+`;
+
+export const CardContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`;
+
 export const SelectPageWrapper = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    height: 100vh;
+    height: 100%;
 `;
 
 export const ModalOverlay = styled.div`

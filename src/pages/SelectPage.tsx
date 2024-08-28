@@ -11,7 +11,16 @@ import swipe from "@/assets/swipe.svg";
 
 import { questions } from "@/constants/Question";
 
-import { SelectPageContainer, SelectPageWrapper, ModalOverlay, ModalContent } from "./SelectPage.style";
+import {
+    SelectPageContainer,
+    SelectPageWrapper,
+    ModalOverlay,
+    ModalContent,
+    CardWrapper,
+    CardContainer,
+    ItemWrapper,
+    Item,
+} from "./SelectPage.style";
 import ProgressBar from "@ramonak/react-progress-bar";
 
 export default function SelectPage() {
@@ -61,15 +70,14 @@ export default function SelectPage() {
             <SelectPageWrapper>
                 <ProgressBar isLabelVisible={false} completed={currentQuestionIndex * 15} bgColor="#37cdcd" />
                 <SelectPageContainer>
-                    <div className="cardContainer">
+                    <CardWrapper>
                         {questions.map(
                             (question, index) =>
                                 index === currentQuestionIndex && (
-                                    <div key={index} className="cardWrapper">
+                                    <CardContainer key={index}>
                                         <Text size="l">{question.text}</Text>
-                                        <motion.div className="container" ref={constraintsRef}>
-                                            <motion.div
-                                                className="item"
+                                        <ItemWrapper ref={constraintsRef}>
+                                            <Item
                                                 drag
                                                 onDragStart={handleDragStart}
                                                 onDragEnd={handleDragEnd}
@@ -78,11 +86,11 @@ export default function SelectPage() {
                                                 dragSnapToOrigin={true}
                                                 style={{ backgroundImage: `url(${question.imageUrl})` }}
                                             />
-                                        </motion.div>
-                                    </div>
+                                        </ItemWrapper>
+                                    </CardContainer>
                                 ),
                         )}
-                    </div>
+                    </CardWrapper>
 
                     <div
                         className="optionContainer"
