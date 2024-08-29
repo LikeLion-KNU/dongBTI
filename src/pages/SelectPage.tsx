@@ -55,7 +55,7 @@ export default function SelectPage() {
                         두근두근 설레는 가두보집! <br /> 동아리 부스가 엄청 많다! <br /> 어느 분야부터 설명을 들어볼까?
                     </Text>
                 )}
-                <ButtonWrapper>
+                <ButtonWrapper style={root === null ? { gap: "2.5vh" } : {}}>
                     {root ? (
                         <>
                             <Button width="80%" height="7vh" variants="select" onClick={handleLeftClick}>
