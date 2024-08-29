@@ -1,4 +1,7 @@
 import { useEffect, useState } from "react";
+import React from "react";
+
+import html2canvas from "html2canvas";
 
 import { ResultCard, ResultCardDataProps } from "@/components/display/ResultCard";
 import { ShareLink } from "@/components/display/ShareLink";
@@ -9,7 +12,7 @@ import { Text } from "@/components/typography/Text";
 import BackIcon from "@/assets/back.svg";
 import ShareIcon from "@/assets/shareLarge.svg";
 
-import { Content } from "./ResultShare.styled";
+import { Content, ResultCardDiv } from "./ResultShare.styled";
 import styled from "@emotion/styled";
 
 const Header = styled.div`
@@ -35,9 +38,18 @@ export default function ResultShare() {
     const [cardOrder, setCardOrder] = useState<number>(0);
     const [color, setColor] = useState<string>("");
 
-    function downloadCard() {
-        alert("Card download");
-    }
+    const cardRef = React.useRef(null);
+
+    const cardDownload = () => {
+        if (cardRef.current) {
+            html2canvas(cardRef.current).then((canvas) => {
+                const link = document.createElement("a");
+                link.href = canvas.toDataURL("image/png");
+                link.download = `${name}-${dbti_name}.png`;
+                link.click();
+            });
+        }
+    };
 
     useEffect(function initDisplay() {
         // 전역 상태에서 정보를 불러와 디스플레이 요소를 변경합니다.
@@ -69,11 +81,12 @@ export default function ResultShare() {
                         공유해보세요
                     </Text>
                 </Header>
-                <div style={{ marginBottom: "50px", display: "flex", flexDirection: "column", gap: "20px" }}>
+                {/* ResultCardDiv 기준으로 이미지가 다운로드됩니다. */}
+                <ResultCardDiv ref={cardRef}>
                     <ResultCard props={props} />
                     <ShareLink link={link} color={color} />
-                </div>
-                <Button onClick={downloadCard} width="100%" height="60px" variants="primary">
+                </ResultCardDiv>
+                <Button onClick={cardDownload} width="100%" height="60px" variants="primary">
                     <Text size="s" weight="extrabold">
                         이미지 저장
                     </Text>

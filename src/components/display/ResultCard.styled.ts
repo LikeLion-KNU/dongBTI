@@ -5,7 +5,6 @@ interface ResultCardStyleProps extends React.ComponentProps<"div"> {
 }
 export const ResultCardWrapper = styled.div<ResultCardStyleProps>`
     position: relative;
-    margin: auto;
     margin-top: 30px;
 
     width: 100%;

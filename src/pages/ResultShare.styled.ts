@@ -12,3 +12,15 @@ export const Content = styled.div`
     justify-content: space-between;
     align-items: left;
 `;
+
+export const ResultCardDiv = styled.div`
+    margin: auto;
+
+    width: 100%;
+    max-width: 390px;
+    padding-bottom: 30px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+`;
