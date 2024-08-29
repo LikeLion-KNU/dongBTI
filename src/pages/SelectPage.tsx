@@ -1,134 +1,97 @@
-import { useRef, useState } from "react";
-
 // import { useNavigate } from "react-router-dom";
-import { PanInfo } from "framer-motion";
+import { useState } from "react";
 
-import FeedbackModal from "@/components/feedback/FeedbackModal";
-import { Text } from "@/components/typography/Text";
+import { Button } from "@/components/form/Button";
+import { Text } from "@/components/typography";
 
-import leftArrow from "@/assets/leftArrow.svg";
-import rightArrow from "@/assets/rightArrow.svg";
-import swipe from "@/assets/swipe.svg";
+import { BallGameRoot } from "@/services/BallGameRoot";
+import { DiscussionRoot } from "@/services/DiscussionRoot";
+import { ReligionRoot } from "@/services/ReligionRoot";
+import { SocietyRoot } from "@/services/SocietyRoot";
+import { StageRoot } from "@/services/StageRoot";
+import { TreeNode } from "@/services/TreeNode";
 
-import { questions } from "@/constants/Question";
+import dongari from "@/assets/images/dongari.png";
 
-import {
-    SelectPageContainer,
-    SelectPageWrapper,
-    CardWrapper,
-    CardContainer,
-    ItemWrapper,
-    Item,
-    OptionWrapper,
-    OptionLeft,
-    OptionRight,
-    OptionContainer,
-} from "./SelectPage.style";
-import ProgressBar from "@ramonak/react-progress-bar";
+import { ButtonWrapper, SelectPageWrapper } from "./SelectPage.style";
 
 export default function SelectPage() {
-    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(1);
-    const [animateLeftToRight, setAnimateLeftToRight] = useState(false);
-    const [animateRightToLeft, setAnimateRightToLeft] = useState(false);
-    const constraintsRef = useRef(null);
-    const initialX = useRef(0);
-    const [isModalOpen, setIsModalOpen] = useState(true);
     // let navigate = useNavigate(); 추후에 사용할 예정
+    const [root, setRoot] = useState<TreeNode | null>(null);
+    const field = [
+        "전시,공연,연극 분야",
+        "사회,자원활동 분야",
+        "종교 분야",
+        "체육,민족무예 분야",
+        "학술,취미교양 분야",
+    ];
 
-    const handleCloseModal = () => {
-        setIsModalOpen(false);
-    };
-
-    const handleDragStart = (event: Event, info: PanInfo) => {
-        initialX.current = info.point.x;
-    };
-
-    const handleDragEnd = (event: Event, info: PanInfo) => {
-        const deltaX = info.point.x - initialX.current;
-        if (deltaX >= 60) {
-            setAnimateLeftToRight(true);
-            setAnimateRightToLeft(false);
-        } else if (deltaX <= -60) {
-            setAnimateRightToLeft(true);
-            setAnimateLeftToRight(false);
+    function handleLeftClick() {
+        if (root?.left?.getValue.question === null) {
+            console.log("선택완료");
+            // navigate("/result");
+        } else {
+            setRoot(root?.left || null);
         }
-    };
+    }
 
-    const handleAnimationComplete = () => {
-        setTimeout(() => {
-            if (animateLeftToRight) {
-                setCurrentQuestionIndex((prev) => prev * 2);
-            } else if (animateRightToLeft) {
-                setCurrentQuestionIndex((prev) => prev * 2 + 1);
-            }
-
-            setAnimateLeftToRight(false);
-            setAnimateRightToLeft(false);
-        }, 400); // 0.5초(500ms) 기다린 후 인덱스 증가
-    };
+    function handleRightClick() {
+        if (root?.right?.getValue.question === null) {
+            console.log("선택완료");
+            // navigate("/result");
+        } else {
+            setRoot(root?.right || null);
+        }
+    }
 
     return (
         <>
-            {isModalOpen && <FeedbackModal onClose={handleCloseModal} />}
-            <SelectPageWrapper>
-                <ProgressBar isLabelVisible={false} completed={currentQuestionIndex * 15} bgColor="#37cdcd" />
-                <SelectPageContainer>
-                    <CardWrapper>
-                        {questions.map(
-                            (question, index) =>
-                                index === currentQuestionIndex && (
-                                    <CardContainer key={index}>
-                                        <Text size="l">{question.text}</Text>
-                                        <ItemWrapper ref={constraintsRef}>
-                                            <Item
-                                                drag
-                                                onDragStart={handleDragStart}
-                                                onDragEnd={handleDragEnd}
-                                                dragConstraints={constraintsRef}
-                                                dragElastic={0.5}
-                                                dragSnapToOrigin={true}
-                                                style={{ backgroundImage: `url(${question.imageUrl})` }}
-                                            />
-                                        </ItemWrapper>
-                                    </CardContainer>
-                                ),
-                        )}
-                    </CardWrapper>
-
-                    <OptionWrapper style={{ flexDirection: animateRightToLeft ? "row-reverse" : "row" }}>
-                        <OptionContainer style={{ display: animateRightToLeft ? "none" : "flex" }}>
-                            <OptionLeft
-                                initial={{ width: "auto" }}
-                                animate={animateLeftToRight ? { width: "102vw" } : { width: "auto" }}
-                                transition={{
-                                    delay: 0.2,
-                                    duration: 1, // Decreased animation duration to make it faster
-                                    ease: "easeInOut",
-                                }}
-                                onAnimationComplete={animateLeftToRight ? handleAnimationComplete : undefined}
-                            >
-                                <Text size="xs">{questions[currentQuestionIndex].option[0]}</Text>
-                            </OptionLeft>
-
-                            <img src={leftArrow} />
-                        </OptionContainer>
-                        <OptionContainer style={{ display: animateLeftToRight ? "none" : "flex" }}>
-                            <img src={rightArrow} />
-                            <OptionRight
-                                initial={{ width: "auto" }}
-                                animate={animateRightToLeft ? { width: "102vw" } : { width: "auto" }}
-                                transition={{
-                                    delay: 0.2,
-                                    duration: 1, // Decreased animation duration to make it faster
-                                    ease: "easeInOut",
-                                }}
-                                onAnimationComplete={animateRightToLeft ? handleAnimationComplete : undefined}
-                            >
-                                <Text size="xs">{questions[currentQuestionIndex].option[1]}</Text>
-                            </OptionRight>
-                        </OptionContainer>
-                    </OptionWrapper>
-                </SelectPageContainer>
+            <SelectPageWrapper style={root === null ? { marginTop: "10vh" } : {}}>
+                <img src={dongari} alt="동BTI" style={{ aspectRatio: "1/1", width: "35vw" }}></img>
+                {root ? (
+                    <Text size="xl">{root?.getValue.question}</Text>
+                ) : (
+                    <Text size="l" style={{ textAlign: "center", fontWeight: "bold" }}>
+                        두근두근 설레는 가두보집! <br /> 동아리 부스가 엄청 많다! <br /> 어느 분야부터 설명을 들어볼까?
+                    </Text>
+                )}
+                <ButtonWrapper>
+                    {root ? (
+                        <>
+                            <Button width="80%" height="7vh" variants="select" onClick={handleLeftClick}>
+                                <Text size="m">{root?.left?.getValue.choice}</Text>
+                            </Button>
+                            <Button width="80%" height="7vh" variants="select" onClick={handleRightClick}>
+                                <Text size="m">{root?.right?.getValue.choice}</Text>
+                            </Button>
+                        </>
+                    ) : (
+                        <>
+                            {field.map((value) => (
+                                <Button
+                                    width="80%"
+                                    height="7vh"
+                                    variants="select"
+                                    onClick={() =>
+                                        setRoot(
+                                            value === "전시,공연,연극 분야"
+                                                ? StageRoot
+                                                : value === "사회,자원활동 분야"
+                                                  ? SocietyRoot
+                                                  : value === "종교 분야"
+                                                    ? ReligionRoot
+                                                    : value === "체육,민족무예 분야"
+                                                      ? BallGameRoot
+                                                      : DiscussionRoot,
+                                        )
+                                    }
+                                >
+                                    <Text size="m">{value}</Text>
+                                </Button>
+                            ))}
+                        </>
+                    )}
+                </ButtonWrapper>
             </SelectPageWrapper>
         </>
     );

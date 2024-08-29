@@ -9,10 +9,9 @@ export const ButtonElement = styled.button<ButtonProps>`
 
     border: ${(props) => {
         switch (props.variants) {
-            case "primary":
+            case "primary" || "secondary":
                 return "1px solid #37cdcd";
-            case "secondary":
-                return "1px solid #37cdcd";
+
             case "select":
                 return "1px solid #ECECEC";
         }
