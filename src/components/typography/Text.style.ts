@@ -21,10 +21,31 @@ export const TextElement = styled.span<TextProps>`
         }
     }};
 
+    font-weight: ${(props) => {
+        switch (props.weight) {
+            case "light":
+                return "var(--font-weight-light)";
+            case "regular":
+                return "var(--font-weight-regular)";
+            case "bold":
+                return "var(--font-weight-bold)";
+            case "extrabold":
+                return "var(--font-weight-extrabold)";
+            case "heavy":
+                return "var(--font-weight-heavy)";
+            case undefined:
+                return "var(--font-weight-regular)";
+            default:
+                return props.weight;
+        }
+    }};
+
     color: ${(props) => {
         switch (props.color) {
             case "primary":
                 return "var(--color-primary)";
+            default:
+                return props.color;
         }
     }};
 `;
