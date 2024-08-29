@@ -2,8 +2,6 @@ import { TextProps } from "./Text";
 import styled from "@emotion/styled";
 
 export const TextElement = styled.span<TextProps>`
-    font-weight: ${(props) => props.weight ?? "normal"};
-    
     font-size: ${(props) => {
         switch (props.size) {
             case "xs":
@@ -35,8 +33,10 @@ export const TextElement = styled.span<TextProps>`
                 return "var(--font-weight-extrabold)";
             case "heavy":
                 return "var(--font-weight-heavy)";
-            default:
+            case undefined:
                 return "var(--font-weight-regular)";
+            default:
+                return props.weight;
         }
     }};
 
