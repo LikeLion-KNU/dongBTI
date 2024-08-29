@@ -90,25 +90,3 @@ export const OptionRight = styled(motion.div)`
     color: #fff;
     border-radius: 15px 0 0 15px;
 `;
-
-export const ModalOverlay = styled.div`
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.7); /* 반투명 검정 배경 */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000; /* 다른 요소 위에 표시되도록 설정 */
-`;
-
-export const ModalContent = styled.div`
-    background: transparent; /* 배경을 투명하게 설정 */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    color: #fff; /* 텍스트를 흰색으로 설정 */
-`;

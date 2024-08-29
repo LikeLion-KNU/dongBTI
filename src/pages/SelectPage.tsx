@@ -3,6 +3,7 @@ import { useRef, useState } from "react";
 // import { useNavigate } from "react-router-dom";
 import { PanInfo } from "framer-motion";
 
+import FeedbackModal from "@/components/feedback/FeedbackModal";
 import { Text } from "@/components/typography/Text";
 
 import leftArrow from "@/assets/leftArrow.svg";
@@ -14,8 +15,6 @@ import { questions } from "@/constants/Question";
 import {
     SelectPageContainer,
     SelectPageWrapper,
-    ModalOverlay,
-    ModalContent,
     CardWrapper,
     CardContainer,
     ItemWrapper,
@@ -70,7 +69,7 @@ export default function SelectPage() {
 
     return (
         <>
-            {isModalOpen && <Modal onClose={handleCloseModal} />}
+            {isModalOpen && <FeedbackModal onClose={handleCloseModal} />}
             <SelectPageWrapper>
                 <ProgressBar isLabelVisible={false} completed={currentQuestionIndex * 15} bgColor="#37cdcd" />
                 <SelectPageContainer>
@@ -134,15 +133,3 @@ export default function SelectPage() {
         </>
     );
 }
-
-const Modal = ({ onClose }: { onClose: () => void }) => {
-    return (
-        <ModalOverlay onClick={onClose}>
-            <ModalContent>
-                <img src={swipe} alt="Swipe Icon" style={{ marginBottom: "20px" }} />
-                <Text size="m">좌우로 스와이프</Text>
-                <Text size="xs">또는 버튼으로 조작</Text>
-            </ModalContent>
-        </ModalOverlay>
-    );
-};
