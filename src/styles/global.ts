@@ -21,13 +21,19 @@ export const GlobalStyle = css`
     a {
         text-decoration: none;
     }
-
+        
     :root {
         --font-size-xl: 24px;
         --font-size-l: 22px;
         --font-size-m: 18px;
         --font-size-s: 16px;
         --font-size-xs: 13px;
+        --font-weight-light: 300;
+        --font-weight-regular: 400;
+        --font-weight-bold: 700;
+        --font-weight-extrabold: 800;
+        --font-weight-heavy: 900;
+
         --font-weight-light: 300;
         --font-weight-regular: 400;
         --font-weight-bold: 700;
