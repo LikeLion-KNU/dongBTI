@@ -21,7 +21,7 @@ export const GlobalStyle = css`
     a {
         text-decoration: none;
     }
-        
+
     :root {
         --font-size-xl: 24px;
         --font-size-l: 22px;
