@@ -2,6 +2,8 @@ import { ButtonProps } from "./Button";
 import styled from "@emotion/styled";
 
 export const ButtonElement = styled.button<ButtonProps>`
+    font-family: NanumSquareNeo;
+
     width: ${(props) => props.width};
     height: ${(props) => props.height};
 
