@@ -46,12 +46,12 @@ export default function SelectPage() {
 
     return (
         <>
-            <SelectPageWrapper style={root === null ? { marginTop: "10vh" } : {}}>
-                <img src={dongari} alt="동BTI" style={{ aspectRatio: "1/1", width: "35vw" }}></img>
+            <SelectPageWrapper style={root === null ? { marginTop: "5vh" } : {}}>
+                <img src={dongari} alt="동BTI" style={{ aspectRatio: "1/1", width: "20vh" }}></img>
                 {root ? (
                     <Text size="xl">{root?.getValue.question}</Text>
                 ) : (
-                    <Text size="l" style={{ textAlign: "center", fontWeight: "bold" }}>
+                    <Text size="m" style={{ textAlign: "center", fontWeight: "bold" }}>
                         두근두근 설레는 가두보집! <br /> 동아리 부스가 엄청 많다! <br /> 어느 분야부터 설명을 들어볼까?
                     </Text>
                 )}
