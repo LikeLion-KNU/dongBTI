@@ -6,47 +6,33 @@ export const DiscussionRoot = new TreeNode.Builder({
 })
     .setLeft(
         new TreeNode.Builder({
-            question: "사람 많은거 어때?",
-            choice: "역시 체육은 공놀이지",
+            question: "토론이 좋아 발명이 좋아?",
+            choice: "토론 좋아해!",
         })
             .setLeft(
                 new TreeNode.Builder({
-                    question: "접촉이 있어도 괜찮아?",
-                    choice: "운동은 좀 복작복작 해야지",
-                })
-                    .setLeft(
-                        new TreeNode.Builder({
-                            question: null,
-                            choice: "좀 부딪히는게 재밌지",
-                            result: ["센토", "맨투맨", "동그라미", "오렌지파이터스"],
-                        }).build(),
-                    )
-                    .setRight(
-                        new TreeNode.Builder({
-                            question: null,
-                            choice: "내 몸에 손대지 마!!",
-                            result: ["스트라이크", "파란", "스파이크"],
-                        }).build(),
-                    )
-                    .build(),
+                    question: null,
+                    choice: "토론이 좋아!",
+                    result: ["H.Q", "VINE", "솔토론회", "Now&Here", "KNU UNSA", "에이스"],
+                }).build(),
             )
             .setRight(
                 new TreeNode.Builder({
-                    question: "마주보고 운동하는거 좋아해?",
-                    choice: "꼭 사람이 많을 필요는 없지",
+                    question: "어떤 분야를 하고싶어?",
+                    choice: "내 꿈은 발명왕!!",
                 })
                     .setLeft(
                         new TreeNode.Builder({
                             question: null,
-                            choice: "내 눈을 바라봐. 난 당신 얼굴이 궁금하다.",
-                            result: ["KUTC", "스매싱", "스윙스"],
+                            choice: "기계/IT에 관심있어",
+                            result: ["앱동", "크누 모빌리티"],
                         }).build(),
                     )
                     .setRight(
                         new TreeNode.Builder({
                             question: null,
-                            choice: "난 앞만 봐.",
-                            result: ["KGA", "KNUBC"],
+                            choice: "다 좋아해",
+                            result: ["돌구름", "솔라이브"],
                         }).build(),
                     )
                     .build(),
@@ -55,19 +41,21 @@ export const DiscussionRoot = new TreeNode.Builder({
     )
     .setRight(
         new TreeNode.Builder({
-            question: "사람 많은거 어때?",
-            choice: "응 아니야~",
+            question: "게임 좋아해?",
+            choice: "토론보다는 취미를 공유하고 싶어",
         })
             .setLeft(
                 new TreeNode.Builder({
-                    question: "사람 많은거 어때?",
-                    choice: "장비 따위 필요 없어. 최고의 장비는 바로 나!",
+                    question: null,
+                    choice: "게임을 하면 이겨야지!",
+                    result: ["국상무쌍", "트러블메이커", "복현기우회", "H.P"],
                 }).build(),
             )
             .setRight(
                 new TreeNode.Builder({
-                    question: "사람 많은거 어때?",
-                    choice: "인간은 도구를 사용해야지!",
+                    question: null,
+                    choice: "게임은 별로야...",
+                    result: ["현시연", "코스모스"],
                 }).build(),
             )
             .build(),

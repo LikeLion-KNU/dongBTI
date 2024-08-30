@@ -1,52 +1,38 @@
 import { TreeNode } from "./TreeNode";
 
 export const SocietyRoot = new TreeNode.Builder({
-    question: "어떻게 생각해?",
+    question: "봉사와 교류중에 뭐가 더 좋아?",
     choice: null,
 })
     .setLeft(
         new TreeNode.Builder({
-            question: "사람 많은거 어때?",
-            choice: "역시 체육은 공놀이지",
+            question: "교육봉사 어때?",
+            choice: "남을 돕는건 보람차~",
         })
             .setLeft(
                 new TreeNode.Builder({
-                    question: "접촉이 있어도 괜찮아?",
-                    choice: "운동은 좀 복작복작 해야지",
-                })
-                    .setLeft(
-                        new TreeNode.Builder({
-                            question: null,
-                            choice: "좀 부딪히는게 재밌지",
-                            result: ["센토", "맨투맨", "동그라미", "오렌지파이터스"],
-                        }).build(),
-                    )
-                    .setRight(
-                        new TreeNode.Builder({
-                            question: null,
-                            choice: "내 몸에 손대지 마!!",
-                            result: ["스트라이크", "파란", "스파이크"],
-                        }).build(),
-                    )
-                    .build(),
+                    question: null,
+                    choice: "가르치는거 좋아해!!",
+                    result: ["신망애", "미담장학회"],
+                }).build(),
             )
             .setRight(
                 new TreeNode.Builder({
-                    question: "마주보고 운동하는거 좋아해?",
-                    choice: "꼭 사람이 많을 필요는 없지",
+                    question: "어떤게 더 보람차?",
+                    choice: "난 가르치는건 어려워...",
                 })
                     .setLeft(
                         new TreeNode.Builder({
                             question: null,
-                            choice: "내 눈을 바라봐. 난 당신 얼굴이 궁금하다.",
-                            result: ["KUTC", "스매싱", "스윙스"],
+                            choice: "주변을 개선해 나가는걸 좋아해!",
+                            result: ["상투스", "수리영역"],
                         }).build(),
                     )
                     .setRight(
                         new TreeNode.Builder({
                             question: null,
-                            choice: "난 앞만 봐.",
-                            result: ["KGA", "KNUBC"],
+                            choice: "세상이 좀 더 아름다워졌으면 좋겠어!",
+                            result: ["RCY", "한울회"],
                         }).build(),
                     )
                     .build(),
@@ -55,21 +41,9 @@ export const SocietyRoot = new TreeNode.Builder({
     )
     .setRight(
         new TreeNode.Builder({
-            question: "사람 많은거 어때?",
-            choice: "응 아니야~",
-        })
-            .setLeft(
-                new TreeNode.Builder({
-                    question: "사람 많은거 어때?",
-                    choice: "장비 따위 필요 없어. 최고의 장비는 바로 나!",
-                }).build(),
-            )
-            .setRight(
-                new TreeNode.Builder({
-                    question: "사람 많은거 어때?",
-                    choice: "인간은 도구를 사용해야지!",
-                }).build(),
-            )
-            .build(),
+            question: null,
+            choice: "교류는 언제나 즐거워!",
+            result: ["SLANG"],
+        }).build(),
     )
     .build();
