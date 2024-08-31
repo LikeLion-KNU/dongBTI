@@ -5,13 +5,13 @@ export const ButtonElement = styled.button<ButtonProps>`
     width: ${(props) => props.width};
     height: ${(props) => props.height};
 
-    border: 1px solid #37cdcd;
+    border: 1px solid var(--color-primary);
     border-radius: 12px;
 
     background-color: ${(props) => {
         switch (props.variants) {
             case "primary":
-                return "#37cdcd";
+                return "var(--color-primary)";
             case "secondary":
                 return "#fff";
         }
@@ -22,7 +22,7 @@ export const ButtonElement = styled.button<ButtonProps>`
             case "primary":
                 return "#fff";
             case "secondary":
-                return "#37cdcd";
+                return "var(--color-primary)";
         }
     }};
 `;
