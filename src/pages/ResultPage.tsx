@@ -1,37 +1,92 @@
+import { Button } from "@/components/form/Button";
 import TopBar from "@/components/layout/TopBar";
 import { Text } from "@/components/typography";
 
-import { ClubDescription, ClubItem, ClubItems, ClubTitle, Line, TitleContainer } from "./ResultPage.styled";
-import { css } from "@emotion/react";
+import aaa from "@/assets/images/dongari.png";
+
+import {
+    ButtonGroup,
+    ClubDescription,
+    ClubImage,
+    ClubItem,
+    ClubItems,
+    ClubTitle,
+    Line,
+    ResultContainer,
+    ResultWrapper,
+    TitleContainer,
+} from "./ResultPage.styled";
 
 export default function ResultPage() {
     return (
         <>
             <TopBar title="결과 보기" />
-            <TitleContainer>
-                <Text size="s" color="gray">
-                    OOO님의 동BTI는...
-                </Text>
-                <Text size="xl" color="primary" weight="bold">
-                    무대를 좋아하는 연주가형
-                </Text>
-            </TitleContainer>
-            <Line />
-            <Text
-                size="s"
-                css={css`
-                    margin-bottom: 1rem;
-                `}
-            >
-                OOO님을 위한 추천 동아리
-            </Text>
+            <ResultWrapper>
+                <ResultContainer>
+                    <TitleContainer>
+                        <Text size="s" color="gray">
+                            OOO님의 동BTI는...
+                        </Text>
+                        <Text size="l" color="primary" weight="bold">
+                            유니크한 체육을 즐기는 스포츠맨형
+                        </Text>
+                    </TitleContainer>
+                    <Line />
+                    <Text size="m" weight="bold">
+                        OOO님을 위한 추천 동아리
+                    </Text>
 
-            <ClubItems>
-                <ClubItem>
-                    <ClubTitle>asdf</ClubTitle>
-                    <ClubDescription>asdf</ClubDescription>
-                </ClubItem>
-            </ClubItems>
+                    <ClubItems>
+                        <ClubItem>
+                            <ClubTitle>수중탐사대</ClubTitle>
+                            <ClubDescription>
+                                <Text size="xs">더 넓고, 더 깊은 바다로!</Text>
+                                <Text size="xs" weight="bold">
+                                    경북대학교 유일무이 스킨스쿠버 동아리
+                                </Text>
+                            </ClubDescription>
+                            <ClubImage src={aaa} alt="수중탐사대" />
+                        </ClubItem>
+                        <ClubItem>
+                            <ClubTitle>수중탐사대</ClubTitle>
+                            <ClubDescription>
+                                <Text size="xs">더 넓고, 더 깊은 바다로!</Text>
+                                <Text size="xs" weight="bold">
+                                    경북대학교 유일무이 스킨스쿠버 동아리
+                                </Text>
+                            </ClubDescription>
+                            <ClubImage src={aaa} alt="수중탐사대" />
+                        </ClubItem>
+                        <ClubItem>
+                            <ClubTitle>수중탐사대</ClubTitle>
+                            <ClubDescription>
+                                <Text size="xs">더 넓고, 더 깊은 바다로!</Text>
+                                <Text size="xs" weight="bold">
+                                    경북대학교 유일무이 스킨스쿠버 동아리
+                                </Text>
+                            </ClubDescription>
+                            <ClubImage src={aaa} alt="수중탐사대" />
+                        </ClubItem>
+                    </ClubItems>
+
+                    <Text size="xs" weight="light">
+                        <b>3,800명</b>의 참가자 중 <b>38명</b>이 이 유형이 나왔어요!
+                    </Text>
+                </ResultContainer>
+
+                <ButtonGroup>
+                    <Button width="100%" height="50px" variants="secondary">
+                        <Text size="s" weight="extrabold">
+                            다시 검사하기
+                        </Text>
+                    </Button>
+                    <Button width="100%" height="50px" variants="primary">
+                        <Text size="s" weight="extrabold">
+                            공유하기
+                        </Text>
+                    </Button>
+                </ButtonGroup>
+            </ResultWrapper>
         </>
     );
 }

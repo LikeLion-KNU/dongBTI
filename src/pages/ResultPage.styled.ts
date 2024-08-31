@@ -1,5 +1,15 @@
 import styled from "@emotion/styled";
 
+export const ResultWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 60px);
+`;
+
+export const ResultContainer = styled.div`
+    flex-grow: 1;
+`;
+
 export const TitleContainer = styled.div`
     display: flex;
     flex-direction: column;
@@ -14,28 +24,45 @@ export const Line = styled.hr`
 `;
 
 export const ClubItems = styled.div`
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
+    display: flex;
+    flex-direction: column;
+    margin: 1.5rem 0;
     gap: 1rem;
 `;
 
 export const ClubItem = styled.div`
-    display: flex;
-    gap: 1rem;
-    padding: 1rem;
+    position: relative;
     border-radius: 1rem;
-    background-color: #f5f5f5;
+    background-color: white;
+    padding: 0.75rem 0 0.75rem 3.2rem;
+    margin-left: 1.6rem;
+`;
+
+export const ClubImage = styled.img`
+    position: absolute;
+    top: 50%;
+    left: -32px;
+    transform: translateY(-50%);
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
 `;
 
 export const ClubTitle = styled.div`
-    font-size: 1rem;
-    font-weight: bold;
+    font-size: 18px;
+    color: var(--color-primary);
+    font-weight: 900;
+    padding-bottom: 0.5rem;
 `;
 
 export const ClubDescription = styled.div`
-    padding: 1rem 0.5rem;
-    background-color: #f0f0f0;
-    border-radius: 0.5rem;
-    font-size: 0.875rem;
-    color: #666;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.35;
+`;
+
+export const ButtonGroup = styled.div`
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
 `;
