@@ -17,4 +17,5 @@ export const TopBarContainer = styled.div`
 
     border-bottom: 1px solid #e0e0e0;
     font-weight: 800;
+    background-color: var(--color-background);
 `;
