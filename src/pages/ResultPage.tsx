@@ -1,7 +1,8 @@
 import TopBar from "@/components/layout/TopBar";
 import { Text } from "@/components/typography";
 
-import { Line, TitleContainer } from "./ResultPage.styled";
+import { ClubDescription, ClubItem, ClubItems, ClubTitle, Line, TitleContainer } from "./ResultPage.styled";
+import { css } from "@emotion/react";
 
 export default function ResultPage() {
     return (
@@ -16,6 +17,21 @@ export default function ResultPage() {
                 </Text>
             </TitleContainer>
             <Line />
+            <Text
+                size="s"
+                css={css`
+                    margin-bottom: 1rem;
+                `}
+            >
+                OOO님을 위한 추천 동아리
+            </Text>
+
+            <ClubItems>
+                <ClubItem>
+                    <ClubTitle>asdf</ClubTitle>
+                    <ClubDescription>asdf</ClubDescription>
+                </ClubItem>
+            </ClubItems>
         </>
     );
 }
