@@ -13,6 +13,10 @@ export const GlobalStyle = css`
         padding: 0;
         border: 0;
         font-family: "NanumSquareNeo", sans-serif;
+
+        background:
+            linear-gradient(to bottom, transparent 39px, #dcfcf9 39px) 0 0 / 100vw 40px repeat-y,
+            linear-gradient(to right, transparent 39px, #dcfcf9 39px) 0 0 / 40px 100vh repeat-x #f6f9ff;
     }
 
     img {
