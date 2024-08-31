@@ -48,21 +48,21 @@ export default function ResultPage() {
                             <ClubImage src={aaa} alt="수중탐사대" />
                         </ClubItem>
                         <ClubItem>
-                            <ClubTitle>수중탐사대</ClubTitle>
+                            <ClubTitle>싸울아비</ClubTitle>
                             <ClubDescription>
-                                <Text size="xs">더 넓고, 더 깊은 바다로!</Text>
+                                <Text size="xs">조선시대 무기를 직접 휘두르는</Text>
                                 <Text size="xs" weight="bold">
-                                    경북대학교 유일무이 스킨스쿠버 동아리
+                                    경북대학교 유일무이 병장기 동아리
                                 </Text>
                             </ClubDescription>
                             <ClubImage src={aaa} alt="수중탐사대" />
                         </ClubItem>
                         <ClubItem>
-                            <ClubTitle>수중탐사대</ClubTitle>
+                            <ClubTitle>인질범</ClubTitle>
                             <ClubDescription>
-                                <Text size="xs">더 넓고, 더 깊은 바다로!</Text>
+                                <Text size="xs">한 번 타면 영원히 질주해요. 앉을 시간이 없! 어! 요!</Text>
                                 <Text size="xs" weight="bold">
-                                    경북대학교 유일무이 스킨스쿠버 동아리
+                                    인라인, 보드 동아리
                                 </Text>
                             </ClubDescription>
                             <ClubImage src={aaa} alt="수중탐사대" />
