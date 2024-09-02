@@ -8,8 +8,8 @@ import { SideBar } from "@/components/navigation/SideBar";
 import { Text } from "@/components/typography/Text";
 
 import menuIcon from "@/assets/icons/menu.svg";
-import dongari from "@/assets/images/dongari.png";
-import likelion from "@/assets/images/likelion.png";
+import likelion from "@/assets/images/likelion.svg";
+import mir from "@/assets/images/mir.svg";
 
 import {
     HomePageWrapper,
@@ -22,17 +22,25 @@ import {
     MiddleSection,
     MenuContainer,
 } from "./HomePage.style";
+import { useUserInfo } from "@/store/store";
 
 export default function HomePage() {
     const navigate = useNavigate();
 
-    const name = React.useRef<HTMLInputElement>(null);
+    const name = useUserInfo((state) => state.name);
+    const setName = useUserInfo((state) => state.setName);
+    const setMajor = useUserInfo((state) => state.setMajor);
+
     const [selectedMajor, setSelectedMajor] = React.useState<string>("");
     const [isOpen, setIsOpen] = React.useState(false);
 
     const handleSideBar = () => {
         setIsOpen(!isOpen);
     };
+
+    React.useEffect(() => {
+        setMajor(selectedMajor);
+    }, [selectedMajor, setMajor]);
 
     return (
         <HomePageWrapper>
@@ -42,17 +50,26 @@ export default function HomePage() {
             <SideBar isOpen={isOpen} setIsOpen={setIsOpen} />
 
             <Header>
-                <img src={dongari} alt="동BTI" width="75px" height="75px"></img>
-                <Text size="60px" weight="bold">
-                    동BTI
+                <TextContainer>
+                    <Text size="s" color="#707070">
+                        어떤 동아리가 좋을까?
+                    </Text>
+                </TextContainer>
+
+                <Text size="60px" weight="heavy">
+                    동BTI Test
                 </Text>
 
                 <TextContainer>
-                    <Text size="m">나에게 딱! 맞는 </Text>
+                    <Text size="m" color="#707070">
+                        나에게 딱! 맞는{" "}
+                    </Text>
                     <Text size="m" color="primary" weight="bold">
                         동아리
                     </Text>
-                    <Text size="m">를 추천드려용</Text>
+                    <Text size="m" color="#707070">
+                        를 추천드려용
+                    </Text>
                 </TextContainer>
             </Header>
 
@@ -60,7 +77,14 @@ export default function HomePage() {
 
             <Main>
                 <InputContainer>
-                    <Input variants="primary" width="242px" height="30px" placeholder="이름을 입력하세용" ref={name} />
+                    <Input
+                        variants="primary"
+                        width="242px"
+                        height="30px"
+                        placeholder="이름을 입력하세용"
+                        value={name}
+                        onChange={(e) => setName(e.currentTarget.value)}
+                    />
                     <Dropdown
                         color="primary"
                         width="242px"
@@ -95,7 +119,7 @@ export default function HomePage() {
             <Footer>
                 <img src={likelion} alt="멋쟁이사자처럼" width="20px" height="20px"></img>
                 <Text size="xs">X</Text>
-                <img src={dongari} alt="총동아리연합회 미르" width="20px" height="20px"></img>
+                <img src={mir} alt="총동아리연합회 미르" width="20px" height="20px"></img>
             </Footer>
         </HomePageWrapper>
     );
