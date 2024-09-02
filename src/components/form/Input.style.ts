@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 
 export const InputElement = styled.input<InputProps>`
     font-size: 15px;
+    font-family: "NanumSquareNeo";
     width: ${(props) => props.width};
     height: ${(props) => props.height};
 
