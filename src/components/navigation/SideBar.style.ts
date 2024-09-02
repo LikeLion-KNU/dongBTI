@@ -9,7 +9,7 @@ export const SideBarWrapper = styled.div`
     overflow-y: auto;
     width: 100%;
     top: -80%;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(10px);
     position: fixed;
     align-items: flex-end;
     transition: 0.5s ease;
@@ -30,6 +30,9 @@ export const Menu = styled.li`
     list-style-type: none;
     cursor: pointer;
     &:hover {
+        color: #37cdcd;
+    }
+    &.active {
         color: #37cdcd;
     }
 `;
