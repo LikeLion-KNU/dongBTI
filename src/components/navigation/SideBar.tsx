@@ -37,9 +37,9 @@ export const SideBar = ({ isOpen, setIsOpen }: SideBarProps) => {
             <img src={closeIcon} onClick={() => setIsOpen(false)} />
 
             <ul>
-                <Menu>테스트</Menu>
+                <Menu onClick={() => handleNavigation("/")}>테스트</Menu>
                 <Menu onClick={() => handleNavigation("/analytics")}>통계</Menu>
-                <Menu>만든이들</Menu>
+                <Menu onClick={() => handleNavigation("/")}>만든이들</Menu>
             </ul>
         </SideBarWrapper>
     );
