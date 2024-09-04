@@ -3,7 +3,7 @@ import { Text } from "@/components/typography/Text";
 import likelion from "@/assets/images/likelion.svg";
 import mir from "@/assets/images/mir.svg";
 
-import styled from "@emotion/styled";
+import { FooterWrapper } from "./Footer.style";
 
 export default function Footer() {
     return (
@@ -14,11 +14,3 @@ export default function Footer() {
         </FooterWrapper>
     );
 }
-
-const FooterWrapper = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    margin: 20px;
-`;
