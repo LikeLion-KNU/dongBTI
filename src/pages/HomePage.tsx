@@ -9,6 +9,7 @@ import { Text } from "@/components/typography/Text";
 
 import menuIcon from "@/assets/icons/menu.svg";
 import likelion from "@/assets/images/likelion.svg";
+import main from "@/assets/images/main.svg";
 import mir from "@/assets/images/mir.svg";
 
 import {
@@ -21,6 +22,7 @@ import {
     Footer,
     MiddleSection,
     MenuContainer,
+    ImageContainer,
 } from "./HomePage.style";
 import { useUserInfo } from "@/store/store";
 
@@ -73,6 +75,9 @@ export default function HomePage() {
                 </TextContainer>
             </Header>
 
+            <ImageContainer>
+                <img src={main} width="250px" height="250px" />
+            </ImageContainer>
             <MiddleSection />
 
             <Main>

@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 export const HomePageWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    align-items: center; 
+    align-items: center;
     position: relative;
     width: 100%;
     height: 100vh;
@@ -14,54 +14,61 @@ export const Header = styled.div`
     flex-direction: column;
     align-items: center;
     text-align: center;
-    margin-top:50px;
+    margin-top: 50px;
 `;
 
 export const TextContainer = styled.div`
-    margin : 10px;
-`
+    margin: 10px;
+`;
 
 export const MiddleSection = styled.div`
-    flex-grow: 0.8;
-`
+    flex-grow: 0.5;
+`;
 
 export const Main = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-`
+`;
 
 export const InputContainer = styled.div`
-    display:flex;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap:15px;
-`
+    gap: 15px;
+`;
 
 export const ButtonContainer = styled.div`
-    display:flex;
+    display: flex;
     justify-content: center;
     align-items: center;
 
-    margin-top:50px;
-`
+    margin-top: 50px;
+`;
 
 export const Footer = styled.div`
-    display:flex;
+    display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
-    margin:20px;
-`
+    margin: 20px;
+`;
 
 export const MenuContainer = styled.div`
-    display:flex;
+    display: flex;
     justify-content: center;
     align-items: center;
-    
+
     position: absolute;
-    top: 10px; 
+    top: 10px;
     right: 10px;
-`
+`;
+
+export const ImageContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10%;
+`;
