@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Card, DropdownContainer, LabelContainer } from "./Dropdown.style";
+import { DropdownWrapper, DropdownContainer, LabelContainer } from "./Dropdown.style";
 
 interface DropdownProps {
     color: string;
@@ -35,7 +35,7 @@ export default function dropdown({ color, width, height, selectedMajor, setSelec
     ];
 
     return (
-        <Card color={color} width={width} height={height}>
+        <DropdownWrapper color={color} width={width} height={height}>
             <DropdownContainer
                 value={selectedMajor}
                 onChange={(e) => setSelectedMajor(e.value)}
@@ -44,6 +44,6 @@ export default function dropdown({ color, width, height, selectedMajor, setSelec
                 placeholder="단과 대학을 선택하세용"
                 itemTemplate={(option) => <LabelContainer color={color}>{option.label}</LabelContainer>}
             />
-        </Card>
+        </DropdownWrapper>
     );
 }

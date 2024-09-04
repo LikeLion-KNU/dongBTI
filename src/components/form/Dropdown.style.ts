@@ -1,13 +1,13 @@
 import styled from "@emotion/styled";
 import { Dropdown } from "primereact/dropdown";
 
-interface CardProps {
+interface DropdownProps {
     color: string;
     width: string;
     height: string;
 }
 
-export const Card = styled.div<CardProps>`
+export const DropdownWrapper = styled.div<DropdownProps>`
     display: flex;
     border-radius: 12px;
     justify-content: center;
@@ -56,6 +56,7 @@ export const LabelContainer = styled.span`
         color: ${(props) => {
             switch (props.color) {
                 case "primary":
+                case "secondary":
                     return "#37cdcd";
                 default:
                     return props.color;
