@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import Footer from "@/components/display/Footer";
 import { Button } from "@/components/form/Button";
-import Dropdown from "@/components/form/Dropdown";
+import DropDown from "@/components/form/DropDown";
 import { Input } from "@/components/form/Input";
 import { SideBar } from "@/components/navigation/SideBar";
 import { Text } from "@/components/typography/Text";
@@ -86,7 +86,7 @@ export default function HomePage() {
                         value={name}
                         onChange={(e) => setName(e.currentTarget.value)}
                     />
-                    <Dropdown
+                    <DropDown
                         color="primary"
                         width="242px"
                         height="30px"

@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-import Dropdown from "@/components/form/Dropdown";
+import DropDown from "@/components/form/DropDown";
 import { AppBar } from "@/components/navigation/AppBar";
 import { Text } from "@/components/typography";
 
@@ -45,7 +45,7 @@ export default function AnalyticsPage() {
 
             <TitleContainer>
                 <TitleTop>
-                    <Dropdown
+                    <DropDown
                         color="secondary"
                         width="100%"
                         height="40px"

@@ -1,13 +1,13 @@
 import styled from "@emotion/styled";
 import { Dropdown } from "primereact/dropdown";
 
-interface DropdownProps {
+interface DropDownProps {
     color: string;
     width: string;
     height: string;
 }
 
-export const DropdownWrapper = styled.div<DropdownProps>`
+export const DropDownWrapper = styled.div<DropDownProps>`
     display: flex;
     border-radius: 12px;
     justify-content: center;
@@ -27,7 +27,7 @@ export const DropdownWrapper = styled.div<DropdownProps>`
     width: ${(props) => props.width};
 `;
 
-export const DropdownContainer = styled(Dropdown)`
+export const DropDownContainer = styled(Dropdown)`
     width: 100%;
     font-size: 15px;
     justify-content: center;
