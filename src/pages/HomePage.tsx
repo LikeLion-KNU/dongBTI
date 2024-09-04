@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
+import Footer from "@/components/display/Footer";
 import { Button } from "@/components/form/Button";
 import Dropdown from "@/components/form/Dropdown";
 import { Input } from "@/components/form/Input";
@@ -8,9 +9,7 @@ import { SideBar } from "@/components/navigation/SideBar";
 import { Text } from "@/components/typography/Text";
 
 import menuIcon from "@/assets/icons/menu.svg";
-import likelion from "@/assets/images/likelion.svg";
 import main from "@/assets/images/main.svg";
-import mir from "@/assets/images/mir.svg";
 
 import {
     HomePageWrapper,
@@ -19,8 +18,6 @@ import {
     InputContainer,
     ButtonContainer,
     Main,
-    Footer,
-    MiddleSection,
     MenuContainer,
     ImageContainer,
 } from "./HomePage.style";
@@ -47,7 +44,7 @@ export default function HomePage() {
     return (
         <HomePageWrapper>
             <MenuContainer role="button" onClick={handleSideBar}>
-                <img src={menuIcon} />
+                <img src={menuIcon} width="100%" height="100%" />
             </MenuContainer>
             <SideBar isOpen={isOpen} setIsOpen={setIsOpen} />
 
@@ -58,7 +55,7 @@ export default function HomePage() {
                     </Text>
                 </TextContainer>
 
-                <Text size="60px" weight="heavy">
+                <Text size="50px" weight="heavy">
                     동BTI Test
                 </Text>
 
@@ -76,9 +73,8 @@ export default function HomePage() {
             </Header>
 
             <ImageContainer>
-                <img src={main} width="250px" height="250px" />
+                <img src={main} width="45%" />
             </ImageContainer>
-            <MiddleSection />
 
             <Main>
                 <InputContainer>
@@ -121,11 +117,7 @@ export default function HomePage() {
                 </TextContainer>
             </Main>
 
-            <Footer>
-                <img src={likelion} alt="멋쟁이사자처럼" width="20px" height="20px"></img>
-                <Text size="xs">X</Text>
-                <img src={mir} alt="총동아리연합회 미르" width="20px" height="20px"></img>
-            </Footer>
+            <Footer />
         </HomePageWrapper>
     );
 }

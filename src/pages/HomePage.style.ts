@@ -14,6 +14,7 @@ export const Header = styled.div`
     flex-direction: column;
     align-items: center;
     text-align: center;
+
     margin-top: 50px;
 `;
 
@@ -45,15 +46,7 @@ export const ButtonContainer = styled.div`
     justify-content: center;
     align-items: center;
 
-    margin-top: 50px;
-`;
-
-export const Footer = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    margin: 20px;
+    margin-top: 20%;
 `;
 
 export const MenuContainer = styled.div`
@@ -70,5 +63,32 @@ export const ImageContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 10%;
+
+    width: auto;
+    height: 100%;
+    max-height: 566px;
+    box-sizing: border-box;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    @media (max-height: 935px) {
+        max-height: 360px;
+        width: 100%;
+        margin-top: 30px;
+        margin-bottom: 60px;
+    }
+
+    @media (max-height: 896px) {
+        max-height: 340px;
+        width: 100%;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+    @media (max-height: 667px) {
+        max-height: 150px;
+        width: 100%;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
 `;
