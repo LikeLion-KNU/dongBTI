@@ -4,6 +4,7 @@ import { RootLayout } from "./components/layout/RootLayout";
 import HomePage from "./pages/HomePage";
 
 import LoadingPage from './pages/ResultLoading';
+import Contributors from './pages/Contributors';
 import ResultShare from "./pages/ResultShare";
 import ResultPage from "./pages/ResultPage";
 
@@ -13,7 +14,8 @@ export const Router = () => {
         <Routes>
             <Route path="/" element={<RootLayout />}>
                 <Route index element={<HomePage />}></Route>
-                <Route path="/loading" element={<LoadingPage />} /> 
+                <Route path="/loading" element={<LoadingPage />} />
+                <Route path="/contributors" element={<Contributors />} />
                 <Route path="/result" element={<ResultPage />}></Route>
                 <Route path="/share" element={<ResultShare />}></Route>
             </Route>
