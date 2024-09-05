@@ -1,27 +1,28 @@
+import { DropDownProps } from "./DropDown";
 import styled from "@emotion/styled";
 import { Dropdown } from "primereact/dropdown";
 
-interface DropDownProps {
+interface LabelProps {
     color: string;
-    width: string;
-    height: string;
 }
+
+const getBackgroundColor = (color: string) => {
+    switch (color) {
+        case "primary":
+            return "#ECECEC";
+        case "secondary":
+            return "#fff";
+        default:
+            return color;
+    }
+};
 
 export const DropDownWrapper = styled.div<DropDownProps>`
     display: flex;
     border-radius: 12px;
     justify-content: center;
 
-    background-color: ${(props) => {
-        switch (props.color) {
-            case "primary":
-                return "#ECECEC";
-            case "secondary":
-                return "#fff";
-            default:
-                return props.color;
-        }
-    }};
+    background-color: ${(props) => getBackgroundColor(props.color)};
 
     height: ${(props) => props.height};
     width: ${(props) => props.width};
@@ -35,22 +36,13 @@ export const DropDownContainer = styled(Dropdown)`
     padding: 10px;
 `;
 
-export const LabelContainer = styled.span`
+export const LabelContainer = styled.span<LabelProps>`
     display: inline-block;
     width: 100%;
     color: #333;
     padding: 10px;
 
-    background-color: ${(props) => {
-        switch (props.color) {
-            case "primary":
-                return "#ECECEC";
-            case "secondary":
-                return "#fff";
-            default:
-                return props.color;
-        }
-    }};
+    background-color: ${(props) => getBackgroundColor(props.color)};
 
     &:hover {
         color: ${(props) => {

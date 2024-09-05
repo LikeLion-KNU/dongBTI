@@ -2,15 +2,15 @@ import React from "react";
 
 import { DropDownWrapper, DropDownContainer, LabelContainer } from "./DropDown.style";
 
-interface DropdownProps {
+export interface DropDownProps {
     color: string;
     width: string;
     height: string;
-    selectedMajor: string;
-    setSelectedMajor: React.Dispatch<React.SetStateAction<string>>;
+    selectedMajor?: string;
+    setSelectedMajor?: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export default function DropDown({ color, width, height, selectedMajor, setSelectedMajor }: DropdownProps) {
+export default function DropDown({ color, width, height, selectedMajor, setSelectedMajor }: DropDownProps) {
     const majors = [
         { label: "📖 인문대학", value: "인문대학" },
         { label: "📋 사회과학대학", value: "사회과학대학" },
@@ -38,7 +38,7 @@ export default function DropDown({ color, width, height, selectedMajor, setSelec
         <DropDownWrapper color={color} width={width} height={height}>
             <DropDownContainer
                 value={selectedMajor}
-                onChange={(e) => setSelectedMajor(e.value)}
+                onChange={(e) => setSelectedMajor && setSelectedMajor(e.value)}
                 options={majors}
                 optionLabel="label"
                 placeholder="단과 대학을 선택하세용"
