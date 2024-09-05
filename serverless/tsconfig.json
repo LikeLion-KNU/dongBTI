@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "strict": true,
+        "noEmit": true,
+        "declaration": false,
+
+        "module": "ESNext",
+        "target": "ES6",
+
+        "moduleResolution": "Bundler",
+
+        "typeRoots": ["./_node_modules/@types", "@types"],
+
+        "allowUnreachableCode": false
+    },
+    "include": ["src"]
+}

@@ -2,11 +2,21 @@
     "name": "server",
     "version": "1.0.0",
     "description": "",
+    "scripts": {
+        "build": "rollup --config rollup.config.mjs"
+    },
     "dependencies": {
         "@aws-sdk/client-dynamodb": "^3.585.0",
         "@aws-sdk/lib-dynamodb": "^3.585.0",
         "express": "^4.19.2",
         "serverless-http": "^3.2.0",
         "uuid": "^10.0.0"
+    },
+    "devDependencies": {
+        "@babel/plugin-transform-typescript": "^7.25.2",
+        "@types/express": "^4.17.21",
+        "@types/node": "^22.5.4",
+        "rollup": "^4.21.2",
+        "rollup-plugin-typescript2": "^0.36.0"
     }
 }
