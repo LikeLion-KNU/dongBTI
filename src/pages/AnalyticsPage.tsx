@@ -15,6 +15,31 @@ interface axiosProps {
     top: Array<[number, string]>;
 }
 
+const renderData = (data: axiosProps | null, loading: boolean, error: AxiosError<string> | Error | null) => {
+    if (loading) return <Text size="m">Loading...</Text>;
+    if (error) return <Text size="m">Error: {error}</Text>;
+    if (data?.top.length == 0) {
+        return (
+            <Text size="m" color="secondary">
+                데이터가 존재하지 않습니다.
+            </Text>
+        );
+    }
+    if (data && data.top) {
+        return (
+            <TableContainer>
+                {data.top.map((value, index) => (
+                    <Card key={index}>
+                        <Rank>{index + 1}위</Rank>
+                        <Type>{value[0]}</Type>
+                    </Card>
+                ))}
+            </TableContainer>
+        );
+    }
+    return null;
+};
+
 export default function AnalyticsPage() {
     const [selectedMajor, setSelectedMajor] = React.useState<string>("humanities");
     const navigate = useNavigate();
@@ -25,9 +50,9 @@ export default function AnalyticsPage() {
 
     const {
         data: allData,
-        loading,
-        error,
-    } = useAxios<axiosProps>(
+        loading: allDataLoading,
+        error: allDataError,
+    } = useAxios<axiosProps | null>(
         {
             url: `/stats/top/mbti`,
             method: "GET",
@@ -35,7 +60,11 @@ export default function AnalyticsPage() {
         [],
     );
 
-    const { data: majorData } = useAxios<axiosProps>(
+    const {
+        data: majorData,
+        loading: majorDataLoading,
+        error: majorDataError,
+    } = useAxios<axiosProps | null>(
         {
             url: `/stats/top/department?key=${selectedMajor}`,
             method: "GET",
@@ -52,21 +81,7 @@ export default function AnalyticsPage() {
                 <Text size="m">어떤 유형이 가장 많을까요?</Text>
             </TitleContainer>
 
-            <Main>
-                {loading && <Text size="m">Loading...</Text>}
-                {error && <Text size="m">Error: {error}</Text>}
-
-                {allData && allData.top && (
-                    <TableContainer>
-                        {allData.top.map((value, index) => (
-                            <Card key={index}>
-                                <Rank>{index + 1}위</Rank>
-                                <Type>{value[0]}</Type>
-                            </Card>
-                        ))}
-                    </TableContainer>
-                )}
-            </Main>
+            <Main>{renderData(allData, allDataLoading, allDataError)}</Main>
 
             <MiddleSection />
 
@@ -84,21 +99,7 @@ export default function AnalyticsPage() {
 
                 <Text size="m">어떤 유형이 가장 많을까요?</Text>
             </TitleContainer>
-            <Main>
-                {loading && <Text size="m">Loading...</Text>}
-                {error && <Text size="m">Error: {error}</Text>}
-
-                {majorData && majorData.top && (
-                    <TableContainer>
-                        {majorData.top.map((value, index) => (
-                            <Card key={index}>
-                                <Rank>{index + 1}위</Rank>
-                                <Type>{value[0]}</Type>
-                            </Card>
-                        ))}
-                    </TableContainer>
-                )}
-            </Main>
+            <Main>{renderData(majorData, majorDataLoading, majorDataError)}</Main>
         </>
     );
 }
