@@ -18,14 +18,14 @@ export const BallGameRoot = new TreeNode.Builder({
                         new TreeNode.Builder({
                             question: null,
                             choice: "좀 부딪히는게 재밌지",
-                            result: ["센토", "맨투맨", "동그라미", "오렌지파이터스"],
+                            resultType: "intenseSportsman",
                         }).build(),
                     )
                     .setRight(
                         new TreeNode.Builder({
                             question: null,
                             choice: "내 몸에 손대지 마!!",
-                            result: ["스트라이크", "파란", "스파이크"],
+                            resultType: "coatSportsman",
                         }).build(),
                     )
                     .build(),
@@ -39,14 +39,14 @@ export const BallGameRoot = new TreeNode.Builder({
                         new TreeNode.Builder({
                             question: null,
                             choice: "내 눈을 바라봐. 난 당신 얼굴이 궁금하다.",
-                            result: ["KUTC", "스매싱", "스윙스"],
+                            resultType: "compatitionSportsman",
                         }).build(),
                     )
                     .setRight(
                         new TreeNode.Builder({
                             question: null,
                             choice: "난 앞만 봐.",
-                            result: ["KGA", "KNUBC"],
+                            resultType: "fontSportsman",
                         }).build(),
                     )
                     .build(),
@@ -55,20 +55,50 @@ export const BallGameRoot = new TreeNode.Builder({
     )
     .setRight(
         new TreeNode.Builder({
-            question: "사람 많은거 어때?",
+            question: "장비 사용하는거 좋아해?",
             choice: "응 아니야~",
         })
             .setLeft(
                 new TreeNode.Builder({
-                    question: "사람 많은거 어때?",
+                    question: "야외 활동 어때?",
                     choice: "장비 따위 필요 없어. 최고의 장비는 바로 나!",
-                }).build(),
+                })
+                    .setLeft(
+                        new TreeNode.Builder({
+                            question: null,
+                            choice: "~ 신선한 바깥 공기가 좋아~!",
+                            resultType: "natureSportsman",
+                        }).build(),
+                    )
+                    .setRight(
+                        new TreeNode.Builder({
+                            question: null,
+                            choice: "으 미세먼지 극혐",
+                            resultType: "matSportsman",
+                        }).build(),
+                    )
+                    .build(),
             )
             .setRight(
                 new TreeNode.Builder({
-                    question: "사람 많은거 어때?",
+                    question: "경쟁하는거 좋아해?",
                     choice: "인간은 도구를 사용해야지!",
-                }).build(),
+                })
+                    .setLeft(
+                        new TreeNode.Builder({
+                            question: null,
+                            choice: "행복은 성적순이지~",
+                            resultType: "fightSportsman",
+                        }).build(),
+                    )
+                    .setRight(
+                        new TreeNode.Builder({
+                            question: null,
+                            choice: "행복은 성적순이 아니야!",
+                            resultType: "uniqueSportsman",
+                        }).build(),
+                    )
+                    .build(),
             )
             .build(),
     )

@@ -13,7 +13,7 @@ export const DiscussionRoot = new TreeNode.Builder({
                 new TreeNode.Builder({
                     question: null,
                     choice: "토론이 좋아!",
-                    result: ["H.Q", "VINE", "솔토론회", "Now&Here", "KNU UNSA", "에이스"],
+                    resultType: "heatDebater",
                 }).build(),
             )
             .setRight(
@@ -25,14 +25,14 @@ export const DiscussionRoot = new TreeNode.Builder({
                         new TreeNode.Builder({
                             question: null,
                             choice: "기계/IT에 관심있어",
-                            result: ["앱동", "크누 모빌리티"],
+                            resultType: "siliconValley",
                         }).build(),
                     )
                     .setRight(
                         new TreeNode.Builder({
                             question: null,
                             choice: "다 좋아해",
-                            result: ["돌구름", "솔라이브"],
+                            resultType: "creator",
                         }).build(),
                     )
                     .build(),
@@ -48,14 +48,14 @@ export const DiscussionRoot = new TreeNode.Builder({
                 new TreeNode.Builder({
                     question: null,
                     choice: "게임을 하면 이겨야지!",
-                    result: ["국상무쌍", "트러블메이커", "복현기우회", "H.P"],
+                    resultType: "winner",
                 }).build(),
             )
             .setRight(
                 new TreeNode.Builder({
                     question: null,
                     choice: "게임은 별로야...",
-                    result: ["현시연", "코스모스"],
+                    resultType: "scholar",
                 }).build(),
             )
             .build(),

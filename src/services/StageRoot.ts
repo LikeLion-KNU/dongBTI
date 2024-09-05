@@ -23,7 +23,7 @@ export const StageRoot = new TreeNode.Builder({
                                 new TreeNode.Builder({
                                     question: null,
                                     choice: "어쿠스틱 감성 있지~",
-                                    result: ["청음반", "우리노래반"],
+                                    resultType: "10cm",
                                 }).build(),
                             )
                             .setRight(
@@ -35,14 +35,14 @@ export const StageRoot = new TreeNode.Builder({
                                         new TreeNode.Builder({
                                             question: null,
                                             choice: "응! 관심 있어",
-                                            result: ["익스프레션", "POW"],
+                                            resultType: "tchaikovsky",
                                         }).build(),
                                     )
                                     .setRight(
                                         new TreeNode.Builder({
                                             question: null,
                                             choice: "작곡은 어려워!",
-                                            result: ["그랜드챕스", "일렉스", "플레이아데스"],
+                                            resultType: "stageMusician",
                                         }).build(),
                                     )
                                     .build(),
@@ -53,7 +53,7 @@ export const StageRoot = new TreeNode.Builder({
                         new TreeNode.Builder({
                             question: null,
                             choice: "나는 클래식!!",
-                            result: ["관현악반", "크누피", "토레스"],
+                            resultType: "mozart",
                         }).build(),
                     )
                     .build(),
@@ -67,14 +67,14 @@ export const StageRoot = new TreeNode.Builder({
                         new TreeNode.Builder({
                             question: null,
                             choice: "노래방만 가면 다들 박수쳐줘!!",
-                            result: ["쌩목", "합창단"],
+                            resultType: "parkHyoShin",
                         }).build(),
                     )
                     .setRight(
                         new TreeNode.Builder({
                             question: null,
                             choice: "목보단 몸을 쓰는게 좋아",
-                            result: ["터프시커리", "연극반"],
+                            resultType: "newJeans",
                         }).build(),
                     )
                     .build(),
@@ -95,14 +95,14 @@ export const StageRoot = new TreeNode.Builder({
                         new TreeNode.Builder({
                             question: null,
                             choice: "난 제작보단 기술다루는게 좋아",
-                            result: ["사우회", "꿈틀"],
+                            resultType: "macGyver",
                         }).build(),
                     )
                     .setRight(
                         new TreeNode.Builder({
                             question: null,
                             choice: "직접 만드는거 좋아해!",
-                            result: ["사우회", "요리조리"],
+                            resultType: "cutieArtist",
                         }).build(),
                     )
                     .build(),
@@ -116,14 +116,14 @@ export const StageRoot = new TreeNode.Builder({
                         new TreeNode.Builder({
                             question: null,
                             choice: "제작보다는 감상이 좋아",
-                            result: ["꼬모"],
+                            resultType: "leedongjin",
                         }).build(),
                     )
                     .setRight(
                         new TreeNode.Builder({
                             question: null,
                             choice: "직접 만드는거 좋아해!",
-                            result: ["경묵회", "팔레트", "뜨람"],
+                            resultType: "multiArtist",
                         }).build(),
                     )
                     .build(),

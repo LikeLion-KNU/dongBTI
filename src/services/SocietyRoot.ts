@@ -13,7 +13,7 @@ export const SocietyRoot = new TreeNode.Builder({
                 new TreeNode.Builder({
                     question: null,
                     choice: "가르치는거 좋아해!!",
-                    result: ["신망애", "미담장학회"],
+                    resultType: "hyunwoojin",
                 }).build(),
             )
             .setRight(
@@ -25,14 +25,14 @@ export const SocietyRoot = new TreeNode.Builder({
                         new TreeNode.Builder({
                             question: null,
                             choice: "주변을 개선해 나가는걸 좋아해!",
-                            result: ["상투스", "수리영역"],
+                            resultType: "philanthropist",
                         }).build(),
                     )
                     .setRight(
                         new TreeNode.Builder({
                             question: null,
                             choice: "세상이 좀 더 아름다워졌으면 좋겠어!",
-                            result: ["RCY", "한울회"],
+                            resultType: "teresa",
                         }).build(),
                     )
                     .build(),
@@ -43,7 +43,7 @@ export const SocietyRoot = new TreeNode.Builder({
         new TreeNode.Builder({
             question: null,
             choice: "교류는 언제나 즐거워!",
-            result: ["SLANG"],
+            resultType: "american",
         }).build(),
     )
     .build();

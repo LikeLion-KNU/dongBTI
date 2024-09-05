@@ -8,14 +8,14 @@ export const ReligionRoot = new TreeNode.Builder({
         new TreeNode.Builder({
             question: null,
             choice: "신은 있어!",
-            result: ["SFC", "DFC", "IVF", "빨마"],
+            resultType: "god",
         }).build(),
     )
     .setRight(
         new TreeNode.Builder({
             question: null,
             choice: "부처가 좋아",
-            result: ["경불회"],
+            resultType: "budda",
         }).build(),
     )
     .build();
