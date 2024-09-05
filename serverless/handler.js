@@ -15,12 +15,35 @@ const db = DynamoDBDocumentClient.from(client);
 
 app.use(express.json());
 
+const departmentTypes = [
+    "humanities",
+    "social-sciences",
+    "natural-sciences",
+    "economics",
+    "engineering",
+    "it",
+    "agriculture",
+    "arts",
+    "teachers",
+    "medicine",
+    "dentisty",
+    "vet",
+    "human-sciences",
+    "nursing",
+    "pharmacy",
+    "advanced-technology",
+    "environment",
+    "science-technology",
+    "administration",
+    "undeclared",
+];
+
 // 사용자의 MBTI와 학과를 저장하고 통계 업데이트
 app.post("/stats", async (req, res) => {
     const { department, mbti } = req.body;
 
-    if (typeof department !== "string")
-        return res.status(400).json({ status: 400, message: "department 는 string 값이어야 합니다" });
+    if (!departmentTypes.includes(department))
+        return res.status(400).json({ status: 400, message: "department 의 값이 유효하지 않습니다" });
     if (typeof mbti !== "string")
         return res.status(400).json({ status: 400, message: "mbti 는 string 값이어야 합니다" });
 
@@ -37,22 +60,22 @@ app.post("/stats", async (req, res) => {
         const stats = await db.send(
             new GetCommand({
                 TableName: STATS_TABLE,
-                Key: { id: "total" },
+                Key: { id: "total_count" },
             }),
         );
-        const total = stats.Item.total || 0;
+        const total_count = stats.Item.total_count || 0;
         await db.send(
             new UpdateCommand({
                 TableName: STATS_TABLE,
-                Key: { id: "total" },
-                UpdateExpression: "set total = :total",
+                Key: { id: "total_count" },
+                UpdateExpression: "set total_count = :total_count",
                 ExpressionAttributeValues: {
-                    ":total": total + 1,
+                    ":total_count": total_count + 1,
                 },
             }),
         );
 
-        return res.status(201).json({ status: 201, data: { id: userId, total: total + 1 } });
+        return res.status(201).json({ status: 201, data: { id: userId, total_count: total_count + 1 } });
     } catch (e) {
         console.error(e);
         return res.status(500).json({ status: 500, message: "서버 내부 오류 발생" });
@@ -63,11 +86,11 @@ app.post("/stats", async (req, res) => {
 app.get("/stats/total", async (req, res) => {
     const params = {
         TableName: STATS_TABLE,
-        Key: { id: "total" },
+        Key: { id: "total_count" },
     };
     try {
         const data = await db.send(new GetCommand(params));
-        return res.status(200).json({ status: 200, total: data.Item.total });
+        return res.status(200).json({ status: 200, total_count: data.Item.total_count });
     } catch (e) {
         console.error(e);
         return res.status(500).json({ status: 500, message: "서버 내부 오류 발생" });
@@ -106,9 +129,9 @@ app.get("/stats/top/mbti", async (req, res) => {
 app.get("/stats/top/department", async (req, res) => {
     const { key } = req.query;
 
-    if (!key) {
+    if (!key) return res.status(400).json({ status: 400, message: "학과에 대한 key 를 제공해야 합니다" });
+    if (!departmentTypes.includes(key))
         return res.status(400).json({ status: 400, message: "학과에 대한 key 를 제공해야 합니다" });
-    }
 
     const params = {
         TableName: USERS_TABLE,
