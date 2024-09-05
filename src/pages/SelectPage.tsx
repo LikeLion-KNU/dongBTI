@@ -1,5 +1,6 @@
 // import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { Button } from "@/components/form/Button";
 import { Text } from "@/components/typography";
@@ -16,7 +17,8 @@ import dongari from "@/assets/images/dongari.png";
 import { ButtonWrapper, SelectPageWrapper } from "./SelectPage.style";
 
 export default function SelectPage() {
-    // let navigate = useNavigate(); 추후에 사용할 예정
+    let navigate = useNavigate();
+
     const [root, setRoot] = useState<TreeNode | null>(null);
     const field = [
         "전시,공연,연극 분야",
@@ -28,8 +30,7 @@ export default function SelectPage() {
 
     function handleLeftClick() {
         if (root?.left?.getValue.question === null) {
-            console.log("선택완료");
-            // navigate("/result");
+            navigate(`/result?resultType=${root?.left?.getValue.resultType}`);
         } else {
             setRoot(root?.left || null);
         }
@@ -37,8 +38,7 @@ export default function SelectPage() {
 
     function handleRightClick() {
         if (root?.right?.getValue.question === null) {
-            console.log("선택완료");
-            // navigate("/result");
+            navigate(`/result?resultType=${root?.right?.getValue.resultType}`);
         } else {
             setRoot(root?.right || null);
         }
