@@ -44,6 +44,23 @@ export default function SelectPage() {
         }
     }
 
+    function chooseSection(value: string) {
+        switch (value) {
+            case "전시,공연,연극 분야":
+                return StageRoot;
+            case "사회,자원활동 분야":
+                return SocietyRoot;
+            case "종교 분야":
+                return ReligionRoot;
+            case "체육,민족무예 분야":
+                return BallGameRoot;
+            case "학술,취미교양 분야":
+                return DiscussionRoot;
+            default:
+                return null;
+        }
+    }
+
     return (
         <>
             <SelectPageWrapper style={root === null ? { marginTop: "5vh" } : {}}>
@@ -72,19 +89,7 @@ export default function SelectPage() {
                                     width="80%"
                                     height="7vh"
                                     variants="select"
-                                    onClick={() =>
-                                        setRoot(
-                                            value === "전시,공연,연극 분야"
-                                                ? StageRoot
-                                                : value === "사회,자원활동 분야"
-                                                  ? SocietyRoot
-                                                  : value === "종교 분야"
-                                                    ? ReligionRoot
-                                                    : value === "체육,민족무예 분야"
-                                                      ? BallGameRoot
-                                                      : DiscussionRoot,
-                                        )
-                                    }
+                                    onClick={() => setRoot(chooseSection(value))}
                                 >
                                     <Text size="m">{value}</Text>
                                 </Button>
