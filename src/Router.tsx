@@ -6,7 +6,7 @@ import HomePage from "./pages/HomePage";
 import LoadingPage from './pages/ResultLoading';
 import ResultShare from "./pages/ResultShare";
 import ResultPage from "./pages/ResultPage";
-
+import AnalyticsPage from "./pages/AnalyticsPage";
 
 export const Router = () => {
     return (
@@ -16,6 +16,7 @@ export const Router = () => {
                 <Route path="/loading" element={<LoadingPage />} /> 
                 <Route path="/result" element={<ResultPage />}></Route>
                 <Route path="/share" element={<ResultShare />}></Route>
+                <Route path="/analytics" element={<AnalyticsPage />}></Route>
             </Route>
         </Routes>
     );
