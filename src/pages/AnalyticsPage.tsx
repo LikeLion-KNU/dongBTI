@@ -5,17 +5,43 @@ import DropDown from "@/components/form/DropDown";
 import { AppBar } from "@/components/navigation/AppBar";
 import { Text } from "@/components/typography";
 
+import useAxios from "@/hooks/useAxios";
+
 import backIcon from "@/assets/back.svg";
 
-import { TitleContainer, TitleTop, Main, Content, MiddleSection } from "./AnalyticsPage.style";
+import { TitleContainer, TitleTop, Main, MiddleSection, TableContainer, Card, Rank, Type } from "./AnalyticsPage.style";
+
+interface axiosProps {
+    top: Array<[number, string]>;
+}
 
 export default function AnalyticsPage() {
-    const [selectedMajor, setSelectedMajor] = React.useState<string>("");
+    const [selectedMajor, setSelectedMajor] = React.useState<string>("humanities");
     const navigate = useNavigate();
 
     const handleGoBack = () => {
         navigate("/");
     };
+
+    const {
+        data: allData,
+        loading,
+        error,
+    } = useAxios<axiosProps>(
+        {
+            url: `/stats/top/mbti`,
+            method: "GET",
+        },
+        [],
+    );
+
+    const { data: majorData } = useAxios<axiosProps>(
+        {
+            url: `/stats/top/department?key=${selectedMajor}`,
+            method: "GET",
+        },
+        [selectedMajor],
+    );
 
     return (
         <>
@@ -27,20 +53,21 @@ export default function AnalyticsPage() {
             </TitleContainer>
 
             <Main>
-                <Content>
-                    <Text size="m">1위 </Text>
-                    <Text size="m">무대를 좋아하는 연주가형</Text>
-                </Content>
+                {loading && <Text size="m">Loading...</Text>}
+                {error && <Text size="m">Error: {error}</Text>}
 
-                <Content>
-                    <Text size="m">2위 </Text>
-                    <Text size="m">극락왕생을 원하는 부처님형</Text>
-                </Content>
-                <Content>
-                    <Text size="m">3위 </Text>
-                    <Text size="m">티칭의 대가 현우진형</Text>
-                </Content>
+                {allData && allData.top && (
+                    <TableContainer>
+                        {allData.top.map((value, index) => (
+                            <Card key={index}>
+                                <Rank>{index + 1}위</Rank>
+                                <Type>{value[0]}</Type>
+                            </Card>
+                        ))}
+                    </TableContainer>
+                )}
             </Main>
+
             <MiddleSection />
 
             <TitleContainer>
@@ -58,19 +85,19 @@ export default function AnalyticsPage() {
                 <Text size="m">어떤 유형이 가장 많을까요?</Text>
             </TitleContainer>
             <Main>
-                <Content>
-                    <Text size="m">1위 </Text>
-                    <Text size="m">무대를 좋아하는 연주가형</Text>
-                </Content>
+                {loading && <Text size="m">Loading...</Text>}
+                {error && <Text size="m">Error: {error}</Text>}
 
-                <Content>
-                    <Text size="m">2위 </Text>
-                    <Text size="m">극락왕생을 원하는 부처님형</Text>
-                </Content>
-                <Content>
-                    <Text size="m">3위 </Text>
-                    <Text size="m">티칭의 대가 현우진형</Text>
-                </Content>
+                {majorData && majorData.top && (
+                    <TableContainer>
+                        {majorData.top.map((value, index) => (
+                            <Card key={index}>
+                                <Rank>{index + 1}위</Rank>
+                                <Type>{value[0]}</Type>
+                            </Card>
+                        ))}
+                    </TableContainer>
+                )}
             </Main>
         </>
     );
