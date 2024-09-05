@@ -8,7 +8,10 @@ const instance = axios.create({
     withCredentials: true,
 });
 
-export default function useAxios<T>(config: AxiosRequestConfig, dependencies: any[] = []) {
+export default function useAxios<T>(
+    config: AxiosRequestConfig,
+    dependencies: ReadonlyArray<React.DependencyList> = [],
+) {
     const [data, setData] = React.useState<T | null>(null);
     const [loading, setLoading] = React.useState<boolean>(false);
     const [error, setError] = React.useState<string | null>(null);
