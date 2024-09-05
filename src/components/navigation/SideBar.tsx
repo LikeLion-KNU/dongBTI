@@ -11,7 +11,7 @@ interface SideBarProps {
 }
 
 export const SideBar = ({ isOpen, setIsOpen }: SideBarProps) => {
-    const outside = React.useRef<any>();
+    const outside = React.useRef<HTMLDivElement>(null);
     const navigate = useNavigate();
 
     React.useEffect(() => {
@@ -21,8 +21,8 @@ export const SideBar = ({ isOpen, setIsOpen }: SideBarProps) => {
         };
     });
 
-    const handlerOutside = (e: any) => {
-        if (!outside.current.contains(e.target)) {
+    const handlerOutside = (e: MouseEvent) => {
+        if (outside.current && !outside.current.contains(e.target as Node)) {
             setIsOpen(false);
         }
     };
