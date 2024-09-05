@@ -8,6 +8,8 @@ import { Input } from "@/components/form/Input";
 import { SideBar } from "@/components/navigation/SideBar";
 import { Text } from "@/components/typography/Text";
 
+import useAxios from "@/hooks/useAxios";
+
 import menuIcon from "@/assets/icons/menu.svg";
 import main from "@/assets/images/main.svg";
 
@@ -23,6 +25,10 @@ import {
 } from "./HomePage.style";
 import { useUserInfo } from "@/store/store";
 
+interface axiosProps {
+    total_count: number;
+}
+
 export default function HomePage() {
     const navigate = useNavigate();
 
@@ -36,6 +42,14 @@ export default function HomePage() {
     const handleSideBar = () => {
         setIsOpen(!isOpen);
     };
+
+    const { data, loading, error } = useAxios<axiosProps>(
+        {
+            url: `/stats/total`,
+            method: "GET",
+        },
+        [],
+    );
 
     React.useEffect(() => {
         setMajor(selectedMajor);
@@ -109,11 +123,23 @@ export default function HomePage() {
                 </ButtonContainer>
 
                 <TextContainer>
-                    <Text size="xs">오늘까지 </Text>
-                    <Text size="xs" color="primary" weight="bold">
-                        39,239명
-                    </Text>
-                    <Text size="xs">이 참여했어요!</Text>
+                    {loading && <Text size="xs">참여자 수를 불러오는 중...</Text>}
+
+                    {error && (
+                        <Text size="xs" color="red">
+                            참여자 수를 불러오는데 실패했어요.
+                        </Text>
+                    )}
+
+                    {data && (
+                        <>
+                            <Text size="xs">오늘까지 </Text>
+                            <Text size="xs" color="primary" weight="bold">
+                                {data.total_count}명
+                            </Text>
+                            <Text size="xs">이 참여했어요!</Text>
+                        </>
+                    )}
                 </TextContainer>
             </Main>
 
