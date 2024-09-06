@@ -3,7 +3,7 @@ import { forwardRef } from "react";
 import { ButtonElement } from "./Button.style";
 
 export interface ButtonProps extends React.ComponentProps<"button"> {
-    variants: "primary" | "secondary";
+    variants: "primary" | "secondary" | "select";
     width: string;
     height: string;
     children: React.ReactNode;

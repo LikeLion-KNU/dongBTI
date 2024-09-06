@@ -5,8 +5,18 @@ export const ButtonElement = styled.button<ButtonProps>`
     width: ${(props) => props.width};
     height: ${(props) => props.height};
 
-    border: 1px solid var(--color-primary);
     border-radius: 12px;
+
+    border: ${(props) => {
+        switch (props.variants) {
+            case "primary" || "secondary":
+                return "1px solid #37cdcd";
+
+            case "select":
+                return "1px solid #ECECEC";
+        }
+    }};
+    // border: 1px solid #37cdcd; 혹시 몰라서 주석처리
 
     background-color: ${(props) => {
         switch (props.variants) {
@@ -14,6 +24,8 @@ export const ButtonElement = styled.button<ButtonProps>`
                 return "var(--color-primary)";
             case "secondary":
                 return "#fff";
+            case "select":
+                return "#ECECEC";
         }
     }};
 
@@ -23,6 +35,8 @@ export const ButtonElement = styled.button<ButtonProps>`
                 return "#fff";
             case "secondary":
                 return "var(--color-primary)";
+            case "select":
+                return "#707070";
         }
     }};
 `;
