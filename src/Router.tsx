@@ -1,15 +1,13 @@
 import { Route, Routes } from "react-router-dom";
 
-import { RootLayout } from "./components/layout/RootLayout";
-import HomePage from "./pages/HomePage";
-import LoadingPage from "./pages/ResultLoading";
-import ResultPage from "./pages/ResultPage";
+import { RootLayout } from "@/components/layout/RootLayout";
 
-import ResultShare from "./pages/ResultShare";
-import SelectPage from "./pages/SelectPage";
-
-import AnalyticsPage from "./pages/AnalyticsPage";
-
+import AnalyticsPage from "@/pages/AnalyticsPage";
+import HomePage from "@/pages/HomePage";
+import LoadingPage from "@/pages/ResultLoading";
+import ResultPage from "@/pages/ResultPage";
+import ResultShare from "@/pages/ResultShare";
+import SelectPage from "@/pages/SelectPage";
 
 export const Router = () => {
     return (
@@ -21,7 +19,6 @@ export const Router = () => {
                 <Route path="/share" element={<ResultShare />}></Route>
                 <Route path="/select" element={<SelectPage />}></Route>
                 <Route path="/analytics" element={<AnalyticsPage />}></Route>
-
             </Route>
         </Routes>
     );
