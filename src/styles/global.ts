@@ -21,6 +21,7 @@ export const GlobalStyle = css`
 
     img {
         display: block;
+        object-fit: cover;
     }
     a {
         text-decoration: none;
