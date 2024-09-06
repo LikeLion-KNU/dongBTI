@@ -7,7 +7,16 @@ export const TopBarWrapper = styled.div`
     transform: translateX(-50%);
 
     width: 100%;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 100%;
     height: 60px;
+
+    // RootLayout의 max-width를 따라갑니다.
+    max-width: 800px;
 
     // RootLayout의 max-width를 따라갑니다.
     max-width: 800px;
