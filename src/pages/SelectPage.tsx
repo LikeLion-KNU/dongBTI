@@ -88,17 +88,8 @@ export default function SelectPage() {
                                 id="left"
                                 width="80%"
                                 height="7vh"
-                                variants="select"
+                                variants={selectedButton === "left" ? "primary" : "select"}
                                 onClick={handleClick}
-                                style={
-                                    selectedButton === "left"
-                                        ? {
-                                              backgroundColor: "#37cdcd",
-                                              color: "#FFFF",
-                                              transition: "background-color 0.3s, color 0.3s",
-                                          }
-                                        : undefined
-                                }
                             >
                                 <Text size="m">{root?.left?.getValue.choice}</Text>
                             </Button>
@@ -106,17 +97,8 @@ export default function SelectPage() {
                                 id="right"
                                 width="80%"
                                 height="7vh"
-                                variants="select"
+                                variants={selectedButton === "right" ? "primary" : "select"}
                                 onClick={handleClick}
-                                style={
-                                    selectedButton === "right"
-                                        ? {
-                                              backgroundColor: "#37cdcd",
-                                              color: "#FFFF",
-                                              transition: "background-color 0.3s, color 0.3s",
-                                          }
-                                        : undefined
-                                }
                             >
                                 <Text size="m">{root?.right?.getValue.choice}</Text>
                             </Button>
@@ -129,17 +111,8 @@ export default function SelectPage() {
                                     id={`root${index}`}
                                     width="80%"
                                     height="7vh"
-                                    variants="select"
+                                    variants={selectedButton === `root${index}` ? "primary" : "select"}
                                     onClick={handleClick}
-                                    style={
-                                        selectedButton === `root${index}`
-                                            ? {
-                                                  backgroundColor: "#37cdcd",
-                                                  color: "#FFFF",
-                                                  transition: "background-color 0.3s, color 0.3s",
-                                              }
-                                            : undefined
-                                    }
                                 >
                                     <Text size="m">{value}</Text>
                                 </Button>
