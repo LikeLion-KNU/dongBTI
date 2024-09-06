@@ -1,7 +1,6 @@
 import React from "react";
 
-import axios from "axios";
-import { AxiosRequestConfig } from "axios";
+import axios, { AxiosRequestConfig } from "axios";
 
 const instance = axios.create({
     baseURL: "https://api.dongbti.com",

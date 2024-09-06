@@ -15,9 +15,9 @@ interface axiosProps {
     top: Array<[number, string]>;
 }
 
-const renderData = (data: axiosProps | null, loading: boolean, error: AxiosError<string> | Error | null) => {
+const renderData = (data: axiosProps | null, loading: boolean, error: any) => {
     if (loading) return <Text size="m">Loading...</Text>;
-    if (error) return <Text size="m">Error: {error}</Text>;
+    if (error) return <Text size="m">Error: {error.message}</Text>;
     if (data?.top.length == 0) {
         return (
             <Text size="m" color="secondary">
