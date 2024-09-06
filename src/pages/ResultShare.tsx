@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
 import React from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import html2canvas from "html2canvas";
 
@@ -13,6 +14,7 @@ import BackIcon from "@/assets/back.svg";
 import ShareIcon from "@/assets/shareLarge.svg";
 
 import { Content, ResultCardDiv } from "./ResultShare.styled";
+import { useUserInfo } from "@/store/store";
 import styled from "@emotion/styled";
 
 const Header = styled.div`
@@ -29,12 +31,12 @@ const Header = styled.div`
     }
 `;
 
-export default function ResultShare() {
-    const link = "https://knu.example.com";
+export default function ResultShare({ type = "체육형 스타일", desc = "신체 활동을 좋아하는 타입" }) {
+    const navigate = useNavigate();
+    const link = "https://dongbti.com";
 
-    const [name, setName] = useState<string>("");
-    const [dbti_type, setDbtiType] = useState<string>("");
-    const [dbti_name, setDbtiName] = useState<string>("");
+    const { name, setName } = useUserInfo();
+
     const [cardOrder, setCardOrder] = useState<number>(0);
     const [color, setColor] = useState<string>("");
     const [emoji, setEmoji] = useState<string>("");
@@ -46,26 +48,32 @@ export default function ResultShare() {
             html2canvas(cardRef.current).then((canvas) => {
                 const link = document.createElement("a");
                 link.href = canvas.toDataURL("image/png");
-                link.download = `${name}-${dbti_name}.png`;
+                // 혹시 모를 상황에 대비하여 모든 공백을 _로 수정합니다.
+                // js/ts는 stirng.replaceAll이 없기 때문에 모든 특정 문자를 바꾸기 위해 정규식으로 사용해야합니다.
+                link.download = `${name}-${desc.replace(/\s+/g, "_")}.png`;
                 link.click();
             });
         }
     };
 
     useEffect(function initDisplay() {
-        // 전역 상태에서 정보를 불러와 디스플레이 요소를 변경합니다.
-        setName("홍길동");
-        setDbtiType("Type-A");
-        setDbtiName("무대를 좋아하는 연주가형");
-        setCardOrder(173);
-        setColor("#559de0");
-        setEmoji("sports");
+        fetch("https://api.dongbti.com/stats/total")
+            .then((response) => {
+                return response.json();
+            })
+            .then((res) => {
+                // 전역 상태에서 정보를 불러와 디스플레이 요소를 변경합니다.
+                setEmoji("sports");
+                setColor("#559de0");
+                setName("장기원"); // 임시 사용 코드
+                setCardOrder(res.total_count); // n번째 발급 표시
+            });
     }, []);
 
     const props: ResultCardDataProps = {
         name: name,
-        dbti_type: dbti_type,
-        dbti_name: dbti_name,
+        dbti_type: type,
+        dbti_name: desc,
         cardOrder: cardOrder,
         color: color,
         emoji: emoji,
@@ -73,7 +81,7 @@ export default function ResultShare() {
 
     return (
         <>
-            <TopBar title="결과 공유" icon={<img src={BackIcon} />} />
+            <TopBar title="결과 공유" icon={<img src={BackIcon} onClick={() => navigate(-1)} />} />
             {/* 여기부터는 주요 콘텐츠 표시 영역입니다. */}
             <Content>
                 <Header>
