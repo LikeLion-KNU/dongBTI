@@ -11,7 +11,7 @@ import { SocietyRoot } from "@/services/SocietyRoot";
 import { StageRoot } from "@/services/StageRoot";
 import { TreeNode } from "@/services/TreeNode";
 
-import dongari from "@/assets/images/dongari.png";
+import dongari from "@/assets/images/dongari.svg";
 
 import { ButtonWrapper, SelectPageWrapper } from "./SelectPage.style";
 
