@@ -1,3 +1,4 @@
+import { keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
 
 interface ResultCardStyleProps extends React.ComponentProps<"div"> {
@@ -30,6 +31,18 @@ export const ResultCardWrapper = styled.div<ResultCardStyleProps>`
     }
 `;
 
+const wiggleRotate = keyframes`
+    0% {
+        transform: rotate(-8deg);
+    }
+    50% {
+        transform: rotate(368deg);
+    }
+    100% {
+        transform: rotate(-8deg);
+    }
+`;
+
 const LeftContent = styled.div`
     width: 38%;
     background-color: #ffffff2f;
@@ -37,6 +50,10 @@ const LeftContent = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+
+    & > img {
+        animation: ${wiggleRotate} 5s infinite ease-in-out;
+    }
 `;
 
 const RightContent = styled.div`
