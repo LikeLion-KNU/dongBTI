@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 import DropDown from "@/components/form/DropDown";
-import { AppBar } from "@/components/navigation/AppBar";
+import TopBar from "@/components/layout/TopBar";
 import { Text } from "@/components/typography";
 
 import backIcon from "@/assets/back.svg";
@@ -20,7 +20,7 @@ export default function AnalyticsPage() {
     return (
         <>
             <img src={backIcon} onClick={handleGoBack} />
-            <AppBar children="전체 통계" />
+            <TopBar title="전체 통계" />
 
             <TitleContainer>
                 <Text size="m">어떤 유형이 가장 많을까요?</Text>
