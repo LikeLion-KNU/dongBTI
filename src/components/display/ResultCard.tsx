@@ -9,6 +9,7 @@ export interface ResultCardDataProps extends Object {
     dbti_name: string;
     cardOrder: number;
     color: string;
+    emoji: string;
 }
 
 export interface ResultCardProps extends React.ComponentProps<"div"> {
@@ -19,7 +20,7 @@ export const ResultCard: React.FC<ResultCardProps> = ({ props }) => {
     return (
         <ResultCardWrapper color={props.color}>
             <RSC.LeftContent>
-                <Text size="l">이미지</Text>
+                <img width="96px" height="96px" src={`src/assets/share/${props.emoji}.svg`} />
             </RSC.LeftContent>
             <RSC.RightContent>
                 <Text size="s" weight="bold" color="#ffffff">

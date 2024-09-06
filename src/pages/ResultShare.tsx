@@ -37,6 +37,7 @@ export default function ResultShare() {
     const [dbti_name, setDbtiName] = useState<string>("");
     const [cardOrder, setCardOrder] = useState<number>(0);
     const [color, setColor] = useState<string>("");
+    const [emoji, setEmoji] = useState<string>("");
 
     const cardRef = React.useRef(null);
 
@@ -57,7 +58,8 @@ export default function ResultShare() {
         setDbtiType("Type-A");
         setDbtiName("무대를 좋아하는 연주가형");
         setCardOrder(173);
-        setColor("blue");
+        setColor("#559de0");
+        setEmoji("sports");
     }, []);
 
     const props: ResultCardDataProps = {
@@ -66,6 +68,7 @@ export default function ResultShare() {
         dbti_name: dbti_name,
         cardOrder: cardOrder,
         color: color,
+        emoji: emoji,
     };
 
     return (
