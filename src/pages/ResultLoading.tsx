@@ -2,8 +2,8 @@ import React from "react";
 
 import dongari from "@/assets/images/dongari.png";
 
-import EmojiAnimation from "../components/display/EmojiAnimation";
-import TypingAnimation from "../components/display/TypingAnimation";
+import EmojiAnimation from "../components/animation/EmojiAnimation";
+import TypingAnimation from "../components/animation/TypingAnimation";
 import { LoadingContainer, DongariImage } from "./ResultLoading.style";
 
 const ResultLoading: React.FC = () => {
