@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import useAxios from "@/hooks/useAxios";
 
@@ -11,6 +11,8 @@ import { LoadingContainer, DongariImage } from "./ResultLoading.style";
 import { useUserInfo } from "@/store/store";
 
 const ResultLoading: React.FC = () => {
+    let navigate = useNavigate();
+
     const texts = [
         "당신의 취향을 분석하는 중...",
         "잠시만 기다려 주세요...",
@@ -22,7 +24,7 @@ const ResultLoading: React.FC = () => {
     const deleteInterval = 10;
     const waitInterval = 1500;
 
-    const major = useUserInfo((state) => state.major);
+    const major = useUserInfo((state) => state.major) || "humanities";
     const { resultType } = useParams();
 
     const {
@@ -39,10 +41,13 @@ const ResultLoading: React.FC = () => {
     );
 
     useEffect(() => {
-        console.log(data);
-        console.log(loading);
-        console.log(error);
-    }, [major, resultType]);
+        if (data) {
+            const timer = setTimeout(() => {
+                navigate(`/result/${resultType}`);
+            }, 1540 * 6);
+            return () => clearTimeout(timer);
+        }
+    }, [data]);
 
     return (
         <LoadingContainer>
