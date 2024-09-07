@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import Footer from "@/components/display/Footer";
 import { Button } from "@/components/form/Button";
 import { Text } from "@/components/typography";
 
@@ -119,6 +120,9 @@ export default function SelectPage() {
                         </>
                     )}
                 </ButtonWrapper>
+                <div style={{ position: "fixed", bottom: "0", left: "50" }}>
+                    <Footer />
+                </div>
             </SelectPageWrapper>
         </>
     );
