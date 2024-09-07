@@ -161,7 +161,17 @@ app.get("/stats/top/department", async (req, res) => {
     }
 });
 
+app.options("*", (req, res) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");
+    res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+    res.header("Access-Control-Allow-Credentials", "true");
+    res.sendStatus(200);
+});
+
 app.use((req, res, next) => {
+    if (req.method === "OPTIONS") return res.status(200);
+
     return res.status(404).json({
         error: "Not Found",
     });
