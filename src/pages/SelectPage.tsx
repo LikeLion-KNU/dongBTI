@@ -72,7 +72,7 @@ export default function SelectPage() {
 
     return (
         <>
-            <SelectPageWrapper style={root === null ? { marginTop: "5vh" } : {}}>
+            <SelectPageWrapper variants={root === null ? "field" : "choice"}>
                 <img src={dongari} alt="동BTI" style={{ aspectRatio: "1/1", width: "20vh" }}></img>
                 {root ? (
                     <Text size="xl">{root?.getValue.question}</Text>
@@ -81,7 +81,7 @@ export default function SelectPage() {
                         두근두근 설레는 가두보집! <br /> 동아리 부스가 엄청 많다! <br /> 어느 분야부터 설명을 들어볼까?
                     </Text>
                 )}
-                <ButtonWrapper style={root === null ? { gap: "2.5vh" } : {}}>
+                <ButtonWrapper variants={root === null ? "field" : "choice"}>
                     {root ? (
                         <>
                             <Button
@@ -120,7 +120,7 @@ export default function SelectPage() {
                         </>
                     )}
                 </ButtonWrapper>
-                <div style={{ position: "fixed", bottom: "0", left: "50" }}>
+                <div style={{ position: "fixed", bottom: "0", left: "50", margin: "0 0 10px 0" }}>
                     <Footer />
                 </div>
             </SelectPageWrapper>
