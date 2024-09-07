@@ -27,11 +27,7 @@ const ResultLoading: React.FC = () => {
     const major = useUserInfo((state) => state.major) || "humanities";
     const { resultType } = useParams();
 
-    const {
-        data: data,
-        loading: loading,
-        error: error,
-    } = useAxios(
+    const { loading: loading } = useAxios(
         {
             url: "/stats",
             method: "POST",
@@ -41,13 +37,13 @@ const ResultLoading: React.FC = () => {
     );
 
     useEffect(() => {
-        if (data) {
+        if (!loading) {
             const timer = setTimeout(() => {
                 navigate(`/result/${resultType}`);
             }, 1540 * 6);
             return () => clearTimeout(timer);
         }
-    }, [data]);
+    }, [loading]);
 
     return (
         <LoadingContainer>
