@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useParams } from "react-router-dom";
 
-import dongari from "@/assets/images/dongari.png";
+import useAxios from "@/hooks/useAxios";
+
+import dongari from "@/assets/images/dongari.svg";
 
 import EmojiAnimation from "../components/display/EmojiAnimation";
 import TypingAnimation from "../components/display/TypingAnimation";
 import { LoadingContainer, DongariImage } from "./ResultLoading.style";
+import { useUserInfo } from "@/store/store";
 
 const ResultLoading: React.FC = () => {
     const texts = [
@@ -17,6 +21,28 @@ const ResultLoading: React.FC = () => {
     const typingInterval = 30;
     const deleteInterval = 10;
     const waitInterval = 1500;
+
+    const major = useUserInfo((state) => state.major);
+    const { resultType } = useParams();
+
+    const {
+        data: data,
+        loading: loading,
+        error: error,
+    } = useAxios(
+        {
+            url: "/stats",
+            method: "POST",
+            data: { department: major, mbti: resultType },
+        },
+        [major, resultType],
+    );
+
+    useEffect(() => {
+        console.log(data);
+        console.log(loading);
+        console.log(error);
+    }, [major, resultType]);
 
     return (
         <LoadingContainer>
