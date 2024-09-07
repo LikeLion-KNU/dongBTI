@@ -11,7 +11,7 @@ import { SocietyRoot } from "@/services/SocietyRoot";
 import { StageRoot } from "@/services/StageRoot";
 import { TreeNode } from "@/services/TreeNode";
 
-import dongari from "@/assets/images/dongari.png";
+import dongari from "@/assets/images/dongari.svg";
 
 import { ButtonWrapper, SelectPageWrapper } from "./SelectPage.style";
 
@@ -52,13 +52,13 @@ export default function SelectPage() {
         setTimeout(() => {
             if (id === "left") {
                 if (root?.left?.getValue.question === null) {
-                    navigate(`/result?resultType=${root?.left?.getValue.resultType}`);
+                    navigate(`/loading?resultType=${root?.left?.getValue.resultType}`);
                 } else {
                     setRoot(root?.left || null);
                 }
             } else if (id === "right") {
                 if (root?.right?.getValue.question === null) {
-                    navigate(`/result?resultType=${root?.right?.getValue.resultType}`);
+                    navigate(`/loading?resultType=${root?.right?.getValue.resultType}`);
                 } else {
                     setRoot(root?.right || null);
                 }
