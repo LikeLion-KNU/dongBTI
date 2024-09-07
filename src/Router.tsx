@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 
 import { RootLayout } from "./components/layout/RootLayout";
 import AnalyticsPage from "./pages/AnalyticsPage";
-import { CreditPage } from "./pages/CreditPage";
+import CreditPage from "./pages/CreditPage";
 import HomePage from "./pages/HomePage";
 import LoadingPage from "./pages/ResultLoading";
 import ResultPage from "./pages/ResultPage";

@@ -63,7 +63,7 @@ const HwangBuyeon = {
     is_manager: false,
 };
 
-export function CreditPage() {
+export default function CreditPage() {
     const navigate = useNavigate();
 
     return (
