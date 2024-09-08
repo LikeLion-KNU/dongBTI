@@ -2,7 +2,7 @@ import { Button } from "@/components/form/Button";
 import TopBar from "@/components/layout/TopBar";
 import { Text } from "@/components/typography";
 
-import aaa from "@/assets/images/dongari.png";
+import aaa from "@/assets/images/dongari.svg";
 
 import {
     ButtonGroup,

@@ -11,7 +11,7 @@ import TopBar from "@/components/layout/TopBar";
 import { Text } from "@/components/typography/Text";
 
 import BackIcon from "@/assets/back.svg";
-import ShareIcon from "@/assets/shareLarge.svg";
+import ShareIcon from "@/assets/share.svg";
 
 import { Content, ResultCardDiv } from "./ResultShare.styled";
 import { useUserInfo } from "@/store/store";
@@ -33,7 +33,7 @@ const Header = styled.div`
 
 export default function ResultShare({ type = "체육형 스타일", desc = "신체 활동을 좋아하는 타입" }) {
     const navigate = useNavigate();
-    const link = "https://dongbti.com";
+    const link = "https://www.dongbti.com";
 
     const { name, setName } = useUserInfo();
 
