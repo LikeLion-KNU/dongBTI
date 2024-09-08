@@ -6,6 +6,8 @@ import { useResult } from "@/hooks/useResult";
 
 import aaa from "@/assets/images/dongari.svg";
 
+import clubs from "@/constants/clubs";
+
 import {
     ButtonGroup,
     ClubDescription,
@@ -42,16 +44,22 @@ export default function ResultPage() {
 
                     <ClubItems>
                         {result.clubs.map((club) => {
+                            let clubData = clubs.find((c) => c.name === club);
+
+                            if (!clubData) {
+                                return null;
+                            }
+
                             return (
                                 <ClubItem>
-                                    <ClubTitle>{club}</ClubTitle>
+                                    <ClubTitle>{clubData.name}</ClubTitle>
                                     <ClubDescription>
-                                        <Text size="xs">더 넓고, 더 깊은 바다로!</Text>
+                                        <Text size="xs">{clubData.summary}</Text>
                                         <Text size="xs" weight="bold">
-                                            경북대학교 유일무이 스킨스쿠버 동아리
+                                            {clubData.description}
                                         </Text>
                                     </ClubDescription>
-                                    <ClubImage src={aaa} alt="수중탐사대" />
+                                    <ClubImage src={aaa} alt={clubData.name} />
                                 </ClubItem>
                             );
                         })}
