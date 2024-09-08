@@ -1,9 +1,9 @@
 import styled from "@emotion/styled";
 
-export const DongariImage = styled('img')`
-  width: 125px;
-  height: 125px;
-  margin-bottom: 55px;
+export const DongariImage = styled("img")`
+    width: 15vh;
+    aspectratio: "1/1";
+    margin-bottom: 55px;
 `;
 
 export const LoadingContainer = styled.div`

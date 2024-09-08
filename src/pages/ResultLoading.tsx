@@ -1,6 +1,8 @@
 import React from "react";
 
-import dongari from "@/assets/images/dongari.png";
+import { useSubmitResult } from "@/hooks/useSubmitResult";
+
+import dongari from "@/assets/images/dongari.svg";
 
 import EmojiAnimation from "../components/display/EmojiAnimation";
 import TypingAnimation from "../components/display/TypingAnimation";
@@ -17,6 +19,8 @@ const ResultLoading: React.FC = () => {
     const typingInterval = 30;
     const deleteInterval = 10;
     const waitInterval = 1500;
+
+    useSubmitResult();
 
     return (
         <LoadingContainer>

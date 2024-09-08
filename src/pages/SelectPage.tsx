@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import Footer from "@/components/display/Footer";
 import { Button } from "@/components/form/Button";
 import { Text } from "@/components/typography";
 
@@ -11,7 +12,7 @@ import { SocietyRoot } from "@/services/SocietyRoot";
 import { StageRoot } from "@/services/StageRoot";
 import { TreeNode } from "@/services/TreeNode";
 
-import dongari from "@/assets/images/dongari.png";
+import dongari from "@/assets/images/dongari.svg";
 
 import { ButtonWrapper, SelectPageWrapper } from "./SelectPage.style";
 
@@ -52,13 +53,13 @@ export default function SelectPage() {
         setTimeout(() => {
             if (id === "left") {
                 if (root?.left?.getValue.question === null) {
-                    navigate(`/result?resultType=${root?.left?.getValue.resultType}`);
+                    navigate(`/loading?type=${root?.left?.getValue.resultType}`);
                 } else {
                     setRoot(root?.left || null);
                 }
             } else if (id === "right") {
                 if (root?.right?.getValue.question === null) {
-                    navigate(`/result?resultType=${root?.right?.getValue.resultType}`);
+                    navigate(`/loading?type=${root?.right?.getValue.resultType}`);
                 } else {
                     setRoot(root?.right || null);
                 }
@@ -71,7 +72,7 @@ export default function SelectPage() {
 
     return (
         <>
-            <SelectPageWrapper style={root === null ? { marginTop: "5vh" } : {}}>
+            <SelectPageWrapper variants={root === null ? "field" : "choice"}>
                 <img src={dongari} alt="동BTI" style={{ aspectRatio: "1/1", width: "20vh" }}></img>
                 {root ? (
                     <Text size="xl">{root?.getValue.question}</Text>
@@ -80,7 +81,7 @@ export default function SelectPage() {
                         두근두근 설레는 가두보집! <br /> 동아리 부스가 엄청 많다! <br /> 어느 분야부터 설명을 들어볼까?
                     </Text>
                 )}
-                <ButtonWrapper style={root === null ? { gap: "2.5vh" } : {}}>
+                <ButtonWrapper variants={root === null ? "field" : "choice"}>
                     {root ? (
                         <>
                             <Button
@@ -119,6 +120,9 @@ export default function SelectPage() {
                         </>
                     )}
                 </ButtonWrapper>
+                <div style={{ position: "fixed", bottom: "0", left: "50", margin: "0 0 10px 0" }}>
+                    <Footer />
+                </div>
             </SelectPageWrapper>
         </>
     );

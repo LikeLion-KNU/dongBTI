@@ -21,6 +21,7 @@ export const GlobalStyle = css`
 
     img {
         display: block;
+        object-fit: cover;
     }
     a {
         text-decoration: none;
@@ -40,6 +41,7 @@ export const GlobalStyle = css`
         --font-weight-heavy: 900;
 
         --color-primary: #37cdcd;
+        --color-likelion: #ff7b17;
         --color-primary-300: #64e4e0;
         --color-primary-200: #9df2ec;
         --color-primary-100: #cef9f5;
