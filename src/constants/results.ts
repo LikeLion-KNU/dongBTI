@@ -1,7 +1,7 @@
 export const results = [
     {
         resultType: "intenseSportsman",
-        clubs: ["센토", "맨투맨", "동그라미", "오렌지파이터스"],
+        clubs: ["센토", "맨투맨", "동그라미", "오렌지 파이터스"],
         typeName: "격한 운동을 좋아하는 스포츠맨형",
     },
     {
@@ -31,12 +31,12 @@ export const results = [
     },
     {
         resultType: "fightSportsman",
-        clubs: ["검보부", "에이밍"],
+        clubs: ["검도부", "에이밍"],
         typeName: "승부를 좋아하는 스포츠맨형",
     },
     {
         resultType: "uniqueSportsman",
-        clubs: ["수중탐사대", "싸울아비", "인질범"],
+        clubs: ["수중탐사대", "싸울아비", "IZB(인질범)"],
         typeName: "유니크한 체육을 즐기는 스포츠맨형",
     },
     {
@@ -81,7 +81,7 @@ export const results = [
     },
     {
         resultType: "leedongjin",
-        clubs: ["꼬모"],
+        clubs: ["KOMO"],
         typeName: "영화 감상을 좋아하는 이동진형",
     },
     {
@@ -106,7 +106,7 @@ export const results = [
     },
     {
         resultType: "winner",
-        clubs: ["국상무쌍", "트러블메이커", "복현기우회", "H.P"],
+        clubs: ["국사무쌍", "트러블메이커", "복현기우회", "H.P"],
         typeName: "지고는 못 사는 승부사형",
     },
     {
