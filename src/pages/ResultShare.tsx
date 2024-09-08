@@ -10,11 +10,12 @@ import { Button } from "@/components/form/Button";
 import TopBar from "@/components/layout/TopBar";
 import { Text } from "@/components/typography/Text";
 
+import { useResult } from "@/hooks/useResult";
+
 import BackIcon from "@/assets/back.svg";
 import ShareIcon from "@/assets/share.svg";
 
 import { Content, ResultCardDiv } from "./ResultShare.styled";
-import { useUserInfo } from "@/store/store";
 import styled from "@emotion/styled";
 
 const Header = styled.div`
@@ -31,15 +32,12 @@ const Header = styled.div`
     }
 `;
 
-export default function ResultShare({ type = "체육형 스타일", desc = "신체 활동을 좋아하는 타입" }) {
+export default function ResultShare() {
+    const { name, result } = useResult();
     const navigate = useNavigate();
     const link = "https://www.dongbti.com";
 
-    const { name, setName } = useUserInfo();
-
     const [cardOrder, setCardOrder] = useState<number>(0);
-    const [color, setColor] = useState<string>("");
-    const [emoji, setEmoji] = useState<string>("");
 
     const cardRef = React.useRef(null);
 
@@ -50,7 +48,7 @@ export default function ResultShare({ type = "체육형 스타일", desc = "신�
                 link.href = canvas.toDataURL("image/png");
                 // 혹시 모를 상황에 대비하여 모든 공백을 _로 수정합니다.
                 // js/ts는 stirng.replaceAll이 없기 때문에 모든 특정 문자를 바꾸기 위해 정규식으로 사용해야합니다.
-                link.download = `${name}-${desc.replace(/\s+/g, "_")}.png`;
+                link.download = `${name}-${result.typeName}-${result.department}.png`;
                 link.click();
             });
         }
@@ -62,21 +60,17 @@ export default function ResultShare({ type = "체육형 스타일", desc = "신�
                 return response.json();
             })
             .then((res) => {
-                // 전역 상태에서 정보를 불러와 디스플레이 요소를 변경합니다.
-                setEmoji("sports");
-                setColor("#559de0");
-                setName("장기원"); // 임시 사용 코드
                 setCardOrder(res.total_count); // n번째 발급 표시
             });
     }, []);
 
     const props: ResultCardDataProps = {
         name: name,
-        dbti_type: type,
-        dbti_name: desc,
+        dbti_type: `${result.department.charAt(0).toUpperCase() + result.department.slice(1)} 타입`,
+        dbti_name: result.typeName,
         cardOrder: cardOrder,
-        color: color,
-        emoji: emoji,
+        color: `var(--card-color-${result.department})`,
+        emoji: result.department,
     };
 
     return (
@@ -95,7 +89,7 @@ export default function ResultShare({ type = "체육형 스타일", desc = "신�
                 {/* ResultCardDiv 기준으로 이미지가 다운로드됩니다. */}
                 <ResultCardDiv ref={cardRef}>
                     <ResultCard props={props} />
-                    <ShareLink link={link} color={color} />
+                    <ShareLink link={link} color={`var(--card-color-${result.department})`} />
                 </ResultCardDiv>
                 <Button onClick={cardDownload} width="100%" height="60px" variants="primary">
                     <Text size="s" weight="extrabold">

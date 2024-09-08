@@ -36,7 +36,7 @@ const wiggleRotate = keyframes`
         transform: rotate(-8deg);
     }
     50% {
-        transform: rotate(368deg);
+        transform: rotate(8deg);
     }
     100% {
         transform: rotate(-8deg);
@@ -52,7 +52,7 @@ const LeftContent = styled.div`
     align-items: center;
 
     & > img {
-        animation: ${wiggleRotate} 5s infinite ease-in-out;
+        animation: ${wiggleRotate} 3s infinite ease-in-out;
     }
 `;
 
