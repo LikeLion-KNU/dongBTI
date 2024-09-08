@@ -89,7 +89,7 @@ export default function ResultShare() {
                 {/* ResultCardDiv 기준으로 이미지가 다운로드됩니다. */}
                 <ResultCardDiv ref={cardRef}>
                     <ResultCard props={props} />
-                    <ShareLink link={link} color={`var(--card-color-${result.department})`} />
+                    <ShareLink link={link} color={`var(--card-color-${result.iconName})`} />
                 </ResultCardDiv>
                 <Button onClick={cardDownload} width="100%" height="60px" variants="primary">
                     <Text size="s" weight="extrabold">
