@@ -61,7 +61,7 @@ const results = [
     },
     {
         resultType: "parkHyoShin",
-        clubs: ["쌩목", "합창단"],
+        clubs: ["합창단", "쌩목"],
         typeName: "노래부르는 걸 즐기는 박효신형",
     },
     {

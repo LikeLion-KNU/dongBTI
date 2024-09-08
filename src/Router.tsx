@@ -10,8 +10,6 @@ import ResultPage from "./pages/ResultPage";
 import ResultShare from "./pages/ResultShare";
 import SelectPage from "./pages/SelectPage";
 
-import "@/transition/fade-slide.css";
-
 export const Router = () => {
     const location = useLocation();
 
@@ -21,12 +19,12 @@ export const Router = () => {
                 <Routes location={location}>
                     <Route path="/" element={<RootLayout />}>
                         <Route index element={<HomePage />}></Route>
-                        <Route path="/loading" element={<LoadingPage />} />
-                        <Route path="/result" element={<ResultPage />}></Route>
+                        <Route path="/loading/:resultType" element={<LoadingPage />} />
+                        <Route path="/result/:resultType" element={<ResultPage />}></Route>
                         <Route path="/share" element={<ResultShare />}></Route>
                         <Route path="/select" element={<SelectPage />}></Route>
                         <Route path="/analytics" element={<AnalyticsPage />}></Route>
-                      <Route path="/credits" element={<CreditPage />}></Route>
+                        <Route path="/credits" element={<CreditPage />}></Route>
                     </Route>
                 </Routes>
             </CSSTransition>

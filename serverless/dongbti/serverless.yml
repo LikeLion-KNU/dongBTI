@@ -1,9 +1,9 @@
 # "org" ensures this Service is used with the correct Serverless Framework Access Key.
 org: toothlessdev
 # "app" enables Serverless Framework Dashboard features and sharing them with other Services.
-app: dongbti
+app: api-dongbti
 # "service" is the name of this project. This will also be added to your AWS resource names.
-service: serverless
+service: dongbti
 
 stages:
     default:
