@@ -1,18 +1,14 @@
-import React, { useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import React from "react";
 
-import useAxios from "@/hooks/useAxios";
+import { useSubmitResult } from "@/hooks/useSubmitResult";
 
 import dongari from "@/assets/images/dongari.svg";
 
 import EmojiAnimation from "../components/display/EmojiAnimation";
 import TypingAnimation from "../components/display/TypingAnimation";
 import { LoadingContainer, DongariImage } from "./ResultLoading.style";
-import { useUserInfo } from "@/store/store";
 
 const ResultLoading: React.FC = () => {
-    let navigate = useNavigate();
-
     const texts = [
         "당신의 취향을 분석하는 중...",
         "잠시만 기다려 주세요...",
@@ -24,23 +20,7 @@ const ResultLoading: React.FC = () => {
     const deleteInterval = 10;
     const waitInterval = 1500;
 
-    const major = useUserInfo((state) => state.major) || "humanities";
-    const { resultType } = useParams();
-
-    const { loading: loading } = useAxios(
-        {
-            url: "/stats",
-            method: "POST",
-            data: { department: major, mbti: resultType },
-        },
-        [major, resultType],
-    );
-
-    useEffect(() => {
-        if (!loading) {
-            navigate(`/result/${resultType}`);
-        }
-    }, [loading]);
+    useSubmitResult();
 
     return (
         <LoadingContainer>
