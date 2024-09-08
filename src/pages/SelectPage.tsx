@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import Footer from "@/components/display/Footer";
 import { Button } from "@/components/form/Button";
 import { Text } from "@/components/typography";
 
@@ -71,59 +70,54 @@ export default function SelectPage() {
     }
 
     return (
-        <>
-            <SelectPageWrapper variants={root === null ? "field" : "choice"}>
-                <img src={dongari} alt="동BTI" style={{ aspectRatio: "1/1", width: "20vh" }}></img>
+        <SelectPageWrapper variants={root === null ? "field" : "choice"}>
+            <img src={dongari} alt="동BTI" style={{ aspectRatio: "1/1", width: "20vh" }}></img>
+            {root ? (
+                <Text size="xl">{root?.getValue.question}</Text>
+            ) : (
+                <Text size="m" style={{ textAlign: "center", fontWeight: "bold" }}>
+                    두근두근 설레는 가두모집! <br /> 동아리 부스가 엄청 많다! <br /> 어느 분야부터 설명을 들어볼까?
+                </Text>
+            )}
+            <ButtonWrapper variants={root === null ? "field" : "choice"}>
                 {root ? (
-                    <Text size="xl">{root?.getValue.question}</Text>
+                    <>
+                        <Button
+                            id="left"
+                            width="80%"
+                            height="7vh"
+                            variants={selectedButton === "left" ? "primary" : "select"}
+                            onClick={handleClick}
+                        >
+                            <Text size="s">{root?.left?.getValue.choice}</Text>
+                        </Button>
+                        <Button
+                            id="right"
+                            width="80%"
+                            height="7vh"
+                            variants={selectedButton === "right" ? "primary" : "select"}
+                            onClick={handleClick}
+                        >
+                            <Text size="s">{root?.right?.getValue.choice}</Text>
+                        </Button>
+                    </>
                 ) : (
-                    <Text size="m" style={{ textAlign: "center", fontWeight: "bold" }}>
-                        두근두근 설레는 가두모집! <br /> 동아리 부스가 엄청 많다! <br /> 어느 분야부터 설명을 들어볼까?
-                    </Text>
+                    <>
+                        {field.map((value, index) => (
+                            <Button
+                                key={index}
+                                id={`root${index}`}
+                                width="80%"
+                                height="7vh"
+                                variants={selectedButton === `root${index}` ? "primary" : "select"}
+                                onClick={handleClick}
+                            >
+                                <Text size="s">{value}</Text>
+                            </Button>
+                        ))}
+                    </>
                 )}
-                <ButtonWrapper variants={root === null ? "field" : "choice"}>
-                    {root ? (
-                        <>
-                            <Button
-                                id="left"
-                                width="80%"
-                                height="7vh"
-                                variants={selectedButton === "left" ? "primary" : "select"}
-                                onClick={handleClick}
-                            >
-                                <Text size="m">{root?.left?.getValue.choice}</Text>
-                            </Button>
-                            <Button
-                                id="right"
-                                width="80%"
-                                height="7vh"
-                                variants={selectedButton === "right" ? "primary" : "select"}
-                                onClick={handleClick}
-                            >
-                                <Text size="m">{root?.right?.getValue.choice}</Text>
-                            </Button>
-                        </>
-                    ) : (
-                        <>
-                            {field.map((value, index) => (
-                                <Button
-                                    key={index}
-                                    id={`root${index}`}
-                                    width="80%"
-                                    height="7vh"
-                                    variants={selectedButton === `root${index}` ? "primary" : "select"}
-                                    onClick={handleClick}
-                                >
-                                    <Text size="m">{value}</Text>
-                                </Button>
-                            ))}
-                        </>
-                    )}
-                </ButtonWrapper>
-                <div style={{ position: "fixed", bottom: "0", left: "50", margin: "0 0 10px 0" }}>
-                    <Footer />
-                </div>
-            </SelectPageWrapper>
-        </>
+            </ButtonWrapper>
+        </SelectPageWrapper>
     );
 }

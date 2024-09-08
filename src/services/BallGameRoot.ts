@@ -38,7 +38,7 @@ export const BallGameRoot = new TreeNode.Builder({
                     .setLeft(
                         new TreeNode.Builder({
                             question: null,
-                            choice: "내 눈을 바라봐. 난 당신 얼굴이 궁금하다.",
+                            choice: "운동은 마주보고 해야지!!",
                             resultType: "compatitionSportsman",
                         }).build(),
                     )
@@ -61,7 +61,7 @@ export const BallGameRoot = new TreeNode.Builder({
             .setLeft(
                 new TreeNode.Builder({
                     question: "야외 활동 어때?",
-                    choice: "장비 따위 필요 없어. 최고의 장비는 바로 나!",
+                    choice: "최고의 장비는 바로 나!",
                 })
                     .setLeft(
                         new TreeNode.Builder({
