@@ -2,6 +2,8 @@ import { Button } from "@/components/form/Button";
 import TopBar from "@/components/layout/TopBar";
 import { Text } from "@/components/typography";
 
+import { useResult } from "@/hooks/useResult";
+
 import aaa from "@/assets/images/dongari.svg";
 
 import {
@@ -18,6 +20,8 @@ import {
 } from "./ResultPage.styled";
 
 export default function ResultPage() {
+    const { name, mbti, result, navigate } = useResult();
+
     return (
         <>
             <TopBar title="결과 보기" />
@@ -25,48 +29,32 @@ export default function ResultPage() {
                 <ResultContainer>
                     <TitleContainer>
                         <Text size="s" color="gray">
-                            OOO님의 동BTI는...
+                            {name}님의 동BTI는...
                         </Text>
                         <Text size="l" color="primary" weight="bold">
-                            유니크한 체육을 즐기는 스포츠맨형
+                            {result.typeName}
                         </Text>
                     </TitleContainer>
                     <Line />
                     <Text size="m" weight="bold">
-                        OOO님을 위한 추천 동아리
+                        {name}님을 위한 추천 동아리
                     </Text>
 
                     <ClubItems>
-                        <ClubItem>
-                            <ClubTitle>수중탐사대</ClubTitle>
-                            <ClubDescription>
-                                <Text size="xs">더 넓고, 더 깊은 바다로!</Text>
-                                <Text size="xs" weight="bold">
-                                    경북대학교 유일무이 스킨스쿠버 동아리
-                                </Text>
-                            </ClubDescription>
-                            <ClubImage src={aaa} alt="수중탐사대" />
-                        </ClubItem>
-                        <ClubItem>
-                            <ClubTitle>싸울아비</ClubTitle>
-                            <ClubDescription>
-                                <Text size="xs">조선시대 무기를 직접 휘두르는</Text>
-                                <Text size="xs" weight="bold">
-                                    경북대학교 유일무이 병장기 동아리
-                                </Text>
-                            </ClubDescription>
-                            <ClubImage src={aaa} alt="수중탐사대" />
-                        </ClubItem>
-                        <ClubItem>
-                            <ClubTitle>인질범</ClubTitle>
-                            <ClubDescription>
-                                <Text size="xs">한 번 타면 영원히 질주해요. 앉을 시간이 없! 어! 요!</Text>
-                                <Text size="xs" weight="bold">
-                                    인라인, 보드 동아리
-                                </Text>
-                            </ClubDescription>
-                            <ClubImage src={aaa} alt="수중탐사대" />
-                        </ClubItem>
+                        {result.clubs.map((club) => {
+                            return (
+                                <ClubItem>
+                                    <ClubTitle>{club}</ClubTitle>
+                                    <ClubDescription>
+                                        <Text size="xs">더 넓고, 더 깊은 바다로!</Text>
+                                        <Text size="xs" weight="bold">
+                                            경북대학교 유일무이 스킨스쿠버 동아리
+                                        </Text>
+                                    </ClubDescription>
+                                    <ClubImage src={aaa} alt="수중탐사대" />
+                                </ClubItem>
+                            );
+                        })}
                     </ClubItems>
 
                     <Text size="xs" weight="light">
@@ -75,12 +63,17 @@ export default function ResultPage() {
                 </ResultContainer>
 
                 <ButtonGroup>
-                    <Button width="100%" height="50px" variants="secondary">
+                    <Button width="100%" height="50px" variants="secondary" onClick={() => navigate("/")}>
                         <Text size="s" weight="extrabold">
                             다시 검사하기
                         </Text>
                     </Button>
-                    <Button width="100%" height="50px" variants="primary">
+                    <Button
+                        width="100%"
+                        height="50px"
+                        variants="primary"
+                        onClick={() => navigate(`/share?type=${mbti}`)}
+                    >
                         <Text size="s" weight="extrabold">
                             공유하기
                         </Text>
