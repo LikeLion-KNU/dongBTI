@@ -4,14 +4,13 @@ import { Text } from "@/components/typography";
 
 import { useResult } from "@/hooks/useResult";
 
-import aaa from "@/assets/images/dongari.svg";
-
 import clubs from "@/constants/clubs";
 
 import {
     ButtonGroup,
     ClubDescription,
     ClubImage,
+    ClubImageWrapper,
     ClubItem,
     ClubItems,
     ClubTitle,
@@ -67,7 +66,12 @@ export default function ResultPage() {
                                             {clubData.description}
                                         </Text>
                                     </ClubDescription>
-                                    <ClubImage src={aaa} alt={clubData.name} />
+                                    <ClubImageWrapper>
+                                        <ClubImage
+                                            src={new URL(`../assets/clubs/${clubData.name}.jpg`, import.meta.url).href}
+                                            alt={clubData.name}
+                                        />
+                                    </ClubImageWrapper>
                                 </ClubItem>
                             );
                         })}

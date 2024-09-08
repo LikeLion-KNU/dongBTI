@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 export const ResultWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    height: calc(100% - 60px);
+    height: 100%;
 
     padding-top: 60px;
 `;
@@ -36,18 +36,34 @@ export const ClubItem = styled.div`
     position: relative;
     border-radius: 1rem;
     background-color: white;
-    padding: 0.75rem 0 0.75rem 3.2rem;
+    padding: 0.75rem 0.25rem 0.75rem 3.2rem;
     margin-left: 1.6rem;
+    word-break: keep-all;
 `;
 
-export const ClubImage = styled.img`
+export const ClubImageWrapper = styled.div`
     position: absolute;
     top: 50%;
     left: -32px;
     transform: translateY(-50%);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     width: 64px;
     height: 64px;
     border-radius: 50%;
+    overflow: hidden;
+    background-color: white;
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.09);
+`;
+
+export const ClubImage = styled.img`
+    width: 64px;
+    height: auto;
+    object-fit: cover;
 `;
 
 export const ClubTitle = styled.div`
@@ -60,7 +76,7 @@ export const ClubTitle = styled.div`
 export const ClubDescription = styled.div`
     display: flex;
     flex-direction: column;
-    line-height: 1.35;
+    line-height: 1.4;
 `;
 
 export const ButtonGroup = styled.div`
