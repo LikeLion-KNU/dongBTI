@@ -53,13 +53,13 @@ export default function SelectPage() {
         setTimeout(() => {
             if (id === "left") {
                 if (root?.left?.getValue.question === null) {
-                    navigate(`/loading/${root?.left?.getValue.resultType}`);
+                    navigate(`/loading?type=${root?.left?.getValue.resultType}`);
                 } else {
                     setRoot(root?.left || null);
                 }
             } else if (id === "right") {
                 if (root?.right?.getValue.question === null) {
-                    navigate(`/loading/${root?.right?.getValue.resultType}`);
+                    navigate(`/loading?type=${root?.right?.getValue.resultType}`);
                 } else {
                     setRoot(root?.right || null);
                 }

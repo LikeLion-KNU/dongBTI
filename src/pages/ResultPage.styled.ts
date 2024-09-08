@@ -4,6 +4,8 @@ export const ResultWrapper = styled.div`
     display: flex;
     flex-direction: column;
     height: calc(100% - 60px);
+
+    padding-top: 60px;
 `;
 
 export const ResultContainer = styled.div`

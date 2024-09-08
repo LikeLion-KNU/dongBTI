@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import Footer from "@/components/display/Footer";
@@ -8,7 +8,7 @@ import { Input } from "@/components/form/Input";
 import { SideBar } from "@/components/navigation/SideBar";
 import { Text } from "@/components/typography/Text";
 
-import useAxios from "@/hooks/useAxios";
+import { useTotalStats } from "@/hooks/useTotalStats";
 
 import menuIcon from "@/assets/icons/menu.svg";
 import main from "@/assets/images/main.svg";
@@ -25,33 +25,21 @@ import {
 } from "./HomePage.style";
 import { useUserInfo } from "@/store/store";
 
-interface axiosProps {
-    total_count: number;
-}
-
 export default function HomePage() {
+    const { isPending, isError, totalCount } = useTotalStats();
     const navigate = useNavigate();
 
-    const name = useUserInfo((state) => state.name);
     const setName = useUserInfo((state) => state.setName);
     const setMajor = useUserInfo((state) => state.setMajor);
 
-    const [selectedMajor, setSelectedMajor] = React.useState<string>("");
-    const [isOpen, setIsOpen] = React.useState(false);
+    const [isOpen, setIsOpen] = useState<boolean>(false);
+    const [selectedMajor, setSelectedMajor] = useState<string>("");
 
     const handleSideBar = () => {
         setIsOpen(!isOpen);
     };
 
-    const { data, loading, error } = useAxios<axiosProps>(
-        {
-            url: `/stats/total`,
-            method: "GET",
-        },
-        [],
-    );
-
-    React.useEffect(() => {
+    useEffect(() => {
         setMajor(selectedMajor);
     }, [selectedMajor, setMajor]);
 
@@ -97,7 +85,6 @@ export default function HomePage() {
                         width="242px"
                         height="30px"
                         placeholder="이름을 입력하세용"
-                        value={name}
                         onChange={(e) => setName(e.currentTarget.value)}
                     />
                     <DropDown
@@ -123,19 +110,19 @@ export default function HomePage() {
                 </ButtonContainer>
 
                 <TextContainer>
-                    {loading && <Text size="xs">참여자 수를 불러오는 중...</Text>}
+                    {isPending && <Text size="xs">참여자 수를 불러오는 중...</Text>}
 
-                    {error && (
+                    {isError && (
                         <Text size="xs" color="red">
                             참여자 수를 불러오는데 실패했어요.
                         </Text>
                     )}
 
-                    {data && (
+                    {totalCount && (
                         <>
                             <Text size="xs">오늘까지 </Text>
                             <Text size="xs" color="primary" weight="bold">
-                                {data.total_count}명
+                                {totalCount}명
                             </Text>
                             <Text size="xs">이 참여했어요!</Text>
                         </>

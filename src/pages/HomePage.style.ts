@@ -6,7 +6,7 @@ export const HomePageWrapper = styled.div`
     align-items: center;
     position: relative;
     width: 100%;
-    height: 100vh;
+    height: 100%;
 `;
 
 export const Header = styled.div`
