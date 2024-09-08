@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 export const DongariImage = styled("img")`
     width: 15vh;
-    aspectratio: "1/1";
+    aspect-ratio: "1/1";
     margin-bottom: 55px;
 `;
 
