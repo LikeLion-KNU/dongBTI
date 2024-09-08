@@ -120,9 +120,6 @@ export default function SelectPage() {
                         </>
                     )}
                 </ButtonWrapper>
-                <div style={{ position: "fixed", bottom: "0", left: "50", margin: "0 0 10px 0" }}>
-                    <Footer />
-                </div>
             </SelectPageWrapper>
         </>
     );
