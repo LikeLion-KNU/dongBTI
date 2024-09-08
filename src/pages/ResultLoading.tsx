@@ -38,10 +38,7 @@ const ResultLoading: React.FC = () => {
 
     useEffect(() => {
         if (!loading) {
-            const timer = setTimeout(() => {
-                navigate(`/result/${resultType}`);
-            }, 1540 * 2);
-            return () => clearTimeout(timer);
+            navigate(`/result/${resultType}`);
         }
     }, [loading]);
 
