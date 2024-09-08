@@ -78,7 +78,7 @@ export default function SelectPage() {
                     <Text size="xl">{root?.getValue.question}</Text>
                 ) : (
                     <Text size="m" style={{ textAlign: "center", fontWeight: "bold" }}>
-                        두근두근 설레는 가두보집! <br /> 동아리 부스가 엄청 많다! <br /> 어느 분야부터 설명을 들어볼까?
+                        두근두근 설레는 가두모집! <br /> 동아리 부스가 엄청 많다! <br /> 어느 분야부터 설명을 들어볼까?
                     </Text>
                 )}
                 <ButtonWrapper variants={root === null ? "field" : "choice"}>
