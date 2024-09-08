@@ -20,6 +20,7 @@ import {
     ResultWrapper,
     TitleContainer,
 } from "./ResultPage.styled";
+import { css } from "@emotion/react";
 
 export default function ResultPage() {
     const { name, mbti, result, navigate } = useResult();
@@ -54,7 +55,14 @@ export default function ResultPage() {
                                 <ClubItem>
                                     <ClubTitle>{clubData.name}</ClubTitle>
                                     <ClubDescription>
-                                        <Text size="xs">{clubData.summary}</Text>
+                                        <Text
+                                            size="xs"
+                                            css={css`
+                                                padding-bottom: 0.25rem;
+                                            `}
+                                        >
+                                            {clubData.summary}
+                                        </Text>
                                         <Text size="xs" weight="bold">
                                             {clubData.description}
                                         </Text>
