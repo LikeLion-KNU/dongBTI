@@ -91,7 +91,7 @@ export default function SelectPage() {
                                 variants={selectedButton === "left" ? "primary" : "select"}
                                 onClick={handleClick}
                             >
-                                <Text size="m">{root?.left?.getValue.choice}</Text>
+                                <Text size="s">{root?.left?.getValue.choice}</Text>
                             </Button>
                             <Button
                                 id="right"
@@ -100,7 +100,7 @@ export default function SelectPage() {
                                 variants={selectedButton === "right" ? "primary" : "select"}
                                 onClick={handleClick}
                             >
-                                <Text size="m">{root?.right?.getValue.choice}</Text>
+                                <Text size="s">{root?.right?.getValue.choice}</Text>
                             </Button>
                         </>
                     ) : (
@@ -114,7 +114,7 @@ export default function SelectPage() {
                                     variants={selectedButton === `root${index}` ? "primary" : "select"}
                                     onClick={handleClick}
                                 >
-                                    <Text size="m">{value}</Text>
+                                    <Text size="s">{value}</Text>
                                 </Button>
                             ))}
                         </>
