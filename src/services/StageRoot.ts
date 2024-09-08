@@ -61,7 +61,7 @@ export const StageRoot = new TreeNode.Builder({
             .setRight(
                 new TreeNode.Builder({
                     question: "노래부르는거 좋아해?",
-                    choice: "나는 악기 연주보다는 다른 걸 하고 싶어",
+                    choice: "나는 다른 걸 하고 싶어",
                 })
                     .setLeft(
                         new TreeNode.Builder({

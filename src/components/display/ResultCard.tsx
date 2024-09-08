@@ -20,7 +20,7 @@ export const ResultCard: React.FC<ResultCardProps> = ({ props }) => {
     return (
         <ResultCardWrapper color={props.color}>
             <RSC.LeftContent>
-                <img width="96px" height="96px" src={`src/assets/share/${props.emoji}.svg`} />
+                <img width="96px" height="96px" src={`${props.emoji}.svg`} />
             </RSC.LeftContent>
             <RSC.RightContent>
                 <Text size="s" weight="bold" color="#ffffff">
@@ -30,7 +30,7 @@ export const ResultCard: React.FC<ResultCardProps> = ({ props }) => {
                     <Text size="xl" weight="heavy" color="#ffffff">
                         {props.dbti_type}
                     </Text>
-                    <Text size="s" weight="bold" color="#ffffff">
+                    <Text size="xs" weight="bold" color="#ffffff">
                         {props.dbti_name}
                     </Text>
                 </div>

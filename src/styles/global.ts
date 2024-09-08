@@ -46,5 +46,11 @@ export const GlobalStyle = css`
         --color-primary-200: #9df2ec;
         --color-primary-100: #cef9f5;
         --color-primary-50: #f1fcfb;
+
+        --card-color-sports: #559de0;
+        --card-color-art: #ff77b8;
+        --card-color-academic: #895bf1;
+        --card-color-social: #d1d523;
+        --card-color-religion: #56c87c;
     }
 `;

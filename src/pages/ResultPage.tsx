@@ -4,12 +4,13 @@ import { Text } from "@/components/typography";
 
 import { useResult } from "@/hooks/useResult";
 
-import aaa from "@/assets/images/dongari.svg";
+import clubs from "@/constants/clubs";
 
 import {
     ButtonGroup,
     ClubDescription,
     ClubImage,
+    ClubImageWrapper,
     ClubItem,
     ClubItems,
     ClubTitle,
@@ -18,6 +19,7 @@ import {
     ResultWrapper,
     TitleContainer,
 } from "./ResultPage.styled";
+import { css } from "@emotion/react";
 
 export default function ResultPage() {
     const { name, mbti, result, navigate } = useResult();
@@ -42,16 +44,34 @@ export default function ResultPage() {
 
                     <ClubItems>
                         {result.clubs.map((club) => {
+                            let clubData = clubs.find((c) => c.name === club);
+
+                            if (!clubData) {
+                                return null;
+                            }
+
                             return (
                                 <ClubItem>
-                                    <ClubTitle>{club}</ClubTitle>
+                                    <ClubTitle>{clubData.name}</ClubTitle>
                                     <ClubDescription>
-                                        <Text size="xs">더 넓고, 더 깊은 바다로!</Text>
+                                        <Text
+                                            size="xs"
+                                            css={css`
+                                                padding-bottom: 0.25rem;
+                                            `}
+                                        >
+                                            {clubData.summary}
+                                        </Text>
                                         <Text size="xs" weight="bold">
-                                            경북대학교 유일무이 스킨스쿠버 동아리
+                                            {clubData.description}
                                         </Text>
                                     </ClubDescription>
-                                    <ClubImage src={aaa} alt="수중탐사대" />
+                                    <ClubImageWrapper>
+                                        <ClubImage
+                                            src={new URL(`../assets/clubs/${clubData.name}.jpg`, import.meta.url).href}
+                                            alt={clubData.name}
+                                        />
+                                    </ClubImageWrapper>
                                 </ClubItem>
                             );
                         })}
