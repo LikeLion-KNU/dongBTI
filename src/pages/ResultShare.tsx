@@ -69,8 +69,8 @@ export default function ResultShare() {
         dbti_type: `${result.department.charAt(0).toUpperCase() + result.department.slice(1)} 타입`,
         dbti_name: result.typeName,
         cardOrder: cardOrder,
-        color: `var(--card-color-${result.department})`,
-        emoji: result.department,
+        color: `var(--card-color-${result.iconName})`,
+        emoji: result.iconName,
     };
 
     return (
