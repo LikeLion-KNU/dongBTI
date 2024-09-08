@@ -3,11 +3,13 @@ import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 import { RootLayout } from "./components/layout/RootLayout";
 import AnalyticsPage from "./pages/AnalyticsPage";
+import CreditPage from "./pages/CreditPage";
 import HomePage from "./pages/HomePage";
 import LoadingPage from "./pages/ResultLoading";
 import ResultPage from "./pages/ResultPage";
 import ResultShare from "./pages/ResultShare";
 import SelectPage from "./pages/SelectPage";
+
 import "@/transition/fade-slide.css";
 
 export const Router = () => {
@@ -24,6 +26,7 @@ export const Router = () => {
                         <Route path="/share" element={<ResultShare />}></Route>
                         <Route path="/select" element={<SelectPage />}></Route>
                         <Route path="/analytics" element={<AnalyticsPage />}></Route>
+                      <Route path="/credits" element={<CreditPage />}></Route>
                     </Route>
                 </Routes>
             </CSSTransition>
