@@ -1,4 +1,4 @@
-const results = [
+export const results = [
     {
         resultType: "intenseSportsman",
         clubs: ["센토", "맨투맨", "동그라미", "오렌지파이터스"],
