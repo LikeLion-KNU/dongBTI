@@ -40,7 +40,7 @@ const ResultLoading: React.FC = () => {
         if (!loading) {
             const timer = setTimeout(() => {
                 navigate(`/result/${resultType}`);
-            }, 1540 * 6);
+            }, 1540 * 2);
             return () => clearTimeout(timer);
         }
     }, [loading]);
