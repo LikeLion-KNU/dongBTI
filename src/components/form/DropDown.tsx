@@ -6,11 +6,17 @@ export interface DropDownProps {
     color: string;
     width: string;
     height: string;
-    selectedMajor?: string;
-    setSelectedMajor?: React.Dispatch<React.SetStateAction<string>>;
+    selectedDepartment?: string;
+    setSelectedDepartment?: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export default function DropDown({ color, width, height, selectedMajor, setSelectedMajor }: DropDownProps) {
+export default function DropDown({
+    color,
+    width,
+    height,
+    selectedDepartment: selectedMajor,
+    setSelectedDepartment: setSelectedMajor,
+}: DropDownProps) {
     const majors = [
         { label: "📖 인문대학", value: "humanities" },
         { label: "📋 사회과학대학", value: "social-sciences" },
