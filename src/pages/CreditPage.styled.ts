@@ -7,7 +7,9 @@ export const Content = styled.div`
 export const FixedBackground = styled.div`
     position: fixed;
     top: 60px;
-    left: 0;
+    left: 50%;
+    right: 0;
+    transform: translate(-50%);
     background: linear-gradient(157deg, rgba(93, 238, 238, 1) 0%, rgba(255, 255, 255, 1) 100%);
     width: 100vw;
     height: 100vh;
@@ -36,7 +38,14 @@ export const MessageBox = styled.div`
     border-radius: 20px;
 
     background-color: white;
-    box-shadow: 2px 2px 30px #00000030;
+    box-shadow: 2px 2px 30px #00000010;
 
     margin-bottom: 50px;
+`;
+
+export const ProfileWrapper = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    flex-shrink: 1;
 `;

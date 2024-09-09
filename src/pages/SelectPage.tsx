@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { CSSTransition } from "react-transition-group";
 
 import { Button } from "@/components/form/Button";
 import { Text } from "@/components/typography";
@@ -14,7 +14,7 @@ import { TreeNode } from "@/services/TreeNode";
 
 import dongari from "@/assets/images/dongari.svg";
 
-import { ButtonWrapper, SelectPageWrapper } from "./SelectPage.style";
+import { ButtonWrapper, SelectPageWrapper, TransitionWrapper } from "./SelectPage.style";
 import "@/transition/fade-slide.css";
 
 export default function SelectPage() {
@@ -55,7 +55,7 @@ export default function SelectPage() {
         setSelectedButton(id); // 클릭된 버튼 상태 저장
 
         setTimeout(() => {
-            setKeyProp(keyProp + 1);
+            setKeyProp(keyProp + 1); // 다음 전환 효과를 위한 key 변경
             if (id === "left") {
                 if (root?.left?.getValue.question === null) {
                     navigate(`/loading?type=${root?.left?.getValue.resultType}`);
@@ -71,15 +71,14 @@ export default function SelectPage() {
             } else if (id.startsWith("root")) {
                 setRoot(chooseSection((e.target as HTMLButtonElement).innerText));
             }
-            // setKeyProp(false); // 0.7초 후 다음 전환을 위해 false로 되돌림
             setSelectedButton(""); // 애니메이션 끝난 후 상태 초기화
         }, 700); // 0.5초 후에 root 변경
     }
 
     return (
-        <TransitionGroup style={{ width: "100%", position: "absolute", left: "0" }}>
+        <TransitionWrapper id="TransitionGroup" variants={root === null ? "field" : "choice"}>
             <CSSTransition key={keyProp} timeout={500} classNames="fade-slide">
-                <SelectPageWrapper variants={root === null ? "field" : "choice"}>
+                <SelectPageWrapper>
                     <img src={dongari} alt="동BTI" style={{ aspectRatio: "1/1", width: "20vh" }}></img>
                     {root ? (
                         <Text size="xl">{root?.getValue.question}</Text>
@@ -130,6 +129,6 @@ export default function SelectPage() {
                     </ButtonWrapper>
                 </SelectPageWrapper>
             </CSSTransition>
-        </TransitionGroup>
+        </TransitionWrapper>
     );
 }

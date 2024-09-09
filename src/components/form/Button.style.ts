@@ -5,6 +5,7 @@ export const ButtonElement = styled.button<ButtonProps>`
     font-family: NanumSquareNeo;
 
     width: ${(props) => props.width};
+    max-width: 800px;
     height: ${(props) => props.height};
 
     border-radius: 12px;

@@ -30,10 +30,10 @@ export const DropDownWrapper = styled.div<DropDownProps>`
 
 export const DropDownContainer = styled(Dropdown)`
     width: 100%;
-    font-size: 15px;
+    font-size: 13px;
     justify-content: center;
     align-items: center;
-    padding: 10px;
+    padding: 10px 16px;
 `;
 
 export const LabelContainer = styled.span<LabelProps>`

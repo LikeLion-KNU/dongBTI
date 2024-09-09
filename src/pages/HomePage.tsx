@@ -83,7 +83,7 @@ export default function HomePage() {
                     <Input
                         variants="primary"
                         width="242px"
-                        height="30px"
+                        height="40px"
                         placeholder="이름을 입력하세용"
                         onChange={(e) => setName(e.currentTarget.value)}
                     />

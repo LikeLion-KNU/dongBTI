@@ -8,19 +8,22 @@ export const SideBarWrapper = styled.div`
     max-height: 100%;
     overflow-y: auto;
     width: 100%;
+    max-width: 800px;
     top: -80%;
     backdrop-filter: blur(10px);
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: #ffffff;
     position: fixed;
     align-items: flex-end;
     transition: 0.5s ease;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+    opacity: 0;
 
     &.open {
         top: 0;
+        opacity: 1;
         transition: 0.5s ease;
     }
-    img {
+    img.close {
         display: block;
         margin-left: auto;
         cursor: pointer;
@@ -37,5 +40,24 @@ export const Menu = styled.li`
     }
     &.active {
         color: #37cdcd;
+    }
+`;
+
+export const Backdrop = styled.div`
+    transition: backdrop-filter 0.4s ease-in-out;
+
+    position: fixed;
+    top: -20px;
+    left: -20px;
+    right: -20px;
+    bottom: -20px;
+    background-color: #ffffff10;
+    backdrop-filter: blur(0px);
+    pointer-events: none;
+
+    z-index: 1;
+
+    &.open {
+        backdrop-filter: blur(10px);
     }
 `;
