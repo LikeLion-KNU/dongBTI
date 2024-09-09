@@ -1,20 +1,22 @@
 import { useEffect, useState } from "react";
 
-import { top10Response } from "@/pages/AnalyticsPage";
-
 import { api } from "@/config/axios";
 
-export const useTop10 = () => {
-    const [top10, setTop10] = useState<top10Response | null>(null);
+interface TotalCountResponse {
+    status: number;
+    total_count: number;
+}
+
+export const useTotalCount = () => {
+    const [totalCount, setTotalCount] = useState<number | null>(null);
     const [isPending, setIsPending] = useState<boolean>(false);
     const [isError, setIsError] = useState<boolean>(false);
-    const [totalCount, setTotalCount] = useState<number>(0);
 
     useEffect(() => {
         setIsPending(true);
         setIsError(false);
 
-        api.get<top10Response>(`/stats/top/mbti`)
+        api.get<TotalCountResponse>(`/stats/total`)
             .then((data) => {
                 setTotalCount(data.data.total_count);
             })

@@ -55,7 +55,7 @@ export default function AnalyticsPage() {
         top10ByDepartment,
         isPending: top10ByDepartmentLoading,
         isError: top10ByDepartmentError,
-    } = useTop10ByDepartment(selectedDepartment);
+    } = useTop10ByDepartment({ department: selectedDepartment });
 
     useEffect(() => {
         if (selectedDepartment) {
