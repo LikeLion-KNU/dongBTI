@@ -17,7 +17,7 @@ export const useTop10ByDepartment = (department: top10ByDepartmentProps) => {
         setIsPending(true);
         setIsError(false);
 
-        api.get<top10Response>(`/stats/top/department?key=${department}`)
+        api.get<top10Response>(`/stats/top/department?key=${department.department}`)
             .then((data) => {
                 setTop10ByDepartment({ top: data.data.top });
                 console.log(data.data.top);
@@ -28,7 +28,7 @@ export const useTop10ByDepartment = (department: top10ByDepartmentProps) => {
             .finally(() => {
                 setIsPending(false);
             });
-    }, [department]);
+    }, [department.department]);
 
     return { isPending, isError, top10ByDepartment };
 };
