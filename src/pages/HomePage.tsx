@@ -8,7 +8,7 @@ import { Input } from "@/components/form/Input";
 import { SideBar } from "@/components/navigation/SideBar";
 import { Text } from "@/components/typography/Text";
 
-import { useTotalStats } from "@/hooks/useTotalStats";
+import { useTotalCount } from "@/hooks/useTotalCount";
 
 import menuIcon from "@/assets/icons/menu.svg";
 import main from "@/assets/images/main.svg";
@@ -26,7 +26,7 @@ import {
 import { useUserInfo } from "@/store/store";
 
 export default function HomePage() {
-    const { isPending, isError, totalCount } = useTotalStats();
+    const { isPending, isError, totalCount } = useTotalCount();
     const navigate = useNavigate();
 
     const setName = useUserInfo((state) => state.setName);
@@ -83,7 +83,7 @@ export default function HomePage() {
                     <Input
                         variants="primary"
                         width="242px"
-                        height="30px"
+                        height="40px"
                         placeholder="이름을 입력하세용"
                         onChange={(e) => setName(e.currentTarget.value)}
                     />
@@ -91,8 +91,8 @@ export default function HomePage() {
                         color="primary"
                         width="242px"
                         height="30px"
-                        selectedMajor={selectedMajor}
-                        setSelectedMajor={setSelectedMajor}
+                        selectedDepartment={selectedMajor}
+                        setSelectedDepartment={setSelectedMajor}
                     />
                     <Text size="xs" color="#6E6E6E">
                         개인정보는 외부에 공유되지 않으니 안심하세용

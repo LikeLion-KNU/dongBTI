@@ -12,7 +12,7 @@ export const TopBarWrapper = styled.div`
     left: 50%;
     transform: translateX(-50%);
 
-    width: 100%;
+    background-color: #f6f9ff;
     height: 60px;
 
     // RootLayout의 max-width를 따라갑니다.
@@ -33,7 +33,6 @@ export const TopBarContainer = styled.div`
 
     border-bottom: 1px solid #e0e0e0;
     font-weight: 800;
-    background-color: white;
 
     & > img {
         position: absolute;

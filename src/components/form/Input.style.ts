@@ -2,14 +2,17 @@ import { InputProps } from "./Input";
 import styled from "@emotion/styled";
 
 export const InputElement = styled.input<InputProps>`
-    font-size: 15px;
+    transition: border-color 0.25s ease-in-out;
+
+    font-size: 13px;
     font-family: "NanumSquareNeo";
     width: ${(props) => props.width};
     height: ${(props) => props.height};
 
     border-radius: 12px;
-    border: none;
-    padding: 10px;
+    outline: 1px solid transparent;
+    border: 1px solid transparent;
+    padding: 10px 16px;
 
     background-color: ${(props) => {
         switch (props.variants) {
@@ -19,4 +22,8 @@ export const InputElement = styled.input<InputProps>`
                 return "#fff";
         }
     }};
+
+    &:focus {
+        border: 1px solid var(--color-primary);
+    }
 `;

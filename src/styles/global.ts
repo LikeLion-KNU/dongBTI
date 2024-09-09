@@ -6,6 +6,10 @@ export const GlobalStyle = css`
         padding: 0;
         border: 0;
         box-sizing: border-box;
+
+        // 스크롤바 숨김 처리
+        -ms-overflow-style: none; /* 인터넷 익스플로러 */
+        scrollbar-width: none; /* 파이어폭스 */
     }
 
     body {
@@ -25,6 +29,11 @@ export const GlobalStyle = css`
     }
     a {
         text-decoration: none;
+    }
+
+    // 스크롤바 숨김 처리 2
+    ::-webkit-scrollbar {
+        display: none;
     }
 
     :root {
