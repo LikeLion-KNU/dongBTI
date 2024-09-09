@@ -7,7 +7,7 @@ import { Text } from "@/components/typography";
 
 import BackIcon from "@/assets/back.svg";
 
-import { Content, FixedBackground, TitleHeader, MessageBox } from "./CreditPage.styled";
+import { Content, FixedBackground, TitleHeader, MessageBox, ProfileWrapper } from "./CreditPage.styled";
 
 const KimDaegeon = {
     name: "김대건",
@@ -20,7 +20,7 @@ const KimDaegeon = {
 
 const NamSoeon = {
     name: "남소은",
-    worklist: ["메인페이지", "통계 페이지", "디자인/구현"],
+    worklist: ["메인페이지", "통계 페이지 디자인/구현"],
     github_id: "2NNS-V",
     instagram_id: "2nns.v",
     grade_year: 21,
@@ -103,12 +103,14 @@ export default function CreditPage() {
                         Developers
                     </Text>
                 </TitleHeader>
-                <DeveloperProfile info={KimDaegeon} />
-                <DeveloperProfile info={NamSoeon} />
-                <DeveloperProfile info={ParkSinyoung} />
-                <DeveloperProfile info={JangGiwon} />
-                <DeveloperProfile info={JoJaeyong} />
-                <DeveloperProfile info={HwangBuyeon} />
+                <ProfileWrapper>
+                    <DeveloperProfile info={KimDaegeon} />
+                    <DeveloperProfile info={NamSoeon} />
+                    <DeveloperProfile info={ParkSinyoung} />
+                    <DeveloperProfile info={JangGiwon} />
+                    <DeveloperProfile info={JoJaeyong} />
+                    <DeveloperProfile info={HwangBuyeon} />
+                </ProfileWrapper>
                 <br />
                 <br />
                 <Credit />
