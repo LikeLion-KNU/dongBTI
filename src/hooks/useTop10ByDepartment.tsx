@@ -1,13 +1,15 @@
 import { useState, useEffect } from "react";
 
+import { top10Response } from "@/pages/AnalyticsPage";
+
 import { api } from "@/config/axios";
 
-interface Top10Response {
-    top: [string, number][];
+interface top10ByDepartmentProps {
+    department: string;
 }
 
-export const useTop10ByDepartment = (department: string) => {
-    const [top10ByDepartment, setTop10ByDepartment] = useState<Top10Response | null>(null);
+export const useTop10ByDepartment = (department: top10ByDepartmentProps) => {
+    const [top10ByDepartment, setTop10ByDepartment] = useState<top10Response | null>(null);
     const [isPending, setIsPending] = useState<boolean>(false);
     const [isError, setIsError] = useState<boolean>(false);
 
@@ -15,10 +17,10 @@ export const useTop10ByDepartment = (department: string) => {
         setIsPending(true);
         setIsError(false);
 
-        api.get<Top10Response>(`/stats/top/department?key=${department}`)
+        api.get<top10Response>(`/stats/top/department?key=${department}`)
             .then((data) => {
                 setTop10ByDepartment({ top: data.data.top });
-                console.log("top10 by department", data.data.top);
+                console.log(data.data.top);
             })
             .catch(() => {
                 setIsError(true);
