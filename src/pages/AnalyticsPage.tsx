@@ -89,12 +89,14 @@ export default function AnalyticsPage() {
                 <TitleTop>
                     <DropDown
                         color="secondary"
-                        width="100%"
+                        width="160px"
                         height="40px"
                         selectedMajor={selectedMajor}
                         setSelectedMajor={setSelectedMajor}
                     />
-                    <Text size="m">에서</Text>
+                    <Text size="m" weight="bold">
+                        에서
+                    </Text>
                 </TitleTop>
 
                 <Text size="m">어떤 유형이 가장 많을까요?</Text>
