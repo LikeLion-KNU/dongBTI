@@ -1,4 +1,5 @@
 import path from "path";
+import { visualizer } from "rollup-plugin-visualizer";
 import { defineConfig } from "vite";
 
 import react from "@vitejs/plugin-react";
@@ -11,6 +12,10 @@ export default defineConfig({
             babel: {
                 plugins: ["@emotion/babel-plugin"],
             },
+        }),
+        visualizer({
+            filename: "./docs/bundle.html",
+            open: true,
         }),
     ],
     resolve: {
