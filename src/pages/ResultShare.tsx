@@ -69,8 +69,8 @@ export default function ResultShare() {
         dbti_type: `${result.department.charAt(0).toUpperCase() + result.department.slice(1)} 타입`,
         dbti_name: result.typeName,
         cardOrder: cardOrder,
-        color: `var(--card-color-${result.department})`,
-        emoji: result.department,
+        color: `var(--card-color-${result.iconName})`,
+        emoji: result.iconName,
     };
 
     return (
@@ -89,7 +89,7 @@ export default function ResultShare() {
                 {/* ResultCardDiv 기준으로 이미지가 다운로드됩니다. */}
                 <ResultCardDiv ref={cardRef}>
                     <ResultCard props={props} />
-                    <ShareLink link={link} color={`var(--card-color-${result.department})`} />
+                    <ShareLink link={link} color={`var(--card-color-${result.iconName})`} />
                 </ResultCardDiv>
                 <Button onClick={cardDownload} width="100%" height="60px" variants="primary">
                     <Text size="s" weight="extrabold">
