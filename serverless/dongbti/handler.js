@@ -38,14 +38,46 @@ const departmentTypes = [
     "undeclared",
 ];
 
+const resultTypes = [
+    "intenseSportsman",
+    "coatSportsman",
+    "compatitionSportsman",
+    "fontSportsman",
+    "natureSportsman",
+    "matSportsman",
+    "fightSportsman",
+    "uniqueSportsman",
+    "10cm",
+    "tchaikovsky",
+    "stageMusician",
+    "mozart",
+    "parkHyoShin",
+    "newJeans",
+    "macGyver",
+    "cutieArtist",
+    "leedongjin",
+    "multiArtist",
+    "heatDebater",
+    "siliconValley",
+    "creator",
+    "winner",
+    "scholar",
+    "god",
+    "budda",
+    "hyunwoojin",
+    "philanthropist",
+    "teresa",
+    "american",
+];
+
 // 사용자의 MBTI와 학과를 저장하고 통계 업데이트
 app.post("/stats", async (req, res) => {
     const { department, mbti } = req.body;
 
     if (!departmentTypes.includes(department))
         return res.status(400).json({ status: 400, message: "department 의 값이 유효하지 않습니다" });
-    if (typeof mbti !== "string")
-        return res.status(400).json({ status: 400, message: "mbti 는 string 값이어야 합니다" });
+    if (!resultTypes.includes(mbti))
+        return res.status(400).json({ status: 400, message: "mbti 의 값이 유효하지 않습니다" });
 
     const userId = uuid();
 
@@ -57,13 +89,33 @@ app.post("/stats", async (req, res) => {
             }),
         );
 
-        const stats = await db.send(
+        const totalStats = await db.send(
             new GetCommand({
                 TableName: STATS_TABLE,
                 Key: { id: "total_count" },
             }),
         );
-        const total_count = stats.Item.total_count || 0;
+        const total_count = totalStats.Item.total_count || 0;
+
+        const mbtiStats = await db.send(
+            new GetCommand({
+                TableName: STATS_TABLE,
+                Key: { id: "mbti" },
+            }),
+        );
+        const mbtiCount = mbtiStats.Item[mbti];
+
+        await db.send(
+            new UpdateCommand({
+                TableName: STATS_TABLE,
+                Key: { id: "mbti" },
+                UpdateExpression: `set ${mbti} = :updated_count`,
+                ExpressionAttributeValues: {
+                    ":updated_count": mbtiCount + 1,
+                },
+            }),
+        );
+
         await db.send(
             new UpdateCommand({
                 TableName: STATS_TABLE,
@@ -76,6 +128,31 @@ app.post("/stats", async (req, res) => {
         );
 
         return res.status(201).json({ status: 201, data: { id: userId, total_count: total_count + 1 } });
+    } catch (e) {
+        console.error(e);
+        return res.status(500).json({ status: 500, message: "서버 내부 오류 발생" });
+    }
+});
+
+app.get("/stats", async (req, res) => {
+    const { type } = req.query;
+
+    if (!resultTypes.includes(type))
+        return res.status(400).json({ status: 400, message: "type 값은 string 이어야 합니다" });
+
+    const params = {
+        TableName: STATS_TABLE,
+        Key: { id: "mbti" },
+    };
+    try {
+        const data = await db.send(new GetCommand(params));
+        const totalCount = await db.send(
+            new GetCommand({
+                TableName: STATS_TABLE,
+                Key: { id: "total_count" },
+            }),
+        );
+        return res.status(200).json({ status: 200, count: data.Item[type], total_count: totalCount.Item.total_count });
     } catch (e) {
         console.error(e);
         return res.status(500).json({ status: 500, message: "서버 내부 오류 발생" });
