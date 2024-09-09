@@ -13,11 +13,11 @@ import backIcon from "@/assets/back.svg";
 
 import { TitleContainer, TitleTop, Main, MiddleSection, TableContainer, Card, Rank, Type } from "./AnalyticsPage.style";
 
-interface axiosProps {
+export interface top10Response {
     top: [string, number][];
 }
 
-const renderData = (data: axiosProps | null, isPending: boolean, isError: any) => {
+const renderData = (data: top10Response | null, isPending: boolean, isError: any) => {
     if (isPending) return <Text size="m">로딩중...</Text>;
     if (isError) return <Text size="m">오류가 발생했습니다.</Text>;
     if (!data) {
@@ -50,11 +50,11 @@ export default function AnalyticsPage() {
         navigate("/");
     };
 
-    const { top10, isPending: Top10Loading, isError: Top10Error } = useTop10();
+    const { top10, isPending: top10Loading, isError: top10Error } = useTop10();
     const {
         top10ByDepartment,
-        isPending: Top10ByDepartmentLoading,
-        isError: Top10ByDepartmentError,
+        isPending: top10ByDepartmentLoading,
+        isError: top10ByDepartmentError,
     } = useTop10ByDepartment(selectedDepartment);
 
     useEffect(() => {
@@ -74,7 +74,7 @@ export default function AnalyticsPage() {
                 </Text>
             </TitleContainer>
 
-            <Main>{renderData(top10, Top10Loading, Top10Error)}</Main>
+            <Main>{renderData(top10, top10Loading, top10Error)}</Main>
 
             <MiddleSection />
 
@@ -96,7 +96,10 @@ export default function AnalyticsPage() {
                     어떤 유형이 가장 많을까요?
                 </Text>
             </TitleContainer>
-            <Main>{renderData(top10ByDepartment, Top10ByDepartmentLoading, Top10ByDepartmentError)}</Main>
+            <Main>
+                {selectedDepartment && renderData(top10ByDepartment, top10ByDepartmentLoading, top10ByDepartmentError)}
+            </Main>
+            <Footer />
         </>
     );
 }
