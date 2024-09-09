@@ -43,6 +43,10 @@ export default function DropDown({ color, width, height, selectedMajor, setSelec
                 optionLabel="label"
                 placeholder="단과 대학을 선택하세용"
                 itemTemplate={(option) => <LabelContainer color={color}>{option.label}</LabelContainer>}
+                panelStyle={{
+                    borderRadius: "16px",
+                    overflow: "hidden",
+                }}
             />
         </DropDownWrapper>
     );

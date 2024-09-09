@@ -10,10 +10,12 @@ export const SideBarWrapper = styled.div`
     width: 100%;
     top: -80%;
     backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.7);
     position: fixed;
     align-items: flex-end;
     transition: 0.5s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
     &.open {
         top: 0;
         transition: 0.5s ease;
@@ -29,6 +31,7 @@ export const Menu = styled.li`
     margin: 20px 8px;
     list-style-type: none;
     cursor: pointer;
+
     &:hover {
         color: #37cdcd;
     }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import closeIcon from "@/assets/icons/close.svg";
@@ -14,7 +14,7 @@ export const SideBar = ({ isOpen, setIsOpen }: SideBarProps) => {
     const outside = React.useRef<HTMLDivElement>(null);
     const navigate = useNavigate();
 
-    React.useEffect(() => {
+    useEffect(() => {
         document.addEventListener("mousedown", handlerOutside);
         return () => {
             document.removeEventListener("mousedown", handlerOutside);
