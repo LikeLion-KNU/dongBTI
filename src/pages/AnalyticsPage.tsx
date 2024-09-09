@@ -87,7 +87,7 @@ export default function AnalyticsPage() {
                         selectedDepartment={selectedDepartment}
                         setSelectedDepartment={setSelectedDepartment}
                     />
-                    <Text size="m" weight="bold" style={{ marginLeft: "10px" }}>
+                    <Text size="m" weight="bold">
                         에서
                     </Text>
                 </TitleTop>
