@@ -11,9 +11,9 @@ export const TitleContainer = styled.div`
 
 export const TitleTop = styled.div`
     display: flex;
-    width: 60%;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
+    flex-direction: row;
 `;
 
 export const Main = styled.div``;

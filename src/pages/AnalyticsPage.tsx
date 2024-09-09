@@ -82,12 +82,12 @@ export default function AnalyticsPage() {
                 <TitleTop>
                     <DropDown
                         color="secondary"
-                        width="100%"
+                        width="160px"
                         height="40px"
                         selectedDepartment={selectedDepartment}
                         setSelectedDepartment={setSelectedDepartment}
                     />
-                    <Text size="m" weight="bold" style={{ marginLeft: "10px" }}>
+                    <Text size="m" weight="bold">
                         에서
                     </Text>
                 </TitleTop>
