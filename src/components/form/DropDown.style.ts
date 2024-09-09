@@ -9,7 +9,7 @@ interface LabelProps {
 const getBackgroundColor = (color: string) => {
     switch (color) {
         case "primary":
-            return "#ECECEC";
+            return "#EDF1F7";
         case "secondary":
             return "#fff";
         default:

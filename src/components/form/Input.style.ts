@@ -14,7 +14,7 @@ export const InputElement = styled.input<InputProps>`
     background-color: ${(props) => {
         switch (props.variants) {
             case "primary":
-                return "#ECECEC";
+                return "#EDF1F7";
             case "secondary":
                 return "#fff";
         }
