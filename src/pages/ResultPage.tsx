@@ -2,6 +2,7 @@ import { Button } from "@/components/form/Button";
 import TopBar from "@/components/layout/TopBar";
 import { Text } from "@/components/typography";
 
+import { useRatioResult } from "@/hooks/useRatioResult";
 import { useResult } from "@/hooks/useResult";
 
 import clubs from "@/constants/clubs";
@@ -23,6 +24,8 @@ import { css } from "@emotion/react";
 
 export default function ResultPage() {
     const { name, mbti, result, navigate } = useResult();
+
+    const { isPending, totalCount, mbtiCount } = useRatioResult();
 
     return (
         <>
@@ -78,7 +81,11 @@ export default function ResultPage() {
                     </ClubItems>
 
                     <Text size="xs" weight="light">
-                        <b>3,800명</b>의 참가자 중 <b>38명</b>이 이 유형이 나왔어요!
+                        {!isPending && (
+                            <>
+                                <b>{totalCount}명</b>의 참가자 중 <b>{mbtiCount}명</b>이 이 유형이 나왔어요!
+                            </>
+                        )}
                     </Text>
                 </ResultContainer>
 

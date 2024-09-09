@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 import Footer from "@/components/display/Footer";
 import { Button } from "@/components/form/Button";
@@ -29,8 +30,7 @@ export default function HomePage() {
     const { isPending, isError, totalCount } = useTotalCount();
     const navigate = useNavigate();
 
-    const setName = useUserInfo((state) => state.setName);
-    const setMajor = useUserInfo((state) => state.setMajor);
+    const userInfo = useUserInfo((state) => state);
 
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const [selectedMajor, setSelectedMajor] = useState<string>("");
@@ -39,9 +39,21 @@ export default function HomePage() {
         setIsOpen(!isOpen);
     };
 
+    const handleStart = () => {
+        if (!userInfo.name) {
+            toast.error("이름을 입력해주세용");
+            return;
+        }
+        if (!userInfo.major) {
+            toast.error("단과대학을 입력해주세용");
+            return;
+        }
+        navigate("/select");
+    };
+
     useEffect(() => {
-        setMajor(selectedMajor);
-    }, [selectedMajor, setMajor]);
+        userInfo.setMajor(selectedMajor);
+    }, [selectedMajor, userInfo.setMajor]);
 
     return (
         <HomePageWrapper>
@@ -85,7 +97,7 @@ export default function HomePage() {
                         width="242px"
                         height="40px"
                         placeholder="이름을 입력하세용"
-                        onChange={(e) => setName(e.currentTarget.value)}
+                        onChange={(e) => userInfo.setName(e.currentTarget.value)}
                     />
                     <DropDown
                         color="primary"
@@ -105,7 +117,7 @@ export default function HomePage() {
                         width="242px"
                         height="55px"
                         children="테스트 시작하기"
-                        onClick={() => navigate("/select")}
+                        onClick={handleStart}
                     />
                 </ButtonContainer>
 

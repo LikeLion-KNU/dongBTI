@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Footer from "@/components/display/Footer";
 import DropDown from "@/components/form/DropDown";
 import TopBar from "@/components/layout/TopBar";
+import { TopBarContainer, TopBarWrapper } from "@/components/layout/TopBar.styled";
 import { Text } from "@/components/typography";
 
 import { useTop10 } from "@/hooks/useTop10";
@@ -13,7 +14,17 @@ import backIcon from "@/assets/back.svg";
 
 import { results } from "@/constants/results";
 
-import { TitleContainer, TitleTop, Main, MiddleSection, TableContainer, Card, Rank, Type } from "./AnalyticsPage.style";
+import {
+    TitleContainer,
+    TitleTop,
+    Main,
+    MiddleSection,
+    TableContainer,
+    Card,
+    Rank,
+    Type,
+    AnalyticsPageWrapper,
+} from "./AnalyticsPage.style";
 
 export interface top10Response {
     top: [string, number][];
@@ -67,9 +78,17 @@ export default function AnalyticsPage() {
     }, [selectedDepartment]);
 
     return (
-        <>
-            <img src={backIcon} onClick={handleGoBack} />
+        <AnalyticsPageWrapper>
             <TopBar title="전체 통계" />
+
+            <TopBarWrapper>
+                <TopBarContainer>
+                    <img src={backIcon} onClick={handleGoBack} />
+                    <Text size="m" weight="extrabold">
+                        전체 통계
+                    </Text>
+                </TopBarContainer>
+            </TopBarWrapper>
 
             <TitleContainer>
                 <Text size="m" weight="bold">
@@ -103,6 +122,6 @@ export default function AnalyticsPage() {
                 {selectedDepartment && renderData(top10ByDepartment, top10ByDepartmentLoading, top10ByDepartmentError)}
             </Main>
             <Footer />
-        </>
+        </AnalyticsPageWrapper>
     );
 }
