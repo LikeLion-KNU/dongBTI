@@ -1,24 +1,25 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import DropDown from "@/components/form/DropDown";
 import TopBar from "@/components/layout/TopBar";
 import { Text } from "@/components/typography";
 
-import useAxios from "@/hooks/useAxios";
+import { useTop10 } from "@/hooks/useTop10";
+import { useTop10ByDepartment } from "@/hooks/useTop10ByDepartment";
 
 import backIcon from "@/assets/back.svg";
 
 import { TitleContainer, TitleTop, Main, MiddleSection, TableContainer, Card, Rank, Type } from "./AnalyticsPage.style";
 
 interface axiosProps {
-    top: Array<[number, string]>;
+    top: [string, number][];
 }
 
-const renderData = (data: axiosProps | null, loading: boolean, error: any) => {
-    if (loading) return <Text size="m">Loading...</Text>;
-    if (error) return <Text size="m">Error: {error.message}</Text>;
-    if (data?.top.length == 0) {
+const renderData = (data: axiosProps | null, isPending: boolean, isError: any) => {
+    if (isPending) return <Text size="m">로딩중...</Text>;
+    if (isError) return <Text size="m">오류가 발생했습니다.</Text>;
+    if (!data) {
         return (
             <Text size="m" color="secondary">
                 데이터가 존재하지 않습니다.
@@ -41,36 +42,25 @@ const renderData = (data: axiosProps | null, loading: boolean, error: any) => {
 };
 
 export default function AnalyticsPage() {
-    const [selectedMajor, setSelectedMajor] = React.useState<string>("humanities");
+    const [selectedDepartment, setSelectedDepartment] = useState<string>("");
     const navigate = useNavigate();
 
     const handleGoBack = () => {
         navigate("/");
     };
 
+    const { top10, isPending: Top10Loading, isError: Top10Error } = useTop10();
     const {
-        data: allData,
-        loading: allDataLoading,
-        error: allDataError,
-    } = useAxios<axiosProps | null>(
-        {
-            url: `/stats/top/mbti`,
-            method: "GET",
-        },
-        [],
-    );
+        top10ByDepartment,
+        isPending: Top10ByDepartmentLoading,
+        isError: Top10ByDepartmentError,
+    } = useTop10ByDepartment(selectedDepartment);
 
-    const {
-        data: majorData,
-        loading: majorDataLoading,
-        error: majorDataError,
-    } = useAxios<axiosProps | null>(
-        {
-            url: `/stats/top/department?key=${selectedMajor}`,
-            method: "GET",
-        },
-        [selectedMajor],
-    );
+    useEffect(() => {
+        if (selectedDepartment) {
+            setSelectedDepartment(selectedDepartment);
+        }
+    }, [selectedDepartment]);
 
     return (
         <>
@@ -81,7 +71,7 @@ export default function AnalyticsPage() {
                 <Text size="m">어떤 유형이 가장 많을까요?</Text>
             </TitleContainer>
 
-            <Main>{renderData(allData, allDataLoading, allDataError)}</Main>
+            <Main>{renderData(top10, Top10Loading, Top10Error)}</Main>
 
             <MiddleSection />
 
@@ -91,15 +81,15 @@ export default function AnalyticsPage() {
                         color="secondary"
                         width="100%"
                         height="40px"
-                        selectedMajor={selectedMajor}
-                        setSelectedMajor={setSelectedMajor}
+                        selectedDepartment={selectedDepartment}
+                        setSelectedDepartment={setSelectedDepartment}
                     />
                     <Text size="m">에서</Text>
                 </TitleTop>
 
                 <Text size="m">어떤 유형이 가장 많을까요?</Text>
             </TitleContainer>
-            <Main>{renderData(majorData, majorDataLoading, majorDataError)}</Main>
+            <Main>{renderData(top10ByDepartment, Top10ByDepartmentLoading, Top10ByDepartmentError)}</Main>
         </>
     );
 }
