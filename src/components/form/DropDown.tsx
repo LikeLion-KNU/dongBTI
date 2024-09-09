@@ -1,7 +1,6 @@
 import React from "react";
 
 import { DropDownWrapper, DropDownContainer, LabelContainer } from "./DropDown.style";
-import { css } from "@emotion/react";
 
 export interface DropDownProps {
     color: string;
