@@ -11,6 +11,8 @@ import { useTop10ByDepartment } from "@/hooks/useTop10ByDepartment";
 
 import backIcon from "@/assets/back.svg";
 
+import { results } from "@/constants/results";
+
 import { TitleContainer, TitleTop, Main, MiddleSection, TableContainer, Card, Rank, Type } from "./AnalyticsPage.style";
 
 export interface top10Response {
@@ -27,13 +29,14 @@ const renderData = (data: top10Response | null, isPending: boolean, isError: any
             </Text>
         );
     }
+
     if (data && data.top) {
         return (
             <TableContainer>
                 {data.top.map((value, index) => (
                     <Card key={index}>
                         <Rank>{index + 1}위</Rank>
-                        <Type>{value[0]}</Type>
+                        <Type>{results.find((result) => result.resultType === value[0])?.typeName}</Type>
                     </Card>
                 ))}
             </TableContainer>
