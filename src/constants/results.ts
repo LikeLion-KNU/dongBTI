@@ -56,7 +56,7 @@ export const results = [
         department: "피지컬",
     },
     {
-        resultType: "10cm",
+        resultType: "tencm",
         clubs: ["청음반", "우리노래반"],
         typeName: "어쿠스틱 감성을 즐기는 10cm형",
         iconName: "art",
