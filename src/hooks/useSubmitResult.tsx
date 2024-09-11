@@ -21,6 +21,7 @@ export const useSubmitResult = () => {
             })
             .finally(() => {
                 setIsPending(false);
+                navigate(`/result?type=${mbti}`);
             });
     }, []);
 
