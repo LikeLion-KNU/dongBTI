@@ -23,7 +23,7 @@ export const StageRoot = new TreeNode.Builder({
                                 new TreeNode.Builder({
                                     question: null,
                                     choice: "어쿠스틱 감성 있지~",
-                                    resultType: "10cm",
+                                    resultType: "tencm",
                                 }).build(),
                             )
                             .setRight(
