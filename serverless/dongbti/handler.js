@@ -47,7 +47,7 @@ const resultTypes = [
     "matSportsman",
     "fightSportsman",
     "uniqueSportsman",
-    "10cm",
+    "tencm",
     "tchaikovsky",
     "stageMusician",
     "mozart",
