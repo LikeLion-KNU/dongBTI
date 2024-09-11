@@ -30,7 +30,7 @@ export interface top10Response {
     top: [string, number][];
 }
 
-const renderData = (data: top10Response | null, isPending: boolean, isError: any) => {
+const renderData = (data: top10Response | null, isPending: boolean, isError: boolean) => {
     if (isPending) return <Text size="m">로딩중...</Text>;
     if (isError) return <Text size="m">오류가 발생했습니다.</Text>;
     if (!data) {

@@ -6,7 +6,7 @@ import { useUserInfo } from "@/store/store";
 
 export const useSubmitResult = () => {
     const [isPending, setIsPending] = useState<boolean>(false);
-    const major = useUserInfo((state) => state.major);
+    const department = useUserInfo((state) => state.department);
 
     const navigate = useNavigate();
     const [searchParams] = useSearchParams();
@@ -15,7 +15,7 @@ export const useSubmitResult = () => {
         const mbti = searchParams.get("type");
         console.log(searchParams);
 
-        api.post("/stats", { department: major, mbti })
+        api.post("/stats", { department: department, mbti })
             .then(() => {
                 navigate(`/result?type=${mbti}`);
             })
