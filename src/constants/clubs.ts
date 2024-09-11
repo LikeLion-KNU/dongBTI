@@ -153,7 +153,7 @@ const clubs: Club[] = [
     },
     {
         name: "미담장학회",
-        summary: "소개글 없음",
+        summary: "다양한 교육봉사활동을 설계하고 실제로 진행하는 동아리입니다.",
         description: null,
         department: "social",
     },
@@ -165,8 +165,8 @@ const clubs: Club[] = [
     },
     {
         name: "수리영역",
-        summary: "소개글 없음",
-        description: null,
+        summary: "수리수리 마수리!",
+        description: "교내외 보수가 필요한 시설을 수리하는 동아리",
         department: "social",
     },
     {
@@ -177,7 +177,7 @@ const clubs: Club[] = [
     },
     {
         name: "한울회",
-        summary: "소개글 없음",
+        summary: "아람단 단원들과 함께하는 대학 연합 봉사 동아리",
         description: null,
         department: "social",
     },
@@ -207,8 +207,8 @@ const clubs: Club[] = [
     },
     {
         name: "IVF",
-        summary: "소개글 없음",
-        description: null,
+        summary: "캠퍼스 속의 하나님의 나라",
+        description: "IVF",
         department: "religious",
     },
     {
@@ -285,8 +285,8 @@ const clubs: Club[] = [
     },
     {
         name: "산악부",
-        summary: "소개글 없음",
-        description: null,
+        summary: "건강도 낭만도 재미도 챙기는",
+        description: "경북대 유일무이 산악부",
         department: "physical",
     },
     {
@@ -369,8 +369,8 @@ const clubs: Club[] = [
     },
     {
         name: "Now&Here",
-        summary: "소개글 없음",
-        description: null,
+        summary: "우리가 있는 지금 이 곳 경북대에서 미래를 만들자",
+        description: "경북대 진로설계 동아리",
         department: "academic",
     },
     {
@@ -393,8 +393,8 @@ const clubs: Club[] = [
     },
     {
         name: "솔라이브",
-        summary: "소개글 없음",
-        description: null,
+        summary: "창업가들의 동아리",
+        description: "솔라이브입니다.",
         department: "academic",
     },
     {
@@ -411,13 +411,13 @@ const clubs: Club[] = [
     },
     {
         name: "에이스",
-        summary: "소개글 없음",
-        description: null,
+        summary: "경제 시사 발표 및 토의 동아리",
+        description: "ACE(About Current Economy)입니다.",
         department: "academic",
     },
     {
         name: "H.P",
-        summary: "소개글 없음",
+        summary: "펌프, 환영합니다, 리듬 오락",
         description: null,
         department: "academic",
     },

@@ -95,14 +95,14 @@ export default function HomePage() {
                     <Input
                         variants="primary"
                         width="242px"
-                        height="40px"
+                        height="45px"
                         placeholder="이름을 입력하세용"
                         onChange={(e) => userInfo.setName(e.currentTarget.value)}
                     />
                     <DropDown
                         color="primary"
                         width="242px"
-                        height="30px"
+                        height="45px"
                         selectedDepartment={selectedDepartment}
                         setSelectedDepartment={setSelectedDepartment}
                     />

@@ -7,6 +7,8 @@ export const GlobalStyle = css`
         border: 0;
         box-sizing: border-box;
 
+        font-family: "NanumSquareNeo", sans-serif;
+
         // 스크롤바 숨김 처리
         -ms-overflow-style: none; /* 인터넷 익스플로러 */
         scrollbar-width: none; /* 파이어폭스 */

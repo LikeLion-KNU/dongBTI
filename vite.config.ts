@@ -1,6 +1,7 @@
 import path from "path";
 import { visualizer } from "rollup-plugin-visualizer";
 import { defineConfig } from "vite";
+import { VitePluginRadar } from "vite-plugin-radar";
 
 import react from "@vitejs/plugin-react";
 
@@ -16,6 +17,11 @@ export default defineConfig({
         visualizer({
             filename: "./docs/bundle.html",
             open: true,
+        }),
+        VitePluginRadar({
+            analytics: {
+                id: "G-LLMBJD2PDC",
+            },
         }),
     ],
     resolve: {
