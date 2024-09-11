@@ -5,7 +5,6 @@ import { api } from "@/config/axios";
 import { useUserInfo } from "@/store/store";
 
 export const useSubmitResult = () => {
-    const [isPending, setIsPending] = useState<boolean>(false);
     const major = useUserInfo((state) => state.major);
 
     const navigate = useNavigate();
@@ -15,15 +14,10 @@ export const useSubmitResult = () => {
         const mbti = searchParams.get("type");
         console.log(searchParams);
 
-        api.post("/stats", { department: major, mbti })
-            .then(() => {
-                navigate(`/result?type=${mbti}`);
-            })
-            .finally(() => {
-                setIsPending(false);
-                navigate(`/result?type=${mbti}`);
-            });
+        api.post("/stats", { department: major, mbti }).finally(() => {
+            navigate(`/result?type=${mbti}`);
+        });
     }, []);
 
-    return { isPending };
+    return <></>;
 };
