@@ -33,7 +33,7 @@ export default function HomePage() {
     const userInfo = useUserInfo((state) => state);
 
     const [isOpen, setIsOpen] = useState<boolean>(false);
-    const [selectedMajor, setSelectedMajor] = useState<string>("");
+    const [selectedDepartment, setSelectedDepartment] = useState<string>("");
 
     const handleSideBar = () => {
         setIsOpen(!isOpen);
@@ -44,7 +44,7 @@ export default function HomePage() {
             toast.error("이름을 입력해주세용");
             return;
         }
-        if (!userInfo.major) {
+        if (!userInfo.department) {
             toast.error("단과대학을 입력해주세용");
             return;
         }
@@ -52,8 +52,8 @@ export default function HomePage() {
     };
 
     useEffect(() => {
-        userInfo.setMajor(selectedMajor);
-    }, [selectedMajor, userInfo.setMajor]);
+        userInfo.setDepartment(selectedDepartment);
+    }, [selectedDepartment, userInfo.setDepartment]);
 
     return (
         <HomePageWrapper>
@@ -103,8 +103,8 @@ export default function HomePage() {
                         color="primary"
                         width="242px"
                         height="30px"
-                        selectedDepartment={selectedMajor}
-                        setSelectedDepartment={setSelectedMajor}
+                        selectedDepartment={selectedDepartment}
+                        setSelectedDepartment={setSelectedDepartment}
                     />
                     <Text size="xs" color="#6E6E6E">
                         개인정보는 외부에 공유되지 않으니 안심하세용

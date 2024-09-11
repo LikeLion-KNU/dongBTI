@@ -2,17 +2,17 @@ import { create } from "zustand";
 
 type UserProps = {
     name: string;
-    major: string;
+    department: string;
 };
 
 type UserAction = {
     setName: (name: UserProps["name"]) => void;
-    setMajor: (major: UserProps["major"]) => void;
+    setDepartment: (department: UserProps["department"]) => void;
 };
 
 export const useUserInfo = create<UserProps & UserAction>()((set) => ({
     name: "",
-    major: "",
+    department: "",
     setName: (name) => set(() => ({ name: name })),
-    setMajor: (major) => set(() => ({ major: major })),
+    setDepartment: (department) => set(() => ({ department: department })),
 }));
