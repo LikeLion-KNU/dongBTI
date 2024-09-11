@@ -19,5 +19,5 @@ export const useSubmitResult = () => {
         });
     }, []);
 
-    return <></>;
+    return null;
 };
