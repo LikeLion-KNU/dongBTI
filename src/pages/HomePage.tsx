@@ -33,7 +33,7 @@ export default function HomePage() {
     const userInfo = useUserInfo((state) => state);
 
     const [isOpen, setIsOpen] = useState<boolean>(false);
-    const [selectedDepartment, setSelectedDepartment] = useState<string>("");
+    const [selectedDepartment, setSelectedDepartment] = useState<string>(userInfo.department);
 
     const handleSideBar = () => {
         setIsOpen(!isOpen);
@@ -98,6 +98,7 @@ export default function HomePage() {
                         height="45px"
                         placeholder="이름을 입력하세용"
                         onChange={(e) => userInfo.setName(e.currentTarget.value)}
+                        defaultValue={userInfo.name}
                     />
                     <DropDown
                         color="primary"
